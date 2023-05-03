@@ -1,12 +1,16 @@
-import React, { FC } from 'react';
-import './Header.scss';
+import React from 'react';
+import { AppBar, Toolbar } from '@mui/material';
+import Logo from '../../components/Logo';
+import NavBar from '../../components/NavBar/NavBar';
 
-const Header: FC = () => {
+const Header = (): JSX.Element => {
   return (
-    <div className="header">
-      <div className="header__logo">logo</div>
-      <nav>nav</nav>
-    </div>
+    <AppBar position="static">
+      <Toolbar>
+        <Logo />
+        <NavBar />
+      </Toolbar>
+    </AppBar>
   );
 };
 
