@@ -8,7 +8,7 @@ const NavBar = () => {
     <nav>
       <List sx={{ display: 'flex' }}>
         <ListItem component="li">
-          <NavLink to={ROUTES.LOGIN}>Main</NavLink>
+          <NavLink to={ROUTES.MAIN}>Main</NavLink>
         </ListItem>
         <ListItem component="li">
           <NavLink to={ROUTES.WELCOME}>About</NavLink>
