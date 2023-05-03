@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AuthPage = () => {
-  return <>AuthPage</>;
+  return <main className="main">AuthPage</main>;
 };
 
 export default AuthPage;
