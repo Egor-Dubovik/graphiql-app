@@ -1,16 +1,17 @@
 import React, { FC, FormEvent, useEffect, useState } from 'react';
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, FormHelperText, TextField, Typography } from '@mui/material';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../../router/routes/routes.constant';
 import { sendPasswordReset } from '../../../firebase/resetPassword';
 import { auth } from '../../../firebase/config';
-import useResetFormStyles from './ResetForm.style';
+import { checkFields, IAuthFormErrors } from '../../../helpers/validation';
+import { LoadingButton } from '@mui/lab';
 
 const ResetForm: FC = () => {
   const [email, setEmail] = useState('');
-  const [user, loading, error] = useAuthState(auth);
-  const classes = useResetFormStyles();
+  const [errors, setErrors] = useState({} as IAuthFormErrors);
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
   const handleReset = (event: FormEvent) => {
@@ -19,38 +20,41 @@ const ResetForm: FC = () => {
   };
 
   useEffect(() => {
+    setErrors(checkFields(email));
+  }, [email]);
+
+  useEffect(() => {
     if (user) navigate(ROUTES.LOGIN);
   }, [user]);
 
   return (
-    <>
-      {false ? (
-        <div>Loading...</div>
-      ) : (
-        <Box className="reset-form" onSubmit={handleReset} component="form">
-          <>
-            <TextField
-              error={false}
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              sx={{ mb: '20px', display: 'block' }}
-              fullWidth
-              required
-              label="Email адрес"
-              autoComplete="email"
-              autoFocus
-            />
-
-            <Button className={classes['reset-form__button']} type="submit" variant="contained">
-              Reset
-            </Button>
-            <Typography>
-              Already have an account? <NavLink to={ROUTES.LOGIN}>Login</NavLink> now.
-            </Typography>
-          </>
-        </Box>
-      )}
-    </>
+    <Box className="reset-form" onSubmit={handleReset} component="form">
+      <Box sx={{ mb: '20px' }}>
+        <TextField
+          error={!!errors.email}
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          sx={{ display: 'block' }}
+          fullWidth
+          required
+          label="Email address"
+          autoComplete="email"
+        />
+        {errors.email && <FormHelperText error>{errors.email}</FormHelperText>}
+      </Box>
+      <LoadingButton
+        loading={loading}
+        type="submit"
+        variant="contained"
+        fullWidth
+        sx={{ mb: '15px' }}
+      >
+        Reset
+      </LoadingButton>
+      <Typography>
+        Already have an account? <NavLink to={ROUTES.LOGIN}>Login</NavLink> now.
+      </Typography>
+    </Box>
   );
 };
 

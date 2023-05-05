@@ -5,10 +5,13 @@ import useAuthButtonsStyles from './AuthButtons.style';
 import { LoadingButton } from '@mui/lab';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../../firebase/config';
+import { useLocation } from 'react-router-dom';
+import { ROUTES } from '../../../router/routes/routes.constant';
 
 const AuthButtons: FC = () => {
   const [user, loading] = useAuthState(auth);
   const classes = useAuthButtonsStyles();
+  const { pathname } = useLocation();
 
   return (
     <Box className={classes['login-form_buttons']}>
@@ -18,7 +21,7 @@ const AuthButtons: FC = () => {
         type="submit"
         variant="contained"
       >
-        Login
+        {pathname === ROUTES.LOGIN ? 'Login' : 'Sigup'}
       </LoadingButton>
       <LoadingButton
         className={classes['login-form_button']}
