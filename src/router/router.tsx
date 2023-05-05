@@ -1,5 +1,8 @@
 import React from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+import LoginForm from '../modules/forms/LoginForm/LoginForm';
+import RegistrationForm from '../modules/forms/RegistrationForm/RegistrationForm';
+import ResetForm from '../modules/forms/ResetForm/ResetForm';
 import AuthPage from '../pages/AuthPage/AuthPage';
 import MainPage from '../pages/MainPage/MainPage';
 import NotFoundPage from '../pages/NotFoundPage';
@@ -15,8 +18,12 @@ const router = createBrowserRouter(
         <Route path={ROUTES.MAIN} element={<MainPage />} />
       </Route>
       <Route path={ROUTES.WELCOME} element={<WelcomePage />} />
-      <Route path={ROUTES.REGISTRATION} element={<AuthPage />} />
-      <Route path={ROUTES.LOGIN} element={<AuthPage />} />
+      <Route path={ROUTES.AUTH} element={<AuthPage />}>
+        <Route path={ROUTES.REGISTRATION} element={<RegistrationForm />} />
+        <Route path={ROUTES.LOGIN} element={<LoginForm />} />
+        <Route path={ROUTES.RESET} element={<ResetForm />} />
+      </Route>
+
       <Route path={ROUTES.BAD} element={<NotFoundPage />} />
     </Route>
   )
