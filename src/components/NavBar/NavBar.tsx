@@ -1,14 +1,10 @@
 import React from 'react';
-import { Button, List, ListItem } from '@mui/material';
+import { List, ListItem } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { ROUTES } from '../../router/routes/routes.constant';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../../firebase/config';
-import { logout } from '../../firebase/logIn';
+import UserMenu from '../UserMenu/UserMenu';
 
-const NavBar = () => {
-  const [user, loading, error] = useAuthState(auth);
-
+const NavBar = (): JSX.Element => {
   return (
     <nav>
       <List sx={{ display: 'flex' }}>
@@ -18,15 +14,9 @@ const NavBar = () => {
         <ListItem component="li">
           <NavLink to={ROUTES.WELCOME}>About</NavLink>
         </ListItem>
-        {!user ? (
-          <ListItem component="li">
-            <NavLink to={ROUTES.LOGIN}>Auth</NavLink>
-          </ListItem>
-        ) : (
-          <Button variant="contained" onClick={logout}>
-            log out
-          </Button>
-        )}
+        <ListItem component="li">
+          <UserMenu />
+        </ListItem>
       </List>
     </nav>
   );
