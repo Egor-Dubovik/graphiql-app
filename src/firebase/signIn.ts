@@ -4,7 +4,7 @@ import { auth, db } from './config';
 
 const googleProvider = new GoogleAuthProvider();
 
-export const signInWithGoogle = async (): Promise<void> => {
+export const signInWithGoogle = async (): Promise<string | undefined> => {
   try {
     const res = await signInWithPopup(auth, googleProvider); //tru login
     const user = res.user;
@@ -20,7 +20,7 @@ export const signInWithGoogle = async (): Promise<void> => {
     }
   } catch (err: unknown) {
     if (err instanceof Error) {
-      alert(err.message);
+      return err.message;
     }
   }
 };
@@ -29,7 +29,7 @@ export const registerWithEmailAndPassword = async (
   name: string,
   email: string,
   password: string
-): Promise<void> => {
+): Promise<string | undefined> => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -41,7 +41,7 @@ export const registerWithEmailAndPassword = async (
     });
   } catch (err: unknown) {
     if (err instanceof Error) {
-      alert(err.message);
+      return err.message;
     }
   }
 };

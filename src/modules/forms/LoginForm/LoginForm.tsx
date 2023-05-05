@@ -1,7 +1,7 @@
 import React, { FC, FormEvent, useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Box, Typography } from '@mui/material';
+import { Box, FormHelperText, Typography } from '@mui/material';
 import { ROUTES } from '../../../router/routes/routes.constant';
 import AuthButtons from '../../../components/auth/AuthButtons/AuthButtons';
 import { logInWithEmailAndPassword } from '../../../firebase/logIn';
@@ -13,6 +13,7 @@ const LoginForm: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({} as IAuthFormErrors);
+  const [serverError, setServerError] = useState<string | undefined>();
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -26,17 +27,22 @@ const LoginForm: FC = () => {
     setErrors(newErrors);
   }, [email, password]);
 
-  const handleLogIn = (event: FormEvent): void => {
+  const handleLogIn = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
     if (Object.keys(errors).length === 0) {
-      logInWithEmailAndPassword(email, password);
+      const serverMessError = await logInWithEmailAndPassword(email, password);
+      setServerError(serverMessError);
     }
   };
 
   return (
     <>
-      {/* {error && <Typography color={'red'}>Error: {error.message}</Typography>} */}
       <Box className="login-form" onSubmit={handleLogIn} component="form">
+        {serverError && (
+          <FormHelperText sx={{ mb: 2, fontSize: '14px' }} error>
+            {serverError}
+          </FormHelperText>
+        )}
         <InputField
           error={!!errors.email}
           value={email}
@@ -58,7 +64,7 @@ const LoginForm: FC = () => {
           required
           helperText={errors.password}
         />
-        <AuthButtons />
+        <AuthButtons setError={setServerError} />
         <Box>
           <Typography>
             Don&apos;t have an account? <NavLink to={ROUTES.REGISTRATION}>Register</NavLink> now.
