@@ -1,12 +1,13 @@
 import React, { FC, FormEvent, useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Box, FormHelperText, TextField, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { ROUTES } from '../../../router/routes/routes.constant';
 import AuthButtons from '../../../components/auth/AuthButtons/AuthButtons';
 import { logInWithEmailAndPassword } from '../../../firebase/logIn';
 import { auth } from '../../../firebase/config';
 import { checkFields, IAuthFormErrors } from '../../../helpers/validation';
+import InputField from '../../../components/InputField/InputField';
 
 const LoginForm: FC = () => {
   const [email, setEmail] = useState('');
@@ -35,37 +36,28 @@ const LoginForm: FC = () => {
   return (
     <>
       {/* {error && <Typography color={'red'}>Error: {error.message}</Typography>} */}
-
       <Box className="login-form" onSubmit={handleLogIn} component="form">
-        <Box sx={{ mb: '20px' }}>
-          <TextField
-            error={!!errors.email}
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            sx={{ display: 'block' }}
-            fullWidth
-            label="Email address"
-            autoComplete="email"
-            required
-            autoFocus
-          />
-          {errors.email && <FormHelperText error>{errors.email}</FormHelperText>}
-        </Box>
-
-        <Box sx={{ mb: '20px' }}>
-          <TextField
-            error={!!errors.password}
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            sx={{ display: 'block' }}
-            fullWidth
-            label="Password"
-            type="password"
-            required
-          />
-          {errors.password && <FormHelperText error>{errors.password}</FormHelperText>}
-        </Box>
-
+        <InputField
+          error={!!errors.email}
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          label="Email address"
+          autoComplete="email"
+          required
+          autoFocus
+          helperText={errors.email}
+        />
+        <InputField
+          error={!!errors.password}
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          sx={{ display: 'block' }}
+          fullWidth
+          label="Password"
+          type="password"
+          required
+          helperText={errors.password}
+        />
         <AuthButtons />
         <Box>
           <Typography>

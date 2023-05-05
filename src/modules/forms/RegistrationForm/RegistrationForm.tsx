@@ -1,5 +1,5 @@
 import React, { FormEvent, useEffect, useState } from 'react';
-import { Box, FormHelperText, TextField, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { ROUTES } from '../../../router/routes/routes.constant';
@@ -7,6 +7,7 @@ import { registerWithEmailAndPassword } from '../../../firebase/signIn';
 import { auth } from '../../../firebase/config';
 import AuthButtons from '../../../components/auth/AuthButtons/AuthButtons';
 import { checkFields, IAuthFormErrors } from '../../../helpers/validation';
+import InputField from '../../../components/InputField/InputField';
 
 const RegistrationForm = () => {
   const [fullName, setFullName] = useState('');
@@ -33,48 +34,38 @@ const RegistrationForm = () => {
 
   return (
     <Box onSubmit={handleRegistration} component="form">
-      <Box sx={{ mb: '20px' }}>
-        <TextField
-          error={!!errors.fullName}
-          value={fullName}
-          onChange={(event) => setFullName(event.target.value)}
-          sx={{ display: 'block' }}
-          fullWidth
-          required
-          label="Full name"
-          autoFocus
-        />
-        {errors.fullName && <FormHelperText error>{errors.fullName}</FormHelperText>}
-      </Box>
-
-      <Box sx={{ mb: '20px' }}>
-        <TextField
-          error={!!errors.email}
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          sx={{ display: 'block' }}
-          fullWidth
-          required
-          label="Email address"
-          autoComplete="email"
-        />
-        {errors.email && <FormHelperText error>{errors.email}</FormHelperText>}
-      </Box>
-
-      <Box sx={{ mb: '20px' }}>
-        <TextField
-          error={!!errors.password}
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          sx={{ mb: '20px', display: 'block' }}
-          fullWidth
-          required
-          label="Password"
-          type="password"
-        />
-        {errors.password && <FormHelperText error>{errors.password}</FormHelperText>}
-      </Box>
-
+      <InputField
+        error={!!errors.fullName}
+        value={fullName}
+        onChange={(event) => setFullName(event.target.value)}
+        sx={{ display: 'block' }}
+        fullWidth
+        required
+        label="Full name"
+        autoFocus
+        helperText={errors.fullName}
+      />
+      <InputField
+        error={!!errors.email}
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+        label="Email address"
+        autoComplete="email"
+        required
+        autoFocus
+        helperText={errors.email}
+      />
+      <InputField
+        error={!!errors.password}
+        value={password}
+        onChange={(event) => setPassword(event.target.value)}
+        sx={{ display: 'block' }}
+        fullWidth
+        label="Password"
+        type="password"
+        required
+        helperText={errors.password}
+      />
       <AuthButtons />
       <Typography>
         Already have an account? <NavLink to={ROUTES.LOGIN}>Login</NavLink> now.

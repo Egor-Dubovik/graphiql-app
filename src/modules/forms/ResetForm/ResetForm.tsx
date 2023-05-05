@@ -1,5 +1,5 @@
 import React, { FC, FormEvent, useEffect, useState } from 'react';
-import { Box, FormHelperText, TextField, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../../router/routes/routes.constant';
@@ -7,6 +7,7 @@ import { sendPasswordReset } from '../../../firebase/resetPassword';
 import { auth } from '../../../firebase/config';
 import { checkFields, IAuthFormErrors } from '../../../helpers/validation';
 import { LoadingButton } from '@mui/lab';
+import InputField from '../../../components/InputField/InputField';
 
 const ResetForm: FC = () => {
   const [email, setEmail] = useState('');
@@ -29,19 +30,16 @@ const ResetForm: FC = () => {
 
   return (
     <Box className="reset-form" onSubmit={handleReset} component="form">
-      <Box sx={{ mb: '20px' }}>
-        <TextField
-          error={!!errors.email}
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          sx={{ display: 'block' }}
-          fullWidth
-          required
-          label="Email address"
-          autoComplete="email"
-        />
-        {errors.email && <FormHelperText error>{errors.email}</FormHelperText>}
-      </Box>
+      <InputField
+        error={!!errors.email}
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+        label="Email address"
+        autoComplete="email"
+        required
+        autoFocus
+        helperText={errors.email}
+      />
       <LoadingButton
         loading={loading}
         type="submit"
