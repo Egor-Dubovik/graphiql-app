@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { Box } from '@mui/material';
 import { signInWithGoogle } from '../../../firebase/signIn';
-import useAuthButtonsStyles from './AuthButtons.style';
 import { LoadingButton } from '@mui/lab';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../../firebase/config';
 import { useLocation } from 'react-router-dom';
 import { ROUTES } from '../../../router/routes/routes.constant';
+import { sxAuthButton, sxAuthButtons } from './AuthButtons.style';
 
 interface IAuthButtonsProps {
   setError: React.Dispatch<React.SetStateAction<string | undefined>>;
@@ -14,7 +14,6 @@ interface IAuthButtonsProps {
 
 const AuthButtons: FC<IAuthButtonsProps> = ({ setError }) => {
   const [user, loading] = useAuthState(auth);
-  const classes = useAuthButtonsStyles();
   const { pathname } = useLocation();
 
   const handleSignIn = async () => {
@@ -23,17 +22,12 @@ const AuthButtons: FC<IAuthButtonsProps> = ({ setError }) => {
   };
 
   return (
-    <Box className={classes['login-form_buttons']}>
-      <LoadingButton
-        loading={loading}
-        className={classes['login-form_button']}
-        type="submit"
-        variant="contained"
-      >
+    <Box sx={sxAuthButtons}>
+      <LoadingButton loading={loading} sx={sxAuthButton} type="submit" variant="contained">
         {pathname === ROUTES.LOGIN ? 'Login' : 'Sigup'}
       </LoadingButton>
       <LoadingButton
-        className={classes['login-form_button']}
+        sx={sxAuthButton}
         onClick={handleSignIn}
         type="button"
         loading={loading}

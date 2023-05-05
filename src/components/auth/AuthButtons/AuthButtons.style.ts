@@ -1,14 +1,10 @@
-import { makeStyles } from '@mui/styles';
+export const sxAuthButtons = {
+  marginBottom: '15px',
+  display: 'flex',
+  flexDirection: { sm: 'row', xs: 'column' },
+  gap: '10px',
+};
 
-const useAuthButtonsStyles = makeStyles({
-  'login-form_buttons': {
-    marginBottom: '15px',
-    display: 'flex',
-    gap: '10px',
-  },
-  'login-form_button': {
-    flex: '0 0 calc(50% - 5px)',
-  },
-});
-
-export default useAuthButtonsStyles;
+export const sxAuthButton = {
+  flex: { sm: '0 0 calc(50% - 5px)', xs: '0 0 100%' },
+};
