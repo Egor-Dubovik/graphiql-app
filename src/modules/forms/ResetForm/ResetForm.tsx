@@ -27,20 +27,20 @@ const ResetForm: FC = () => {
       {false ? (
         <div>Loading...</div>
       ) : (
-        <Box onSubmit={handleReset} component="form">
+        <Box className="reset-form" onSubmit={handleReset} component="form">
           <>
             <TextField
               error={false}
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              className={classes['reset-form__input']}
-              sx={{ mb: '20px' }}
-              required
+              sx={{ mb: '20px', display: 'block' }}
               fullWidth
+              required
               label="Email адрес"
               autoComplete="email"
               autoFocus
             />
+
             <Button className={classes['reset-form__button']} type="submit" variant="contained">
               Reset
             </Button>

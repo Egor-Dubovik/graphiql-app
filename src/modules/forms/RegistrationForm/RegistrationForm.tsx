@@ -6,14 +6,12 @@ import { ROUTES } from '../../../router/routes/routes.constant';
 import { registerWithEmailAndPassword } from '../../../firebase/signIn';
 import { auth } from '../../../firebase/config';
 import AuthButtons from '../../../components/auth/AuthButtons/AuthButtons';
-import useRegistrationFormStyles from './RegistrationForm.style';
 
 const RegistrationForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [user, loading, error] = useAuthState(auth);
-  const classes = useRegistrationFormStyles();
   const navigate = useNavigate();
 
   const handleRegistration = (event: FormEvent) => {
@@ -35,44 +33,43 @@ const RegistrationForm = () => {
       {false ? (
         <div>Loading...</div>
       ) : (
-        <Box onSubmit={handleRegistration} component="form" sx={{ mt: 1 }}>
-          <>
-            <TextField
-              error={false}
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-              className={classes['register-form__input']}
-              sx={{ mb: '20px' }}
-              required
-              label="Full name"
-              autoFocus
-            />
-            <TextField
-              error={false}
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              className={classes['register-form__input']}
-              sx={{ mb: '20px' }}
-              required
-              label="Email address"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              error={false}
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              className={classes['register-form__input']}
-              sx={{ mb: '20px' }}
-              required
-              label="Password"
-              type="password"
-            />
-            <AuthButtons />
-            <Typography>
-              Already have an account? <NavLink to={ROUTES.LOGIN}>Login</NavLink> now.
-            </Typography>
-          </>
+        <Box onSubmit={handleRegistration} component="form">
+          <TextField
+            error={false}
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            sx={{ mb: '20px', display: 'block' }}
+            fullWidth
+            required
+            label="Full name"
+            autoFocus
+          />
+          <TextField
+            error={false}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            sx={{ mb: '20px', display: 'block' }}
+            fullWidth
+            required
+            label="Email address"
+            autoComplete="email"
+            autoFocus
+          />
+
+          <TextField
+            error={false}
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            sx={{ mb: '20px', display: 'block' }}
+            fullWidth
+            required
+            label="Password"
+            type="password"
+          />
+          <AuthButtons />
+          <Typography>
+            Already have an account? <NavLink to={ROUTES.LOGIN}>Login</NavLink> now.
+          </Typography>
         </Box>
       )}
     </>

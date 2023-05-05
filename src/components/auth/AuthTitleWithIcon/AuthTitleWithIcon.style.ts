@@ -5,6 +5,7 @@ const useAuthTitleWithIconStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    marginBottom: '15px',
   },
   'title-block_icon': {
     position: 'relative',
