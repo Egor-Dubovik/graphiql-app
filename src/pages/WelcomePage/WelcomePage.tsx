@@ -1,8 +1,7 @@
 import React from 'react';
 import { DevCardList } from '../../components/DevCardList/DevCardList';
 import { Container } from '@mui/material';
-
-import './WelcomePageStyles.scss';
+import { CustomH2, CustomSection } from './WelcomePage.styles';
 
 const WelcomePage = () => {
   return (
@@ -14,9 +13,9 @@ const WelcomePage = () => {
           textAlign: 'center',
         }}
       >
-        <section className="welcome-main">
-          <h2 className="welcome-header">Welcome Page</h2>
-        </section>
+        <CustomSection>
+          <CustomH2>Welcome Page</CustomH2>
+        </CustomSection>
       </Container>
       <Container maxWidth="xl">
         <DevCardList />

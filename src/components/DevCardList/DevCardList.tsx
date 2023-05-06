@@ -1,14 +1,21 @@
 import React from 'react';
 import { DevCard } from '../DevCard/DevCard';
 import { developers } from '../../common/data/developers';
-import './DevCardListStyles.scss';
+import { divTheme, CustomDiv } from './DevCardList.styles';
 
 export const DevCardList = () => {
   return (
-    <div className="card-container">
+    <CustomDiv
+      theme={divTheme}
+      sx={{
+        [divTheme.breakpoints.down('md')]: {
+          flexDirection: 'column',
+        },
+      }}
+    >
       {developers.map((dev) => {
         return <DevCard key={dev.id} {...dev} />;
       })}
-    </div>
+    </CustomDiv>
   );
 };
