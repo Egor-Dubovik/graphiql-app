@@ -1,6 +1,4 @@
-import { makeStyles } from '@mui/styles';
-
-const useAuthTitleWithIconStyles = makeStyles({
+const sxAuthTitleWithIcon = {
   'auth__title-block': {
     display: 'flex',
     flexDirection: 'column',
@@ -23,6 +21,6 @@ const useAuthTitleWithIconStyles = makeStyles({
       objectFit: 'contain',
     },
   },
-});
+};
 
-export default useAuthTitleWithIconStyles;
+export default sxAuthTitleWithIcon;

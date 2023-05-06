@@ -3,12 +3,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Box, Typography } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import { ROUTES } from '../../../router/routes/routes.constant';
-import useAuthTitleWithIconStyles from './AuthTitleWithIcon.style';
+import sxAuthTitleWithIcon from './AuthTitleWithIcon.style';
 
 const AuthTitleWithIcon: FC = () => {
   const { pathname } = useLocation();
   const [title, setTitle] = useState('');
-  const classes = useAuthTitleWithIconStyles();
 
   useEffect(() => {
     switch (pathname) {
@@ -28,8 +27,8 @@ const AuthTitleWithIcon: FC = () => {
   }, [pathname]);
 
   return (
-    <Box className={`title-block ${classes['auth__title-block']} `}>
-      <Box className={classes['title-block_icon']}>
+    <Box sx={sxAuthTitleWithIcon['auth__title-block']}>
+      <Box sx={sxAuthTitleWithIcon['title-block_icon']}>
         <LockOutlinedIcon />
       </Box>
       <Typography variant="h5">{title}</Typography>
