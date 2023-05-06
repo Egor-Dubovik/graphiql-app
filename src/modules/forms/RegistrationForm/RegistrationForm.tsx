@@ -59,7 +59,6 @@ const RegistrationForm = () => {
         label="Email address"
         autoComplete="email"
         required
-        autoFocus
         helperText={errors.email}
       />
       <InputField
