@@ -14,7 +14,7 @@ import { ROUTES } from './routes/routes.constant';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
-      <Route element={<ProtectedRoute redirectPath={ROUTES.REDIRECT} />}>
+      <Route element={<ProtectedRoute redirectPath={ROUTES.LOGIN} />}>
         <Route path={ROUTES.MAIN} element={<MainPage />} />
       </Route>
       <Route path={ROUTES.WELCOME} element={<WelcomePage />} />
