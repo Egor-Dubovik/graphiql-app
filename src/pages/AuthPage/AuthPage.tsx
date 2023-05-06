@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box } from '@mui/material';
 import AuthForm from '../../modules/forms/AuthForm/AuthForm';
 import { BackgroundImage, sxAuthContainer } from './AuthPage.style';
 
-const AuthPage: FC = () => {
+const AuthPage = (): JSX.Element => {
   return (
     <main className="main">
       <Box sx={sxAuthContainer}>

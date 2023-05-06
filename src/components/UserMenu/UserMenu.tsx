@@ -16,8 +16,12 @@ const UserMenu: FC = () => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseUserMenu = async () => {
+  const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleLogout = async () => {
+    handleCloseUserMenu();
     const serverErrMessage = await logout();
     navigate(ROUTES.LOGIN);
   };
@@ -44,11 +48,16 @@ const UserMenu: FC = () => {
         onClose={handleCloseUserMenu}
       >
         {user ? (
-          <MenuItem onClick={handleCloseUserMenu}>Log out</MenuItem>
+          <MenuItem onClick={handleLogout}>Log out</MenuItem>
         ) : (
-          <MenuItem onClick={handleCloseUserMenu}>
-            <NavLink to={ROUTES.LOGIN}>Authorization</NavLink>
-          </MenuItem>
+          <>
+            <MenuItem onClick={handleCloseUserMenu}>
+              <NavLink to={ROUTES.LOGIN}>login</NavLink>
+            </MenuItem>
+            <MenuItem onClick={handleCloseUserMenu}>
+              <NavLink to={ROUTES.REGISTRATION}>sigup</NavLink>
+            </MenuItem>
+          </>
         )}
       </Menu>
     </Box>
