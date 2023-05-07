@@ -2,8 +2,9 @@ import React from 'react';
 import { List, ListItem } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { ROUTES } from '../../router/routes/routes.constant';
+import UserMenu from '../UserMenu/UserMenu';
 
-const NavBar = () => {
+const NavBar = (): JSX.Element => {
   return (
     <nav>
       <List sx={{ display: 'flex' }}>
@@ -14,7 +15,7 @@ const NavBar = () => {
           <NavLink to={ROUTES.WELCOME}>About</NavLink>
         </ListItem>
         <ListItem component="li">
-          <NavLink to={ROUTES.LOGIN}>Auth</NavLink>
+          <UserMenu />
         </ListItem>
       </List>
     </nav>

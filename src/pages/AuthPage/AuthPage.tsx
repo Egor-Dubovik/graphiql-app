@@ -1,12 +1,17 @@
 import React from 'react';
-import { Container } from '@mui/material';
+import { Box } from '@mui/material';
+import AuthForm from '../../modules/forms/AuthForm/AuthForm';
+import { BackgroundImage, sxAuthContainer } from './AuthPage.style';
 
-const AuthPage = () => {
+const AuthPage = (): JSX.Element => {
   return (
     <main className="main">
-      <Container maxWidth="xl">
-        <section>AuthPage</section>
-      </Container>
+      <Box sx={sxAuthContainer}>
+        <Box component="section">
+          <BackgroundImage src="/auth.svg" alt="auth background" />
+          <AuthForm />
+        </Box>
+      </Box>
     </main>
   );
 };
