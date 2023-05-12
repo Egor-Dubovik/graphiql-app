@@ -8,7 +8,7 @@ export const WelcomeInfo = () => {
       theme={boxTheme}
       sx={{
         [boxTheme.breakpoints.down('md')]: {
-          height: '1000px',
+          height: '1100px',
           justifyContent: 'space-around',
           alignItems: 'center',
         },
@@ -29,7 +29,7 @@ export const WelcomeInfo = () => {
       >
         <Box
           sx={{
-            width: '30%',
+            width: '25vw',
             height: '100%',
             display: 'flex',
             justifyContent: 'center',
@@ -47,7 +47,7 @@ export const WelcomeInfo = () => {
         </Box>
         <Box
           sx={{
-            width: '30%',
+            width: '25vw',
             height: '100%',
             [boxTheme.breakpoints.down('md')]: {
               width: '100%',
@@ -62,7 +62,7 @@ export const WelcomeInfo = () => {
         </Box>
         <Box
           sx={{
-            width: '30%',
+            width: '25vw',
             height: '100%',
             display: 'flex',
             justifyContent: 'center',
@@ -94,7 +94,7 @@ export const WelcomeInfo = () => {
       >
         <Box
           sx={{
-            width: '30%',
+            width: '25vw',
             height: '100%',
             [boxTheme.breakpoints.down('md')]: {
               width: '100%',
@@ -106,7 +106,7 @@ export const WelcomeInfo = () => {
         </Box>
         <Box
           sx={{
-            width: '30%',
+            width: '25vw',
             height: '100%',
             display: 'flex',
             justifyContent: 'center',
@@ -124,7 +124,7 @@ export const WelcomeInfo = () => {
         </Box>
         <Box
           sx={{
-            width: '30%',
+            width: '25vw',
             height: '100%',
             [boxTheme.breakpoints.down('md')]: {
               width: '100%',
