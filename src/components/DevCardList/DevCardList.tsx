@@ -10,6 +10,8 @@ export const DevCardList = () => {
       sx={{
         [divTheme.breakpoints.down('md')]: {
           flexDirection: 'column',
+          alignItems: 'center',
+          height: '1790px',
         },
       }}
     >
