@@ -1,6 +1,6 @@
 import React from 'react';
 import { DevCardList } from '../../components/DevCardList/DevCardList';
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import { CustomH2, CustomSection } from './WelcomePage.styles';
 import { WelcomeInfo } from '../../components/WelcomeInfo/WelcomeInfo';
 
@@ -15,7 +15,9 @@ const WelcomePage = () => {
         }}
       >
         <CustomSection>
-          <CustomH2>Welcome Page</CustomH2>
+          <Typography variant="h3">
+            <CustomH2>Welcome Page</CustomH2>
+          </Typography>
         </CustomSection>
       </Container>
       <Container maxWidth="xl">
