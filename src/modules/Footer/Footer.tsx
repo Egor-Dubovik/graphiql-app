@@ -13,7 +13,16 @@ const Footer: FC = () => {
   return (
     <footer className="footer">
       <ThemeProvider theme={footerTheme}>
-        <Container maxWidth="xl">
+        <Container
+          maxWidth="xl"
+          sx={{
+            [footerTheme.breakpoints.down(480)]: {
+              height: '140px',
+              flexDirection: 'column',
+              alignItems: 'center',
+            },
+          }}
+        >
           <LeftFooterBox>
             <Tooltip title="E.Dubovik github">
               <a href="https://github.com/Egor-Dubovik">

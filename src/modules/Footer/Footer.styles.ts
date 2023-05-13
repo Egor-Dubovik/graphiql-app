@@ -43,8 +43,9 @@ export const CenterFooterBox = styled(Box)({
   justifyContent: 'center',
   alignItems: 'center',
   textAlign: 'center',
-  [footerTheme.breakpoints.down('md')]: {
-    width: '100px',
+  [footerTheme.breakpoints.down(480)]: {
+    width: '100%',
+    order: 3,
   },
 });
 
