@@ -15,16 +15,26 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.1.8",
     "@mui/icons-material": "^5.11.16",
     "@mui/lab": "^5.0.0-alpha.129",
     "@mui/material": "^5.12.3",
+    "@types/react-router": "^5.1.20",
+    "@uiw/codemirror-extensions-basic-setup": "^4.19.16",
+    "@uiw/codemirror-theme-aura": "^4.19.16",
+    "@uiw/codemirror-theme-eclipse": "^4.19.16",
+    "@uiw/react-codemirror": "^4.19.16",
+    "@uiw/react-textarea-code-editor": "^2.1.1",
+    "codemirror": "^5.65.13",
+    "css-loader": "^6.7.3",
     "firebase": "^9.21.0",
     "framer-motion": "^10.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.11.0"
+    "react-router-dom": "^6.11.0",
+    "style-loader": "^3.3.2"
   },
   "devDependencies": {
     "@emotion/react": "^11.10.8",
