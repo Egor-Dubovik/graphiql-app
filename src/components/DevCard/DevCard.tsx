@@ -26,6 +26,7 @@ export const DevCard: React.FC<IDevCard> = ({ devImage, devName, devText, devMor
         sx={{
           [cardTheme.breakpoints.down('md')]: {
             width: '100%',
+            height: '30%',
           },
         }}
       >
@@ -33,7 +34,7 @@ export const DevCard: React.FC<IDevCard> = ({ devImage, devName, devText, devMor
           <CardMedia
             sx={{
               [cardMediaTheme.breakpoints.down('md')]: {
-                height: '300px',
+                height: '400px',
               },
             }}
             image={devImage}

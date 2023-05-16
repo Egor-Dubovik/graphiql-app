@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Box, IconButton, Menu, MenuItem } from '@mui/material';
+import { Box, IconButton, Menu, MenuItem, MenuList } from '@mui/material';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -48,16 +48,18 @@ const UserMenu: FC = () => {
         onClose={handleCloseUserMenu}
       >
         {user ? (
-          <MenuItem onClick={handleLogout}>Log out</MenuItem>
+          <MenuList>
+            <MenuItem onClick={handleLogout}>Log out</MenuItem>
+          </MenuList>
         ) : (
-          <>
+          <MenuList>
             <MenuItem onClick={handleCloseUserMenu}>
               <NavLink to={ROUTES.LOGIN}>login</NavLink>
             </MenuItem>
             <MenuItem onClick={handleCloseUserMenu}>
               <NavLink to={ROUTES.REGISTRATION}>sigup</NavLink>
             </MenuItem>
-          </>
+          </MenuList>
         )}
       </Menu>
     </Box>
