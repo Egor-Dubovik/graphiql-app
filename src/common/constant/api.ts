@@ -1,1 +1,2 @@
-export const BASE_URL = 'http://localhost:5000';
+export const BASE_GRAPHQL_URL = 'https://graphqlzero.almansi.me/api';
+// export const BASE_GRAPHQL_URL = 'https://graphql.anilist.co';

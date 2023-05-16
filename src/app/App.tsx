@@ -1,10 +1,11 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
-import Loader from '../components/Loader/Loader';
-
+import { createReduxStore } from './store/store';
 import { auth } from '../firebase/config';
 import router from '../router/router';
+import Loader from '../components/Loader/Loader';
 import './App.scss';
 
 function App() {
@@ -15,9 +16,11 @@ function App() {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="App">
-          <RouterProvider router={router} />
-        </div>
+        <Provider store={createReduxStore()}>
+          <div className="App">
+            <RouterProvider router={router} />
+          </div>
+        </Provider>
       )}
     </>
   );
