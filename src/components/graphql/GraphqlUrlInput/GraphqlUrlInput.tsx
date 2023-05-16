@@ -23,24 +23,23 @@ const GraphqlUrlInput: FC = () => {
 
   useEffect(() => {
     getSchema(debouncedurl);
-  }, [debouncedurl]);
+  }, [debouncedurl, getSchema]);
 
   useEffect(() => {
     if (data) {
       dispatch(setData(data));
-      console.log(data);
     }
-  }, [data]);
+  }, [data, dispatch]);
 
   return (
     <InputField
       error={isError}
       value={url}
+      sx={{ minWidth: { xs: '260px', sm: '480px' } }}
       onChange={(event) => setUrl(event.target.value)}
-      sx={{ display: 'block' }}
       fullWidth
       required
-      label="Full name"
+      label="schema url"
       autoFocus
       helperText={(error as FetchBaseQueryError)?.status as string}
     />

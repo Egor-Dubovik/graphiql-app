@@ -47,6 +47,7 @@ const LoginForm: FC = () => {
           error={!!errors.email}
           value={email}
           onChange={(event) => setEmail(event.target.value)}
+          sx={{ mb: 2 }}
           label="Email address"
           autoComplete="email"
           required
@@ -57,7 +58,7 @@ const LoginForm: FC = () => {
           error={!!errors.password}
           value={password}
           onChange={(event) => setPassword(event.target.value)}
-          sx={{ display: 'block' }}
+          sx={{ mb: 2 }}
           fullWidth
           label="Password"
           type="password"

@@ -8,11 +8,13 @@ export type InputFieldProps = TextFieldProps & {
   helperText?: string;
 };
 
-const InputField: FC<InputFieldProps> = ({ error, helperText, ...props }) => (
-  <Box sx={{ mb: '20px' }}>
-    <TextField {...props} error={error} fullWidth />
-    {helperText && <FormHelperText error>{helperText}</FormHelperText>}
-  </Box>
-);
+const InputField: FC<InputFieldProps> = ({ error, helperText, sx, ...props }) => {
+  return (
+    <Box sx={sx}>
+      <TextField {...props} error={error} fullWidth />
+      {helperText && <FormHelperText error>{helperText}</FormHelperText>}
+    </Box>
+  );
+};
 
 export default InputField;

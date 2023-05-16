@@ -6,6 +6,7 @@ export const schemaDrawerTheme = createTheme({
       styleOverrides: {
         paper: {
           minWidth: '300px',
+          maxWidth: '300px',
         },
       },
     },
