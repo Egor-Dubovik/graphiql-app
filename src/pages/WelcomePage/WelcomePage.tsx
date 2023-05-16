@@ -3,6 +3,7 @@ import { DevCardList } from '../../components/DevCardList/DevCardList';
 import { Container, Typography } from '@mui/material';
 import { CustomH2, CustomSection } from './WelcomePage.styles';
 import { WelcomeInfo } from '../../components/WelcomeInfo/WelcomeInfo';
+import { WelcomePlayer } from '../../components/WelcomePlayer/WelcomePlayer';
 
 const WelcomePage = () => {
   return (
@@ -26,10 +27,14 @@ const WelcomePage = () => {
       <Container
         maxWidth="xl"
         sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
           textAlign: 'center',
         }}
       >
         <WelcomeInfo />
+        <WelcomePlayer />
       </Container>
     </main>
   );
