@@ -1,21 +1,26 @@
 import React, { FC } from 'react';
 import { List, ListItemButton, ListItemText, Typography } from '@mui/material';
-import { IRootType } from '../../features/Sheme/types';
+import { useAppSelector } from '../../app/store/hooks';
+import { selectSchemaData, selectSchemaStack } from '../../features/Sheme/schemaSlice';
+import { useSchemaFieldHandler } from '../../hooks/useFieldHandler';
 
-interface IInputObjectProps {
-  object: IRootType;
-}
+const InputObjectView: FC = () => {
+  const schemaData = useAppSelector(selectSchemaData);
+  const { dataArray } = useAppSelector(selectSchemaStack);
+  const handleChangeField = useSchemaFieldHandler();
+  const currentObject = dataArray[dataArray.length - 1];
 
-const InputObjectView: FC<IInputObjectProps> = ({ object }) => {
   return (
     <div>
-      <Typography variant="h4">{object.name}</Typography>
+      <Typography variant="h4" sx={{ p: '0 10px' }}>
+        {currentObject.name}
+      </Typography>
       <List>
-        {object.inputFields?.map((inputField) => {
+        {currentObject.inputFields?.map((inputField) => {
           return (
             <ListItemButton
               key={inputField.name}
-              // onClick={() => handlePropertyClick(fieldName)}
+              onClick={() => handleChangeField(inputField.type.name, schemaData)}
             >
               <ListItemText
                 primary={`${inputField.name}(...)`}

@@ -1,18 +1,20 @@
 import { List, ListItemButton, ListItemText, Typography } from '@mui/material';
 import React, { FC } from 'react';
-import { IRootType } from '../../features/Sheme/types';
+import { useAppSelector } from '../../app/store/hooks';
+import { selectSchemaData, selectSchemaStack } from '../../features/Sheme/schemaSlice';
+import { useSchemaFieldHandler } from '../../hooks/useFieldHandler';
 
-interface IUnionViewProps {
-  object: IRootType;
-}
+const UnionView: FC = () => {
+  const schemaData = useAppSelector(selectSchemaData);
+  const { dataArray } = useAppSelector(selectSchemaStack);
+  const handleChangeField = useSchemaFieldHandler();
+  const currentObject = dataArray[dataArray.length - 1];
 
-const UnionView: FC<IUnionViewProps> = ({ object }) => {
   return (
     <div>
-      <Typography variant="h4">{object.name}</Typography>
-
+      <Typography variant="h4">{currentObject.name}</Typography>
       <List>
-        {object.possibleTypes?.map((types) => {
+        {currentObject.possibleTypes?.map((types) => {
           const name =
             types.name === 'OBJECT' || types.name === 'INPUT_OBJECT'
               ? `${types.name}(...)`
@@ -20,7 +22,7 @@ const UnionView: FC<IUnionViewProps> = ({ object }) => {
           return (
             <ListItemButton
               key={types.name}
-              // onClick={() => handlePropertyClick(fieldName)}
+              onClick={() => handleChangeField(types.name, schemaData)}
             >
               <ListItemText primary={name} secondary={''} />
             </ListItemButton>

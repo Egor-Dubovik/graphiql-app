@@ -2,21 +2,19 @@ import React, { FC } from 'react';
 import { List, ListItemButton, ListItemText } from '@mui/material';
 import { useAppSelector } from '../../app/store/hooks';
 import { selectSchemaData } from '../../features/Sheme/schemaSlice';
+import { useSchemaFieldHandler } from '../../hooks/useFieldHandler';
 
 const BaseSchemaList: FC = () => {
   const schemaData = useAppSelector(selectSchemaData);
+  const handleChangeField = useSchemaFieldHandler();
 
   return (
     <List>
-      <ListItemButton
-      // onClick={() => handlePropertyClick(fieldName)}
-      >
-        <ListItemText primary={schemaData.queryType?.name} secondary={``} />
+      <ListItemButton onClick={() => handleChangeField(schemaData.queryType?.name, schemaData)}>
+        <ListItemText primary={`${schemaData.queryType?.name}(...)`} secondary={'object'} />
       </ListItemButton>
-      <ListItemButton
-      // onClick={() => handlePropertyClick(fieldName)}
-      >
-        <ListItemText primary={schemaData.mutationType?.name} secondary={``} />
+      <ListItemButton onClick={() => handleChangeField(schemaData.mutationType?.name, schemaData)}>
+        <ListItemText primary={`${schemaData.mutationType?.name}(...)`} secondary={'object'} />
       </ListItemButton>
     </List>
   );

@@ -1,17 +1,19 @@
 import React, { FC } from 'react';
 import { Typography } from '@mui/material';
-import { IRootType } from '../../features/Sheme/types';
+import { useAppSelector } from '../../app/store/hooks';
+import { selectSchemaStack } from '../../features/Sheme/schemaSlice';
 
-interface IEnumViewProps {
-  object: IRootType;
-}
+const EnumView: FC = () => {
+  const { dataArray } = useAppSelector(selectSchemaStack);
+  const currentObject = dataArray[dataArray.length - 1];
 
-const EnumView: FC<IEnumViewProps> = ({ object }) => {
   return (
     <>
-      <Typography variant="h4">{object.name}</Typography>
+      <Typography variant="h4" sx={{ p: '0 10px' }}>
+        {currentObject.name}
+      </Typography>
       <ul>
-        {object.enumValues?.map((value) => (
+        {currentObject.enumValues?.map((value) => (
           <li key={value.name}>{value.name}</li>
         ))}
       </ul>

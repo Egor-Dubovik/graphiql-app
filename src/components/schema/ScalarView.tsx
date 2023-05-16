@@ -1,16 +1,18 @@
 import { Typography } from '@mui/material';
 import React, { FC } from 'react';
-import { IRootType } from '../../features/Sheme/types';
+import { useAppSelector } from '../../app/store/hooks';
+import { selectSchemaStack } from '../../features/Sheme/schemaSlice';
 
-interface IScalarViewProps {
-  object: IRootType;
-}
+const ScalarView: FC = () => {
+  const { dataArray } = useAppSelector(selectSchemaStack);
+  const currentObject = dataArray[dataArray.length - 1];
 
-const ScalarView: FC<IScalarViewProps> = ({ object }) => {
   return (
-    <div>
-      <Typography variant="h4">{object.name}</Typography>
-      <Typography variant="h4">{object.description}</Typography>
+    <div style={{ maxWidth: '400px' }}>
+      <Typography variant="h4" sx={{ p: '0 10px' }}>
+        {currentObject.name}
+      </Typography>
+      <Typography>{currentObject.description}</Typography>
     </div>
   );
 };
