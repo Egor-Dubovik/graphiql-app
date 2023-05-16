@@ -14,7 +14,7 @@ const MainPage = () => {
           textAlign: 'center',
         }}
       >
-        <MainSection>
+        <MainSection sx={{ alignItems: 'center' }}>
           <MainH2>MainPage</MainH2>
           <NavMain />
           <Editors />

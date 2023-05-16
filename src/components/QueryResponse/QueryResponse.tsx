@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
-import { eclipse } from '@uiw/codemirror-theme-eclipse';
+import { xcodeLight } from '@uiw/codemirror-theme-xcode';
+
 import { javascript } from '@codemirror/lang-javascript';
 import CodeMirror from '@uiw/react-codemirror';
 import React from 'react';
@@ -9,14 +10,18 @@ const QueryResponse = () => {
     console.log('value:', value);
   }, []);
   return (
-    <Box textAlign="left" letterSpacing={2} borderRight={1} sx={{ width: 1 / 2 }}>
+    <Box textAlign="left" letterSpacing={2} sx={{ width: 1 }}>
       <CodeMirror
-        value=""
+        value="Here will be the response"
         height="300px"
-        theme={eclipse}
-        // editable={false}
-        editable={true}
-        basicSetup={{ lineNumbers: false, foldGutter: false, indentOnInput: true }}
+        theme={xcodeLight}
+        editable={false}
+        basicSetup={{
+          lineNumbers: false,
+          foldGutter: false,
+          indentOnInput: true,
+          highlightActiveLine: false,
+        }}
         extensions={[javascript({ jsx: true })]}
         onChange={onChange}
       />
