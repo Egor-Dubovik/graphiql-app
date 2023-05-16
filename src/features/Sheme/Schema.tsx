@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Drawer } from '@mui/material';
-import ObjectSchemaView from '../../components/schema/ObjectView/ObjectView';
+import ObjectSchemaView from '../../components/schema/ObjectView';
 import GraphqlTools from '../../components/graphql/GraphqlTools/GraphqlTools';
 import BaseSchemaList from '../../components/schema/BaseSchemaList';
 
