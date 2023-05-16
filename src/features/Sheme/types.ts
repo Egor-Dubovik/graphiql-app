@@ -1,5 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+export interface ISchema {
+  directives: any[];
+  mutationType: { name: string } | null;
+  queryType: { name: string } | null;
+  subscriptionType: any;
+  types: IRootType[];
+}
+
 export interface IRootType {
   name: string;
   description: string;

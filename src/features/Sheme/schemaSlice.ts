@@ -1,19 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store/store';
-import { IField, IRootType, KindType } from './types';
+import { ISchema } from './types';
 
-export interface ISchema {
-  data: {
-    directives: any[];
-    mutationType: { name: string } | null;
-    queryType: { name: string } | null;
-    subscriptionType: any;
-    types: IRootType[];
-  };
+export interface ISchemaData {
+  data: ISchema;
 }
 
-const initialState = {} as ISchema;
+const initialState = {} as ISchemaData;
 
 export const schemaSlice = createSlice({
   name: 'schema',
