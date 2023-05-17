@@ -6,3 +6,7 @@
 .cm-editor.cm-focused {
     outline: none;
 }
+.cm-theme {
+  flex-grow: 1;
+
+}

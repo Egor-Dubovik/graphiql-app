@@ -1,11 +1,14 @@
 import { styled } from '@mui/material/styles';
 
-export const MainSection = styled('section')`
+export const MainSection = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
 `;
-export const MainH2 = styled('h2')`
-  font-size: 40px;
+export const Main = styled('main')`
+  background-color: #ebf1f5;
+  display: flex;
 `;
