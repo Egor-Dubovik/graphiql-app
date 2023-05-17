@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
-import { Box, Drawer, IconButton, ThemeProvider } from '@mui/material';
+import { Drawer, ThemeProvider } from '@mui/material';
 import BaseSchemaList from '../../components/schema/BaseSchemaList';
 import SchemaPath from '../../components/schema/SchemaPath';
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useAppDispatch, useAppSelector } from '../../app/store/hooks';
 import { IRootType } from './types';
 import ObjectView from '../../components/schema/ObjectView';
@@ -12,13 +11,8 @@ import EnumView from '../../components/schema/EnumView';
 import ScalarView from '../../components/schema/ScalarView';
 import { schemaDrawerTheme, SxemaTitle } from './Schema.style';
 import InterfaceView from '../../components/schema/InterfaceView';
-import {
-  popFromPath,
-  popObjFromStack,
-  selectSchemaStack,
-  selectSchemaIsOpen,
-  setIsOpen,
-} from './schemaSlice';
+import { selectSchemaStack, selectSchemaIsOpen, setIsOpen } from './schemaSlice';
+import SchemaTools from '../../components/schema/SchemaTools/SchemaTools';
 
 const Schema: FC = () => {
   const { path, dataArray } = useAppSelector(selectSchemaStack);
@@ -26,17 +20,8 @@ const Schema: FC = () => {
   const dispatch = useAppDispatch();
   const { type } = dataArray[dataArray.length - 1];
 
-  React.useEffect(() => {
-    console.log(type);
-  }, [type]);
-
   const handleClose = () => {
     dispatch(setIsOpen(false));
-  };
-
-  const handleBackClick = () => {
-    dispatch(popFromPath());
-    dispatch(popObjFromStack());
   };
 
   const getCurrentView = (object: IRootType) => {
@@ -61,16 +46,10 @@ const Schema: FC = () => {
   return (
     <ThemeProvider theme={schemaDrawerTheme}>
       <Drawer anchor="right" open={isOpen} onClose={handleClose}>
+        <SchemaTools />
         <SchemaPath />
-        <Box sx={{ p: ' 0 5px', marginBottom: 1 }}>
-          <IconButton color="secondary" disabled={!path.length} onClick={handleBackClick}>
-            <KeyboardBackspaceIcon />
-          </IconButton>
-        </Box>
-        <Box>
-          <SxemaTitle variant="h5">{type?.name ? type?.name : 'General types'}</SxemaTitle>
-          {!path.length ? <BaseSchemaList /> : <>{getCurrentView(type)}</>}
-        </Box>
+        <SxemaTitle variant="h5">{type?.name ? type?.name : 'General types'}</SxemaTitle>
+        {!path.length ? <BaseSchemaList /> : <>{getCurrentView(type)}</>}
       </Drawer>
     </ThemeProvider>
   );
