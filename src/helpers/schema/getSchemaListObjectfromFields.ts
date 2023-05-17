@@ -11,6 +11,7 @@ export const getSchemaListObjectfromFields = (field: IField): ISchemaListObject 
   switch (field.type?.kind) {
     case 'OBJECT':
     case 'INPUT_OBJECT':
+    case 'INTERFACE':
       return { name: `${field.name}(...)`, typeName: field.type.name };
     case 'ENUM':
     case 'SCALAR':
@@ -20,7 +21,9 @@ export const getSchemaListObjectfromFields = (field: IField): ISchemaListObject 
     case 'UNION':
       return { name: `${field.name}(...)`, typeName: field.type.name };
     case 'NON_NULL':
-      return { name: field.name, typeName: field.type.ofType.name };
+      const ofType = field.type.ofType;
+      const ofTypeNdame = ofType.name ? ofType.name : ofType.ofType.name;
+      return { name: field.name, typeName: ofTypeNdame };
     default:
       return { name: SCHEMA_TYPE_ERROR, typeName: SCHEMA_TYPE_ERROR };
   }

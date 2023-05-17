@@ -6,6 +6,7 @@ export const getSchemaListObjectfromPossibleTypes = (type: IPossibleType): ISche
   switch (type.kind) {
     case 'OBJECT':
     case 'INPUT_OBJECT':
+    case 'INTERFACE':
       return { name: `${type.name}(...)`, typeName: currentTypeName };
     case 'ENUM':
     case 'SCALAR':

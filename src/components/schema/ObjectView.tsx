@@ -4,30 +4,35 @@ import { selectSchemaData, selectSchemaStack } from '../../features/Sheme/schema
 import { useSchemaFieldHandler } from '../../hooks/useFieldHandler';
 import { useAppSelector } from '../../app/store/hooks';
 import { getSchemaListObjectfromFields } from '../../helpers/schema/getSchemaListObjectfromFields';
+import { IArg } from '../../features/Sheme/types';
+import ArgsList from './ArgsList';
 
 const ObjectView: FC = () => {
   const schemaData = useAppSelector(selectSchemaData);
   const { dataArray } = useAppSelector(selectSchemaStack);
   const handleChangeField = useSchemaFieldHandler();
-  const { type } = dataArray[dataArray.length - 1];
+  const { type, args } = dataArray[dataArray.length - 1];
 
   console.log(schemaData);
 
   return (
-    <List>
-      {type.fields?.map((field) => {
-        const object = getSchemaListObjectfromFields(field);
-        const { args } = field;
-        return (
-          <ListItemButton
-            key={field.name}
-            onClick={() => handleChangeField(object.typeName, schemaData, args)}
-          >
-            <ListItemText primary={object.name} secondary={`type: ${object.typeName}`} />
-          </ListItemButton>
-        );
-      })}
-    </List>
+    <div>
+      <List>
+        {type.fields?.map((field) => {
+          const object = getSchemaListObjectfromFields(field);
+          const fieldArgs = field.args as IArg[];
+          return (
+            <ListItemButton
+              key={field.name}
+              onClick={() => handleChangeField(object.typeName, schemaData, fieldArgs)}
+            >
+              <ListItemText primary={object.name} secondary={`type: ${object.typeName}`} />
+            </ListItemButton>
+          );
+        })}
+      </List>
+      {args && <ArgsList />}
+    </div>
   );
 };
 

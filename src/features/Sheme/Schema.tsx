@@ -11,6 +11,8 @@ import UnionView from '../../components/schema/UnionView';
 import EnumView from '../../components/schema/EnumView';
 import ScalarView from '../../components/schema/ScalarView';
 import { schemaDrawerTheme } from './Schema.style';
+import ArgsList from '../../components/schema/ArgsList';
+import InterfaceView from '../../components/schema/InterfaceView';
 import {
   popFromPath,
   popObjFromStack,
@@ -18,7 +20,6 @@ import {
   selectSchemaIsOpen,
   setIsOpen,
 } from './schemaSlice';
-import ArgsList from '../../components/schema/ArgsList';
 
 const Schema: FC = () => {
   const { path, dataArray } = useAppSelector(selectSchemaStack);
@@ -51,6 +52,8 @@ const Schema: FC = () => {
         return <EnumView />;
       case 'SCALAR':
         return <ScalarView />;
+      case 'INTERFACE':
+        return <InterfaceView />;
       default:
         throw new Error('Unknown Type');
     }
@@ -70,7 +73,6 @@ const Schema: FC = () => {
             {type?.name ? type?.name : 'General types'}
           </Typography>
           {!path.length ? <BaseSchemaList /> : <>{getCurrentView(type)}</>}
-          {args && <ArgsList />}
         </Box>
       </Drawer>
     </ThemeProvider>
