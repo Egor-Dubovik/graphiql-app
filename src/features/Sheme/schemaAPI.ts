@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { getIntrospectionQuery } from 'graphql';
+import { introspectionQuery } from '../../common/constant/introspectionQuery';
 import { ISchema } from './types';
 
 interface ISchemaResponse {
@@ -19,7 +19,7 @@ export const schemaApi = createApi({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           operationName: 'IntrospectionQuery',
-          query: getIntrospectionQuery(),
+          query: introspectionQuery,
         }),
       }),
       transformResponse: (response: ISchemaResponse): ISchema => response.data.__schema,
