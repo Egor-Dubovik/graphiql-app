@@ -9,7 +9,7 @@ const ScalarView: FC = () => {
 
   return (
     <List style={{ maxWidth: '280px' }}>
-      <ListItemText sx={{ p: '0 16px' }}>{type.description}</ListItemText>
+      <ListItemText sx={{ p: '0 16px', wordWrap: 'break-word' }}>{type.description}</ListItemText>
     </List>
   );
 };

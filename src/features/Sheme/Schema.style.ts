@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material';
+import { createTheme, styled, Typography } from '@mui/material';
 
 export const schemaDrawerTheme = createTheme({
   components: {
@@ -12,3 +12,5 @@ export const schemaDrawerTheme = createTheme({
     },
   },
 });
+
+export const SxemaTitle = styled(Typography)({ padding: '0 16px', wordWrap: 'break-word' });

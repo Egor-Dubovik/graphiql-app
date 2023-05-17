@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
-import { List, ListItemButton, ListItemText, Typography } from '@mui/material';
+import { List, ListItemButton, ListItemText } from '@mui/material';
 import { selectSchemaData, selectSchemaStack } from '../../features/Sheme/schemaSlice';
 import { useSchemaFieldHandler } from '../../hooks/useFieldHandler';
 import { useAppSelector } from '../../app/store/hooks';
 import { getSchemaListObjectfromFields } from '../../helpers/schema/getSchemaListObjectfromFields';
 import { getSchemaListObjectfromPossibleTypes } from '../../helpers/schema/getSchemaListObjectfromPossibleTypes';
 import ArgsList from './ArgsList';
+import { SxemaTitle } from '../../features/Sheme/Schema.style';
 
 const InterfaceView: FC = () => {
   const schemaData = useAppSelector(selectSchemaData);
@@ -33,9 +34,7 @@ const InterfaceView: FC = () => {
         {args && <ArgsList />}
       </div>
       <div>
-        <Typography variant="h5" sx={{ p: '0 16px' }}>
-          Implementations
-        </Typography>
+        <SxemaTitle variant="h5">Implementations</SxemaTitle>
         <List>
           {type.possibleTypes?.map((type) => {
             const object = getSchemaListObjectfromPossibleTypes(type);

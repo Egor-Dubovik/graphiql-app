@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Box, Drawer, IconButton, ThemeProvider, Typography } from '@mui/material';
+import { Box, Drawer, IconButton, ThemeProvider } from '@mui/material';
 import BaseSchemaList from '../../components/schema/BaseSchemaList';
 import SchemaPath from '../../components/schema/SchemaPath';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
@@ -10,8 +10,7 @@ import InputObjectView from '../../components/schema/InputObjectView';
 import UnionView from '../../components/schema/UnionView';
 import EnumView from '../../components/schema/EnumView';
 import ScalarView from '../../components/schema/ScalarView';
-import { schemaDrawerTheme } from './Schema.style';
-import ArgsList from '../../components/schema/ArgsList';
+import { schemaDrawerTheme, SxemaTitle } from './Schema.style';
 import InterfaceView from '../../components/schema/InterfaceView';
 import {
   popFromPath,
@@ -25,7 +24,7 @@ const Schema: FC = () => {
   const { path, dataArray } = useAppSelector(selectSchemaStack);
   const isOpen = useAppSelector(selectSchemaIsOpen);
   const dispatch = useAppDispatch();
-  const { type, args } = dataArray[dataArray.length - 1];
+  const { type } = dataArray[dataArray.length - 1];
 
   React.useEffect(() => {
     console.log(type);
@@ -69,9 +68,7 @@ const Schema: FC = () => {
           </IconButton>
         </Box>
         <Box>
-          <Typography variant="h5" sx={{ p: '0 16px' }}>
-            {type?.name ? type?.name : 'General types'}
-          </Typography>
+          <SxemaTitle variant="h5">{type?.name ? type?.name : 'General types'}</SxemaTitle>
           {!path.length ? <BaseSchemaList /> : <>{getCurrentView(type)}</>}
         </Box>
       </Drawer>
