@@ -8,10 +8,7 @@ const ScalarView: FC = () => {
   const currentObject = dataArray[dataArray.length - 1];
 
   return (
-    <div style={{ maxWidth: '400px' }}>
-      <Typography variant="h4" sx={{ p: '0 10px' }}>
-        {currentObject.name}
-      </Typography>
+    <div style={{ maxWidth: '280px' }}>
       <Typography>{currentObject.description}</Typography>
     </div>
   );

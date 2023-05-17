@@ -12,22 +12,19 @@ const UnionView: FC = () => {
   const currentObject = dataArray[dataArray.length - 1];
 
   return (
-    <div>
-      <Typography variant="h4">{currentObject.name}</Typography>
-      <List>
-        {currentObject.possibleTypes?.map((type) => {
-          const object = getSchemaListObjectfromPossibleTypes(type);
-          return (
-            <ListItemButton
-              key={object.name}
-              onClick={() => handleChangeField(type.name, schemaData)}
-            >
-              <ListItemText primary={object.name} secondary={object.typeName} />
-            </ListItemButton>
-          );
-        })}
-      </List>
-    </div>
+    <List>
+      {currentObject.possibleTypes?.map((type) => {
+        const object = getSchemaListObjectfromPossibleTypes(type);
+        return (
+          <ListItemButton
+            key={object.name}
+            onClick={() => handleChangeField(type.name, schemaData)}
+          >
+            <ListItemText primary={object.name} secondary={object.typeName} />
+          </ListItemButton>
+        );
+      })}
+    </List>
   );
 };
 

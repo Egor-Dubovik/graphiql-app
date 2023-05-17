@@ -8,16 +8,11 @@ const EnumView: FC = () => {
   const currentObject = dataArray[dataArray.length - 1];
 
   return (
-    <>
-      <Typography variant="h4" sx={{ p: '0 10px' }}>
-        {currentObject.name}
-      </Typography>
-      <ul>
-        {currentObject.enumValues?.map((value) => (
-          <li key={value.name}>{value.name}</li>
-        ))}
-      </ul>
-    </>
+    <ul>
+      {currentObject.enumValues?.map((value) => (
+        <li key={value.name}>{value.name}</li>
+      ))}
+    </ul>
   );
 };
 

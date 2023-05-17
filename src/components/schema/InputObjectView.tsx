@@ -12,24 +12,19 @@ const InputObjectView: FC = () => {
   const currentObject = dataArray[dataArray.length - 1];
 
   return (
-    <div>
-      <Typography variant="h4" sx={{ p: '0 10px' }}>
-        {currentObject.name}
-      </Typography>
-      <List>
-        {currentObject.inputFields?.map((inputField) => {
-          const object = getSchemaListObjectfromFields(inputField);
-          return (
-            <ListItemButton
-              key={inputField.name}
-              onClick={() => handleChangeField(object.typeName, schemaData)}
-            >
-              <ListItemText primary={object.name} secondary={object.typeName} />
-            </ListItemButton>
-          );
-        })}
-      </List>
-    </div>
+    <List>
+      {currentObject.inputFields?.map((inputField) => {
+        const object = getSchemaListObjectfromFields(inputField);
+        return (
+          <ListItemButton
+            key={inputField.name}
+            onClick={() => handleChangeField(object.typeName, schemaData)}
+          >
+            <ListItemText primary={object.name} secondary={object.typeName} />
+          </ListItemButton>
+        );
+      })}
+    </List>
   );
 };
 

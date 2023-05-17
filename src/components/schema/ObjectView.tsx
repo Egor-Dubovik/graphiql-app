@@ -15,24 +15,19 @@ const ObjectView: FC = () => {
   console.log(schemaData);
 
   return (
-    <>
-      <Typography variant="h4" sx={{ p: '0 10px' }}>
-        {currentObject.name}
-      </Typography>
-      <List>
-        {currentObject.fields?.map((field) => {
-          const object = getSchemaListObjectfromFields(field);
-          return (
-            <ListItemButton
-              key={field.name}
-              onClick={() => handleChangeField(object.typeName, schemaData)}
-            >
-              <ListItemText primary={object.name} secondary={`type: ${object.typeName}`} />
-            </ListItemButton>
-          );
-        })}
-      </List>
-    </>
+    <List>
+      {currentObject.fields?.map((field) => {
+        const object = getSchemaListObjectfromFields(field);
+        return (
+          <ListItemButton
+            key={field.name}
+            onClick={() => handleChangeField(object.typeName, schemaData)}
+          >
+            <ListItemText primary={object.name} secondary={`type: ${object.typeName}`} />
+          </ListItemButton>
+        );
+      })}
+    </List>
   );
 };
 

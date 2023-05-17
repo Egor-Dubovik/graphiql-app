@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Box, Drawer, IconButton, ThemeProvider } from '@mui/material';
+import { Box, Drawer, IconButton, ThemeProvider, Typography } from '@mui/material';
 import BaseSchemaList from '../../components/schema/BaseSchemaList';
 import SchemaPath from '../../components/schema/SchemaPath';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
@@ -62,10 +62,9 @@ const Schema: FC = () => {
           </IconButton>
         </Box>
         <Box>
-          {/* ????????????? */}
-          {/* <Typography variant="h4" sx={{ p: '0 10px' }}>
-            {currentObject.name}
-          </Typography> */}
+          <Typography variant="h4" sx={{ p: '0 10px' }}>
+            {currentObject?.name ? currentObject?.name : 'General types'}
+          </Typography>
           {!path.length ? <BaseSchemaList /> : <>{getCurrentView(currentObject)}</>}
         </Box>
       </Drawer>
