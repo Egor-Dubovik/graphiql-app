@@ -10,6 +10,7 @@ const NavMain = () => {
         alignItems: 'center',
         alignSelf: 'flex-start',
         m: '10px',
+        width: '49%',
       }}
     >
       <TextField
