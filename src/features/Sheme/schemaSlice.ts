@@ -2,25 +2,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store/store';
 import { isObject } from '../../utils/isObject';
-import { IRootType, ISchema } from './types';
+import { IData, ISchema, ISchemaStackObject } from './types';
 
-interface ISchemaStackObject {
-  path: string[];
-  dataArray: IRootType[];
-}
-
-export interface ISchemaData {
+export interface ISchemaSlice {
   data: ISchema;
   stack: ISchemaStackObject;
   currentOject?: any;
   isOpen: boolean;
 }
 
-const initialState: ISchemaData = {
+const initialState: ISchemaSlice = {
   data: {} as ISchema,
   stack: {
     path: [] as string[],
-    dataArray: [] as IRootType[],
+    dataArray: [{ type: {} }] as IData[],
   },
   isOpen: false,
 };
@@ -39,7 +34,7 @@ export const schemaSlice = createSlice({
     popFromPath: (state) => {
       state.stack.path.pop();
     },
-    addObjToStack: (state, action: PayloadAction<any>) => {
+    addObjToStack: (state, action: PayloadAction<IData>) => {
       if (isObject(action.payload)) {
         state.stack.dataArray.push(action.payload);
       }
@@ -55,6 +50,7 @@ export const schemaSlice = createSlice({
 
 export const { setData, addToPath, popFromPath, addObjToStack, popObjFromStack, setIsOpen } =
   schemaSlice.actions;
+
 export const selectSchemaData = (state: RootState) => state.schema.data;
 export const selectSchemaStack = (state: RootState) => state.schema.stack;
 export const selectSchemaIsOpen = (state: RootState) => state.schema.isOpen;

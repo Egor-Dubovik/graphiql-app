@@ -1,18 +1,20 @@
 import React, { FC } from 'react';
-import { Typography } from '@mui/material';
+import { List, ListItem } from '@mui/material';
 import { useAppSelector } from '../../app/store/hooks';
 import { selectSchemaStack } from '../../features/Sheme/schemaSlice';
 
 const EnumView: FC = () => {
   const { dataArray } = useAppSelector(selectSchemaStack);
-  const currentObject = dataArray[dataArray.length - 1];
+  const { type } = dataArray[dataArray.length - 1];
 
   return (
-    <ul>
-      {currentObject.enumValues?.map((value) => (
-        <li key={value.name}>{value.name}</li>
+    <List>
+      {type.enumValues?.map((value) => (
+        <ListItem key={value.name} sx={{ p: '0 16px' }}>
+          {value.name}
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 };
 

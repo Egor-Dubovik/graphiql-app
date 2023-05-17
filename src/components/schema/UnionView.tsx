@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { List, ListItemButton, ListItemText, Typography } from '@mui/material';
+import { List, ListItemButton, ListItemText } from '@mui/material';
 import { useAppSelector } from '../../app/store/hooks';
 import { selectSchemaData, selectSchemaStack } from '../../features/Sheme/schemaSlice';
 import { getSchemaListObjectfromPossibleTypes } from '../../helpers/schema/getSchemaListObjectfromPossibleTypes';
@@ -9,11 +9,11 @@ const UnionView: FC = () => {
   const schemaData = useAppSelector(selectSchemaData);
   const { dataArray } = useAppSelector(selectSchemaStack);
   const handleChangeField = useSchemaFieldHandler();
-  const currentObject = dataArray[dataArray.length - 1];
+  const { type } = dataArray[dataArray.length - 1];
 
   return (
     <List>
-      {currentObject.possibleTypes?.map((type) => {
+      {type.possibleTypes?.map((type) => {
         const object = getSchemaListObjectfromPossibleTypes(type);
         return (
           <ListItemButton

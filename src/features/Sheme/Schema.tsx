@@ -18,13 +18,17 @@ import {
   selectSchemaIsOpen,
   setIsOpen,
 } from './schemaSlice';
+import ArgsList from '../../components/schema/ArgsList';
 
 const Schema: FC = () => {
   const { path, dataArray } = useAppSelector(selectSchemaStack);
   const isOpen = useAppSelector(selectSchemaIsOpen);
   const dispatch = useAppDispatch();
-  const currentObject = dataArray[dataArray.length - 1];
-  console.log(currentObject);
+  const { type } = dataArray[dataArray.length - 1];
+
+  React.useEffect(() => {
+    console.log(type);
+  }, [type]);
 
   const handleClose = () => {
     dispatch(setIsOpen(false));
@@ -62,10 +66,11 @@ const Schema: FC = () => {
           </IconButton>
         </Box>
         <Box>
-          <Typography variant="h4" sx={{ p: '0 10px' }}>
-            {currentObject?.name ? currentObject?.name : 'General types'}
+          <Typography variant="h4" sx={{ p: '0 16px' }}>
+            {type?.name ? type?.name : 'General types'}
           </Typography>
-          {!path.length ? <BaseSchemaList /> : <>{getCurrentView(currentObject)}</>}
+          {!path.length ? <BaseSchemaList /> : <>{getCurrentView(type)}</>}
+          {/* <ArgsList /> */}
         </Box>
       </Drawer>
     </ThemeProvider>

@@ -1,5 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+export interface IData {
+  type: IRootType;
+  args?: IArg[];
+}
+
+export interface ISchemaStackObject {
+  path: string[];
+  dataArray: IData[];
+}
+
 export interface ISchema {
   directives: any[];
   mutationType: { name: string } | null;
@@ -34,6 +44,7 @@ export interface IArg {
   name: string;
   description: string;
   type: IType;
+  defaultValue: any;
 }
 
 export interface IInputField {
