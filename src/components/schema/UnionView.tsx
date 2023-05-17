@@ -1,7 +1,8 @@
-import { List, ListItemButton, ListItemText, Typography } from '@mui/material';
 import React, { FC } from 'react';
+import { List, ListItemButton, ListItemText, Typography } from '@mui/material';
 import { useAppSelector } from '../../app/store/hooks';
 import { selectSchemaData, selectSchemaStack } from '../../features/Sheme/schemaSlice';
+import { getSchemaListObjectfromPossibleTypes } from '../../helpers/schema/getSchemaListObjectfromPossibleTypes';
 import { useSchemaFieldHandler } from '../../hooks/useFieldHandler';
 
 const UnionView: FC = () => {
@@ -14,17 +15,14 @@ const UnionView: FC = () => {
     <div>
       <Typography variant="h4">{currentObject.name}</Typography>
       <List>
-        {currentObject.possibleTypes?.map((types) => {
-          const name =
-            types.name === 'OBJECT' || types.name === 'INPUT_OBJECT'
-              ? `${types.name}(...)`
-              : types.name;
+        {currentObject.possibleTypes?.map((type) => {
+          const object = getSchemaListObjectfromPossibleTypes(type);
           return (
             <ListItemButton
-              key={types.name}
-              onClick={() => handleChangeField(types.name, schemaData)}
+              key={object.name}
+              onClick={() => handleChangeField(type.name, schemaData)}
             >
-              <ListItemText primary={name} secondary={''} />
+              <ListItemText primary={object.name} secondary={object.typeName} />
             </ListItemButton>
           );
         })}

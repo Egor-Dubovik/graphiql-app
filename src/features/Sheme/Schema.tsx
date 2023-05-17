@@ -24,6 +24,7 @@ const Schema: FC = () => {
   const isOpen = useAppSelector(selectSchemaIsOpen);
   const dispatch = useAppDispatch();
   const currentObject = dataArray[dataArray.length - 1];
+  console.log(currentObject);
 
   const handleClose = () => {
     dispatch(setIsOpen(false));

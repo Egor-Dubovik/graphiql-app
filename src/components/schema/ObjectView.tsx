@@ -4,12 +4,15 @@ import { List, ListItemButton, ListItemText } from '@mui/material';
 import { selectSchemaData, selectSchemaStack } from '../../features/Sheme/schemaSlice';
 import { useSchemaFieldHandler } from '../../hooks/useFieldHandler';
 import { useAppSelector } from '../../app/store/hooks';
+import { getSchemaListObjectfromFields } from '../../helpers/schema/getSchemaListObjectfromFields';
 
 const ObjectView: FC = () => {
   const schemaData = useAppSelector(selectSchemaData);
   const { dataArray } = useAppSelector(selectSchemaStack);
   const handleChangeField = useSchemaFieldHandler();
   const currentObject = dataArray[dataArray.length - 1];
+
+  console.log(schemaData);
 
   return (
     <>
@@ -18,13 +21,13 @@ const ObjectView: FC = () => {
       </Typography>
       <List>
         {currentObject.fields?.map((field) => {
-          const name = field.type.kind === 'OBJECT' ? `${field.name}(...)` : field.name;
+          const object = getSchemaListObjectfromFields(field);
           return (
             <ListItemButton
               key={field.name}
-              onClick={() => handleChangeField(field.type.name, schemaData)}
+              onClick={() => handleChangeField(object.typeName, schemaData)}
             >
-              <ListItemText primary={name} secondary={`type: ${field.type.name}`} />
+              <ListItemText primary={object.name} secondary={`type: ${object.typeName}`} />
             </ListItemButton>
           );
         })}

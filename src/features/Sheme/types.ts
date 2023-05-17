@@ -18,10 +18,17 @@ interface IEnumValue {
 export interface IPossibleType {
   name: string;
   kind: string;
-  ofType: any;
+  ofType: IOfType;
 }
 
-export type KindType = 'OBJECT' | 'SCALAR' | 'INPUT_OBJECT' | 'ENUM' | 'UNION';
+export type KindType =
+  | 'OBJECT'
+  | 'SCALAR'
+  | 'INPUT_OBJECT'
+  | 'ENUM'
+  | 'UNION'
+  | 'LIST'
+  | 'NON_NULL';
 
 export interface IArg {
   name: string;
@@ -32,7 +39,7 @@ export interface IArg {
 export interface IInputField {
   name: string;
   description: string | null;
-  type: IType;
+  type?: IType;
 }
 
 export interface IField extends IInputField {
@@ -50,13 +57,14 @@ export interface IRootType {
   kind: KindType;
 }
 
+export interface IOfType {
+  kind: string;
+  name: string;
+  ofType: any;
+}
 export interface IType {
   name: string;
   description: string | null;
   kind: KindType;
-  ofType: {
-    kind: string;
-    name: string;
-    ofType: any;
-  };
+  ofType: IOfType;
 }

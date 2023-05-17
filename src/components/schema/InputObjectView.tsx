@@ -3,6 +3,7 @@ import { List, ListItemButton, ListItemText, Typography } from '@mui/material';
 import { useAppSelector } from '../../app/store/hooks';
 import { selectSchemaData, selectSchemaStack } from '../../features/Sheme/schemaSlice';
 import { useSchemaFieldHandler } from '../../hooks/useFieldHandler';
+import { getSchemaListObjectfromFields } from '../../helpers/schema/getSchemaListObjectfromFields';
 
 const InputObjectView: FC = () => {
   const schemaData = useAppSelector(selectSchemaData);
@@ -17,15 +18,13 @@ const InputObjectView: FC = () => {
       </Typography>
       <List>
         {currentObject.inputFields?.map((inputField) => {
+          const object = getSchemaListObjectfromFields(inputField);
           return (
             <ListItemButton
               key={inputField.name}
-              onClick={() => handleChangeField(inputField.type.name, schemaData)}
+              onClick={() => handleChangeField(object.typeName, schemaData)}
             >
-              <ListItemText
-                primary={`${inputField.name}(...)`}
-                secondary={`type: ${inputField.type.name}`}
-              />
+              <ListItemText primary={object.name} secondary={object.typeName} />
             </ListItemButton>
           );
         })}
