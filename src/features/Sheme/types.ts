@@ -38,7 +38,8 @@ export type KindType =
   | 'ENUM'
   | 'UNION'
   | 'LIST'
-  | 'NON_NULL';
+  | 'NON_NULL'
+  | 'INTERFACE';
 
 export interface IArg {
   name: string;

@@ -9,7 +9,7 @@ const ObjectView: FC = () => {
   const schemaData = useAppSelector(selectSchemaData);
   const { dataArray } = useAppSelector(selectSchemaStack);
   const handleChangeField = useSchemaFieldHandler();
-  const { type, args } = dataArray[dataArray.length - 1];
+  const { type } = dataArray[dataArray.length - 1];
 
   console.log(schemaData);
 
@@ -17,10 +17,11 @@ const ObjectView: FC = () => {
     <List>
       {type.fields?.map((field) => {
         const object = getSchemaListObjectfromFields(field);
+        const { args } = field;
         return (
           <ListItemButton
             key={field.name}
-            onClick={() => handleChangeField(object.typeName, schemaData)}
+            onClick={() => handleChangeField(object.typeName, schemaData, args)}
           >
             <ListItemText primary={object.name} secondary={`type: ${object.typeName}`} />
           </ListItemButton>

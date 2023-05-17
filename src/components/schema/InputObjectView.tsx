@@ -9,7 +9,7 @@ const InputObjectView: FC = () => {
   const schemaData = useAppSelector(selectSchemaData);
   const { dataArray } = useAppSelector(selectSchemaStack);
   const handleChangeField = useSchemaFieldHandler();
-  const { type, args } = dataArray[dataArray.length - 1];
+  const { type } = dataArray[dataArray.length - 1];
 
   return (
     <List>

@@ -24,7 +24,7 @@ const Schema: FC = () => {
   const { path, dataArray } = useAppSelector(selectSchemaStack);
   const isOpen = useAppSelector(selectSchemaIsOpen);
   const dispatch = useAppDispatch();
-  const { type } = dataArray[dataArray.length - 1];
+  const { type, args } = dataArray[dataArray.length - 1];
 
   React.useEffect(() => {
     console.log(type);
@@ -66,11 +66,11 @@ const Schema: FC = () => {
           </IconButton>
         </Box>
         <Box>
-          <Typography variant="h4" sx={{ p: '0 16px' }}>
+          <Typography variant="h5" sx={{ p: '0 16px' }}>
             {type?.name ? type?.name : 'General types'}
           </Typography>
           {!path.length ? <BaseSchemaList /> : <>{getCurrentView(type)}</>}
-          {/* <ArgsList /> */}
+          {args && <ArgsList />}
         </Box>
       </Drawer>
     </ThemeProvider>
