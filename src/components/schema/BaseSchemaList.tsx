@@ -10,12 +10,28 @@ const BaseSchemaList: FC = () => {
 
   return (
     <List>
-      <ListItemButton onClick={() => handleChangeField(schemaData.queryType?.name, schemaData)}>
-        <ListItemText primary={`${schemaData.queryType?.name}(...)`} secondary={'object'} />
-      </ListItemButton>
-      <ListItemButton onClick={() => handleChangeField(schemaData.mutationType?.name, schemaData)}>
-        <ListItemText primary={`${schemaData.mutationType?.name}(...)`} secondary={'object'} />
-      </ListItemButton>
+      {schemaData.queryType?.name && (
+        <ListItemButton onClick={() => handleChangeField(schemaData.queryType?.name, schemaData)}>
+          <ListItemText primary={`${schemaData.queryType?.name}(...)`} secondary={'object'} />
+        </ListItemButton>
+      )}
+      {schemaData.mutationType?.name && (
+        <ListItemButton
+          onClick={() => handleChangeField(schemaData.mutationType?.name, schemaData)}
+        >
+          <ListItemText primary={`${schemaData.mutationType?.name}(...)`} secondary={'object'} />
+        </ListItemButton>
+      )}
+      {schemaData.subscriptionType?.name && (
+        <ListItemButton
+          onClick={() => handleChangeField(schemaData.subscriptionType?.name, schemaData)}
+        >
+          <ListItemText
+            primary={`${schemaData.subscriptionType?.name}(...)`}
+            secondary={'object'}
+          />
+        </ListItemButton>
+      )}
     </List>
   );
 };

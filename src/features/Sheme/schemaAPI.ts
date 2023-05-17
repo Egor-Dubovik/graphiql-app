@@ -17,7 +17,10 @@ export const schemaApi = createApi({
         url,
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: getIntrospectionQuery() }),
+        body: JSON.stringify({
+          operationName: 'IntrospectionQuery',
+          query: getIntrospectionQuery(),
+        }),
       }),
       transformResponse: (response: ISchemaResponse): ISchema => response.data.__schema,
     }),
