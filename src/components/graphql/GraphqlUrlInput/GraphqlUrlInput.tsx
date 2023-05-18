@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useAppDispatch } from '../../../app/store/hooks';
 import { BASE_GRAPHQL_URL } from '../../../common/constant/api';
-import { useGetSchemaMutation } from '../../../features/Shema/schemaAPI';
-import { setData, setIsError } from '../../../features/Shema/schemaSlice';
+import { useGetSchemaMutation } from '../../../features/Schema/schemaAPI';
+import { setData, setIsError } from '../../../features/Schema/schemaSlice';
 import InputField from '../../InputField/InputField';
 import { isObject } from '../../../utils/isObject';
 

@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { schemaApi } from '../../features/Shema/schemaAPI';
+import { schemaApi } from '../../features/Schema/schemaAPI';
 import rootReducer from './rootReducer';
 
 const initialState = {} as RootState;

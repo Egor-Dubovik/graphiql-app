@@ -8,7 +8,7 @@ import InputObjectView from '../../components/schema/InputObjectView';
 import UnionView from '../../components/schema/UnionView';
 import EnumView from '../../components/schema/EnumView';
 import ScalarView from '../../components/schema/ScalarView';
-import { schemaDrawerTheme, SxemaTitle } from './Schema.style';
+import { schemaDrawerTheme, SchemaTitle } from './Schema.style';
 import InterfaceView from '../../components/schema/InterfaceView';
 import { selectSchemaStack, selectSchemaIsOpen, setIsOpen } from './schemaSlice';
 import SchemaHeader from '../../components/schema/SchemaHeader/SchemaHeader';
@@ -47,7 +47,7 @@ const Schema: FC = () => {
     <ThemeProvider theme={schemaDrawerTheme}>
       <Drawer anchor="right" open={isOpen} onClose={handleClose}>
         <SchemaHeader />
-        <SxemaTitle variant="h5">{type?.name ? type?.name : 'General types'}</SxemaTitle>
+        <SchemaTitle variant="h5">{type?.name ? type?.name : 'General types'}</SchemaTitle>
         {!path.length ? <BaseSchemaList /> : <>{getCurrentView(type)}</>}
       </Drawer>
     </ThemeProvider>

@@ -1,4 +1,4 @@
-import { IField } from '../../features/Shema/types';
+import { IField } from '../../features/Schema/types';
 
 export interface ISchemaListObject {
   name: string;

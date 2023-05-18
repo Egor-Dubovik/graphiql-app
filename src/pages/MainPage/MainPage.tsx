@@ -1,5 +1,5 @@
 import React from 'react';
-import Schema from '../../features/Shema/Schema';
+import Schema from '../../features/Schema/Schema';
 import GraphqlTools from '../../components/graphql/GraphqlTools/GraphqlTools';
 
 const MainPage = () => {

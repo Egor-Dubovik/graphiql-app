@@ -8,7 +8,7 @@ import {
   selectSchemaData,
   selectSchemaError,
   setIsOpen,
-} from '../../../features/Shema/schemaSlice';
+} from '../../../features/Schema/schemaSlice';
 
 const GraphqlTools: FC = () => {
   const [isSchemaReceived, setSchemaReceived] = useState(false);

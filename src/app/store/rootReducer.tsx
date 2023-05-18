@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { schemaApi } from '../../features/Shema/schemaAPI';
-import schemaSlice from '../../features/Shema/schemaSlice';
+import { schemaApi } from '../../features/Schema/schemaAPI';
+import schemaSlice from '../../features/Schema/schemaSlice';
 
 const rootReducer = combineReducers({
   schema: schemaSlice,

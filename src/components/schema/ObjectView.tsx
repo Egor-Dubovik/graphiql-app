@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { List, ListItemButton, ListItemText } from '@mui/material';
-import { selectSchemaData, selectSchemaStack } from '../../features/Shema/schemaSlice';
+import { selectSchemaData, selectSchemaStack } from '../../features/Schema/schemaSlice';
 import { useSchemaFieldHandler } from '../../hooks/useFieldHandler';
 import { useAppSelector } from '../../app/store/hooks';
 import { getSchemaListObjectfromFields } from '../../helpers/schema/getSchemaListObjectfromFields';
-import { IArg } from '../../features/Shema/types';
+import { IArg } from '../../features/Schema/types';
 import ArgsList from './ArgsList';
 
 const ObjectView: FC = () => {

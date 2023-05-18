@@ -14,4 +14,4 @@ export const schemaDrawerTheme = createTheme({
   },
 });
 
-export const SxemaTitle = styled(Typography)({ padding: '0 16px', wordWrap: 'break-word' });
+export const SchemaTitle = styled(Typography)({ padding: '0 16px', wordWrap: 'break-word' });
