@@ -1,13 +1,16 @@
 import React from 'react';
-import { Container } from '@mui/material';
+import { Main, MainSection } from './MainPage.styles';
+import NavMain from '../../components/NavMain/NavMain';
+import Editors from '../../modules/forms/Editors/Editors';
 
 const MainPage = () => {
   return (
-    <main className="main">
-      <Container maxWidth="xl">
-        <section>MainPage</section>
-      </Container>
-    </main>
+    <Main>
+      <MainSection>
+        <NavMain />
+        <Editors />
+      </MainSection>
+    </Main>
   );
 };
 
