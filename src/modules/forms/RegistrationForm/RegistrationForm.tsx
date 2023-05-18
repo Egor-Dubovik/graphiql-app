@@ -32,7 +32,7 @@ const RegistrationForm = () => {
   useEffect(() => {
     if (user) navigate(ROUTES.MAIN);
     console.log(user);
-  }, [user]);
+  }, [user, navigate]);
 
   return (
     <Box onSubmit={handleRegistration} component="form">
@@ -45,7 +45,7 @@ const RegistrationForm = () => {
         error={!!errors.fullName}
         value={fullName}
         onChange={(event) => setFullName(event.target.value)}
-        sx={{ display: 'block' }}
+        sx={{ mb: 2 }}
         fullWidth
         required
         label="Full name"
@@ -56,6 +56,7 @@ const RegistrationForm = () => {
         error={!!errors.email}
         value={email}
         onChange={(event) => setEmail(event.target.value)}
+        sx={{ mb: 2 }}
         label="Email address"
         autoComplete="email"
         required
@@ -65,7 +66,7 @@ const RegistrationForm = () => {
         error={!!errors.password}
         value={password}
         onChange={(event) => setPassword(event.target.value)}
-        sx={{ display: 'block' }}
+        sx={{ mb: 2 }}
         fullWidth
         label="Password"
         type="password"
