@@ -34,6 +34,9 @@ export const schemaSlice = createSlice({
     popFromPath: (state) => {
       state.stack.path.pop();
     },
+    setPath: (state, action: PayloadAction<string[]>) => {
+      state.stack.path = action.payload;
+    },
     addObjToStack: (state, action: PayloadAction<IData>) => {
       if (isObject(action.payload)) {
         state.stack.dataArray.push(action.payload);
@@ -42,14 +45,25 @@ export const schemaSlice = createSlice({
     popObjFromStack: (state) => {
       state.stack.dataArray.pop();
     },
+    setStackDataArray: (state, action: PayloadAction<IData[]>) => {
+      state.stack.dataArray = action.payload;
+    },
     setIsOpen: (state, action: PayloadAction<boolean>) => {
       state.isOpen = action.payload;
     },
   },
 });
 
-export const { setData, addToPath, popFromPath, addObjToStack, popObjFromStack, setIsOpen } =
-  schemaSlice.actions;
+export const {
+  setData,
+  addToPath,
+  popFromPath,
+  setPath,
+  addObjToStack,
+  popObjFromStack,
+  setStackDataArray,
+  setIsOpen,
+} = schemaSlice.actions;
 
 export const selectSchemaData = (state: RootState) => state.schema.data;
 export const selectSchemaStack = (state: RootState) => state.schema.stack;

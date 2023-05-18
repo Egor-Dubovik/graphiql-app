@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Drawer, ThemeProvider } from '@mui/material';
 import BaseSchemaList from '../../components/schema/BaseSchemaList';
-import SchemaPath from '../../components/schema/SchemaPath';
+import SchemaPath from '../../components/schema/SchemaPath/SchemaPath';
 import { useAppDispatch, useAppSelector } from '../../app/store/hooks';
 import { IRootType } from './types';
 import ObjectView from '../../components/schema/ObjectView';
