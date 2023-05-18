@@ -13,8 +13,6 @@ const ObjectView: FC = () => {
   const handleChangeField = useSchemaFieldHandler();
   const { type, args } = dataArray[dataArray.length - 1];
 
-  console.log(schemaData);
-
   return (
     <div>
       <List>

@@ -8,10 +8,10 @@ const EnumView: FC = () => {
   const { type } = dataArray[dataArray.length - 1];
 
   return (
-    <List>
-      <ListItem sx={{ p: '0 16px 5px 16px' }}>{`ENUM: {`}</ListItem>
+    <List sx={{ fontFamily: 'sans-serif' }}>
+      <ListItem sx={{ p: '0 16px 10px 16px' }}>{`ENUM: {`}</ListItem>
       {type.enumValues?.map((value) => (
-        <ListItem key={value.name} sx={{ p: '0 0 5px 24px' }}>
+        <ListItem key={value.name} sx={{ p: '0 0 10px 24px' }}>
           {value.name}
         </ListItem>
       ))}
