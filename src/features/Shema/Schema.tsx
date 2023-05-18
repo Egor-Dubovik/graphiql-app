@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Drawer, ThemeProvider } from '@mui/material';
+import { Drawer } from '@mui/material';
 import BaseSchemaList from '../../components/schema/BaseSchemaList';
 import { useAppDispatch, useAppSelector } from '../../app/store/hooks';
 import { IRootType } from './types';
@@ -12,6 +12,7 @@ import { schemaDrawerTheme, SxemaTitle } from './Schema.style';
 import InterfaceView from '../../components/schema/InterfaceView';
 import { selectSchemaStack, selectSchemaIsOpen, setIsOpen } from './schemaSlice';
 import SchemaHeader from '../../components/schema/SchemaHeader/SchemaHeader';
+import { ThemeProvider } from '@mui/material/styles';
 
 const Schema: FC = () => {
   const { path, dataArray } = useAppSelector(selectSchemaStack);

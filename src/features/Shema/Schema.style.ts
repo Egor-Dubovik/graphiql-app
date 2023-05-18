@@ -1,4 +1,5 @@
-import { createTheme, styled, Typography } from '@mui/material';
+import { createTheme, styled } from '@mui/material/styles';
+import { Typography } from '@mui/material';
 
 export const schemaDrawerTheme = createTheme({
   components: {
