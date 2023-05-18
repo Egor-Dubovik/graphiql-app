@@ -4,17 +4,11 @@ import QueryResponse from '../../../components/QueryResponse/QueryResponse';
 import EditorToolBar from '../../../components/EditorToolbar/EditorToolbar';
 import QueryEditor from '../../../components/QueryEditor/QueryEditor';
 import EditorTools from '../EditTools/EditTools';
+import { CustomBox } from './Editors.styles';
 
 const Editors = () => {
   return (
-    <Grid
-      borderRadius="5px"
-      boxShadow={3}
-      bgcolor="#87b9d8"
-      width={1}
-      height={1}
-      sx={{ display: 'flex', flexDirection: 'row', gap: '10px', padding: '20px' }}
-    >
+    <CustomBox>
       <Box
         width="55%"
         borderRadius="10px"
@@ -28,7 +22,7 @@ const Editors = () => {
         <EditorTools />
       </Box>
       <QueryResponse />
-    </Grid>
+    </CustomBox>
   );
 };
 

@@ -1,28 +1,22 @@
 import React from 'react';
-import { Box, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 import 'codemirror/lib/codemirror.css';
+import { InputBox } from './NavMain.styles';
 
 const NavMain = () => {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        alignSelf: 'flex-start',
-        m: '10px',
-        width: '49%',
-      }}
-    >
+    <InputBox>
       <TextField
-        fullWidth
-        label="https://graphql-pokemon2.vercel.app"
-        disabled
-        variant="filled"
-        margin="none"
-        color="secondary"
+        label=""
+        id="outlined-siz"
+        defaultValue="https://graphql-pokemon2.vercel.app"
         size="small"
+        fullWidth
+        disabled
+        margin="none"
+        color="info"
       />
-    </Box>
+    </InputBox>
   );
 };
 
