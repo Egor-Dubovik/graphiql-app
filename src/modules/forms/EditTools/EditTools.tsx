@@ -14,7 +14,7 @@ import QueryVariables from '../../../components/QueryVariables/QueryVariables';
 import QueryHeaders from '../../../components/QueryHeaders/QueryHeaders';
 
 const EditorTools = () => {
-  const [value, setValue] = React.useState('1');
+  const [value, setValue] = React.useState('Variables');
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -31,14 +31,14 @@ const EditorTools = () => {
             <TabContext value={value}>
               <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <TabList onChange={handleChange} aria-label="Tabs">
-                  <Tab label="Variables" value="1" />
-                  <Tab label="Headers" value="2" />
+                  <Tab label="Variables" value="Variables" />
+                  <Tab label="Headers" value="Headers" />
                 </TabList>
               </Box>
-              <TabPanel sx={{ p: '0' }} value="1">
+              <TabPanel sx={{ p: '0' }} value="Variables">
                 <QueryVariables />
               </TabPanel>
-              <TabPanel sx={{ p: '0' }} value="2">
+              <TabPanel sx={{ p: '0' }} value="Headers">
                 <QueryHeaders />
               </TabPanel>
             </TabContext>
