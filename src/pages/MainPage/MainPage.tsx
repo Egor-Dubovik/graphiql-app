@@ -1,13 +1,18 @@
 import React from 'react';
-import Schema from '../../features/Schema/Schema';
+import { Main, MainSection } from './MainPage.styles';
 import GraphqlTools from '../../components/graphql/GraphqlTools/GraphqlTools';
+import Editors from '../../modules/forms/Editors/Editors';
+import Schema from '../../features/Schema/Schema';
 
 const MainPage = () => {
   return (
-    <main className="main">
-      <GraphqlTools />
+    <Main>
       <Schema />
-    </main>
+      <MainSection>
+        <GraphqlTools />
+        <Editors />
+      </MainSection>
+    </Main>
   );
 };
 

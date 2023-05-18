@@ -13,8 +13,10 @@
     "strict": true,
     "skipLibCheck": true,
     "baseUrl": "./src",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["material-ui"]
   },
   "include": ["./src/**/*", "styled.d.ts", "vite.config.ts"],
+  
   "references": [{ "path": "./tsconfig.node.json" }]
 }
