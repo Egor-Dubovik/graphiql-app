@@ -1,7 +1,7 @@
 import React, { FC, MouseEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
 import Typography from '@mui/material/Typography';
-import { selectSchemaStack, setPath, setStackDataArray } from '../../../features/Sheme/schemaSlice';
+import { selectSchemaStack, setPath, setStackDataArray } from '../../../features/Shema/schemaSlice';
 import { Breadcrumbs } from '@mui/material';
 import { sxBreadcrumbItem, sxBreadcrumbs } from './SchemaPath.style';
 

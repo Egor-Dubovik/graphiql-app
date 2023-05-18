@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { introspectionQuery } from '../../common/constant/introspectionQuery';
+import { IError, ITypeError } from '../../common/interfaces/rtkQueyError';
 import { ISchema } from './types';
 
 interface ISchemaResponse {
@@ -23,6 +24,20 @@ export const schemaApi = createApi({
         }),
       }),
       transformResponse: (response: ISchemaResponse): ISchema => response.data.__schema,
+      transformErrorResponse: (error) => {
+        const err = error as IError | ITypeError;
+
+        if ('data' in err && err.data) {
+          return typeof err.data === 'string' ? err.data : err.data.message;
+        }
+        if ('status' in err && err.status) {
+          return err.status.toString();
+        }
+        if ('message' in err && err.message) {
+          return err.message;
+        }
+        return 'Unknown error occurred';
+      },
     }),
   }),
 });

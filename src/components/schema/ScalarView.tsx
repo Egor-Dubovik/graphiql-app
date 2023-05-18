@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { List, ListItemText } from '@mui/material';
 import { useAppSelector } from '../../app/store/hooks';
-import { selectSchemaStack } from '../../features/Sheme/schemaSlice';
+import { selectSchemaStack } from '../../features/Shema/schemaSlice';
 
 const ScalarView: FC = () => {
   const { dataArray } = useAppSelector(selectSchemaStack);

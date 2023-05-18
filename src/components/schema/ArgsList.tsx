@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import { List, ListItemButton, ListItemText } from '@mui/material';
 import { useAppSelector } from '../../app/store/hooks';
 import { useSchemaFieldHandler } from '../../hooks/useFieldHandler';
-import { selectSchemaData, selectSchemaStack } from '../../features/Sheme/schemaSlice';
+import { selectSchemaData, selectSchemaStack } from '../../features/Shema/schemaSlice';
 import { getSchemaListObjectfromFields } from '../../helpers/schema/getSchemaListObjectfromFields';
-import { SxemaTitle } from '../../features/Sheme/Schema.style';
+import { SxemaTitle } from '../../features/Shema/Schema.style';
 
 const ArgsList: FC = () => {
   const schemaData = useAppSelector(selectSchemaData);

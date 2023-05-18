@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { List, ListItemButton, ListItemText } from '@mui/material';
 import { useAppSelector } from '../../app/store/hooks';
-import { selectSchemaData } from '../../features/Sheme/schemaSlice';
+import { selectSchemaData } from '../../features/Shema/schemaSlice';
 import { useSchemaFieldHandler } from '../../hooks/useFieldHandler';
 
 const BaseSchemaList: FC = () => {

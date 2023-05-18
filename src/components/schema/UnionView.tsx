@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { List, ListItemButton, ListItemText } from '@mui/material';
 import { useAppSelector } from '../../app/store/hooks';
-import { selectSchemaData, selectSchemaStack } from '../../features/Sheme/schemaSlice';
+import { selectSchemaData, selectSchemaStack } from '../../features/Shema/schemaSlice';
 import { getSchemaListObjectfromPossibleTypes } from '../../helpers/schema/getSchemaListObjectfromPossibleTypes';
 import { useSchemaFieldHandler } from '../../hooks/useFieldHandler';
 

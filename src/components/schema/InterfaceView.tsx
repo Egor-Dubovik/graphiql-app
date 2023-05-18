@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { List, ListItemButton, ListItemText } from '@mui/material';
-import { selectSchemaData, selectSchemaStack } from '../../features/Sheme/schemaSlice';
+import { selectSchemaData, selectSchemaStack } from '../../features/Shema/schemaSlice';
 import { useSchemaFieldHandler } from '../../hooks/useFieldHandler';
 import { useAppSelector } from '../../app/store/hooks';
 import { getSchemaListObjectfromFields } from '../../helpers/schema/getSchemaListObjectfromFields';
 import { getSchemaListObjectfromPossibleTypes } from '../../helpers/schema/getSchemaListObjectfromPossibleTypes';
 import ArgsList from './ArgsList';
-import { SxemaTitle } from '../../features/Sheme/Schema.style';
+import { SxemaTitle } from '../../features/Shema/Schema.style';
 
 const InterfaceView: FC = () => {
   const schemaData = useAppSelector(selectSchemaData);

@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { addObjToStack, addToPath } from '../features/Sheme/schemaSlice';
-import { IArg, ISchema } from '../features/Sheme/types';
+import { addObjToStack, addToPath } from '../features/Shema/schemaSlice';
+import { IArg, ISchema } from '../features/Shema/types';
 
 type SchemaFieldHandlerType = (
   fieldName: string | undefined,

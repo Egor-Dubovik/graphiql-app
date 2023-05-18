@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Box, Button, Container } from '@mui/material';
 import GraphqlUrlInput from '../GraphqlUrlInput/GraphqlUrlInput';
-import { selectSchemaData, setIsOpen } from '../../../features/Sheme/schemaSlice';
+import { selectSchemaData, setIsOpen } from '../../../features/Shema/schemaSlice';
 import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
 import { sxButton, sxContainer, sxSection } from './GraphqlTools.style';
 import { isEmptyObject } from '../../../utils/isEmptyObject';

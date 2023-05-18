@@ -1,4 +1,4 @@
-import { IPossibleType } from '../../features/Sheme/types';
+import { IPossibleType } from '../../features/Shema/types';
 import { ISchemaListObject, SCHEMA_TYPE_ERROR } from './getSchemaListObjectfromFields';
 
 export const getSchemaListObjectfromPossibleTypes = (type: IPossibleType): ISchemaListObject => {

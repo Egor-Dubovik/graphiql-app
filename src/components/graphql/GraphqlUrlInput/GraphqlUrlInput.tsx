@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useState } from 'react';
-import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
 import { useAppDispatch } from '../../../app/store/hooks';
 import { BASE_GRAPHQL_URL } from '../../../common/constant/api';
-import { useGetSchemaMutation } from '../../../features/Sheme/schemaAPI';
-import { setData } from '../../../features/Sheme/schemaSlice';
+import { useGetSchemaMutation } from '../../../features/Shema/schemaAPI';
+import { setData } from '../../../features/Shema/schemaSlice';
 import InputField from '../../InputField/InputField';
+import { isObject } from '../../../utils/isObject';
 
 const GraphqlUrlInput: FC = () => {
   const [url, setUrl] = useState(BASE_GRAPHQL_URL);
@@ -41,7 +41,7 @@ const GraphqlUrlInput: FC = () => {
       required
       label="schema url"
       autoFocus
-      helperText={(error as FetchBaseQueryError)?.status as string}
+      helperText={isObject(error) ? '' : (error as string)}
     />
   );
 };

@@ -8,7 +8,7 @@ import {
   popObjFromStack,
   selectSchemaStack,
   setIsOpen,
-} from '../../../features/Sheme/schemaSlice';
+} from '../../../features/Shema/schemaSlice';
 import { sxTools, sxTypography } from './SchemaTools.style';
 
 const SchemaTools: FC = () => {
