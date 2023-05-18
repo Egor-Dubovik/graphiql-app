@@ -9,6 +9,7 @@ export interface ISchemaSlice {
   stack: ISchemaStackObject;
   currentOject?: any;
   isOpen: boolean;
+  isError: boolean;
 }
 
 const initialState: ISchemaSlice = {
@@ -18,12 +19,16 @@ const initialState: ISchemaSlice = {
     dataArray: [{ type: {} }] as IData[],
   },
   isOpen: false,
+  isError: false,
 };
 
 export const schemaSlice = createSlice({
   name: 'schema',
   initialState,
   reducers: {
+    setIsError: (state, action: PayloadAction<boolean>) => {
+      state.isError = action.payload;
+    },
     setData: (state, action: PayloadAction<any>) => {
       state.data = action.payload;
     },
@@ -55,6 +60,7 @@ export const schemaSlice = createSlice({
 });
 
 export const {
+  setIsError,
   setData,
   addToPath,
   popFromPath,
@@ -65,6 +71,7 @@ export const {
   setIsOpen,
 } = schemaSlice.actions;
 
+export const selectSchemaError = (state: RootState) => state.schema.isError;
 export const selectSchemaData = (state: RootState) => state.schema.data;
 export const selectSchemaStack = (state: RootState) => state.schema.stack;
 export const selectSchemaIsOpen = (state: RootState) => state.schema.isOpen;

@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { useAppDispatch } from '../../../app/store/hooks';
 import { BASE_GRAPHQL_URL } from '../../../common/constant/api';
 import { useGetSchemaMutation } from '../../../features/Shema/schemaAPI';
-import { setData } from '../../../features/Shema/schemaSlice';
+import { setData, setIsError } from '../../../features/Shema/schemaSlice';
 import InputField from '../../InputField/InputField';
 import { isObject } from '../../../utils/isObject';
 
@@ -30,6 +30,10 @@ const GraphqlUrlInput: FC = () => {
       dispatch(setData(data));
     }
   }, [data, dispatch]);
+
+  useEffect(() => {
+    dispatch(setIsError(isError));
+  }, [isError, dispatch]);
 
   return (
     <InputField

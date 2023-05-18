@@ -1,14 +1,19 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Box, Button, Container } from '@mui/material';
 import GraphqlUrlInput from '../GraphqlUrlInput/GraphqlUrlInput';
-import { selectSchemaData, setIsOpen } from '../../../features/Shema/schemaSlice';
 import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
 import { sxButton, sxContainer, sxSection } from './GraphqlTools.style';
 import { isEmptyObject } from '../../../utils/isEmptyObject';
+import {
+  selectSchemaData,
+  selectSchemaError,
+  setIsOpen,
+} from '../../../features/Shema/schemaSlice';
 
 const GraphqlTools: FC = () => {
   const [isSchemaReceived, setSchemaReceived] = useState(false);
   const schemaData = useAppSelector(selectSchemaData);
+  const isSchemaError = useAppSelector(selectSchemaError);
   const dispatch = useAppDispatch();
 
   const handleSchemaOpen = async () => {
@@ -16,10 +21,14 @@ const GraphqlTools: FC = () => {
   };
 
   useEffect(() => {
+    if (isSchemaError) {
+      setSchemaReceived(false);
+      return;
+    }
     if (!isEmptyObject(schemaData)) {
       setSchemaReceived(true);
     }
-  }, [schemaData]);
+  }, [schemaData, isSchemaError]);
 
   return (
     <Box component="section" sx={sxSection}>
