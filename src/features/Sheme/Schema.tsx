@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { Drawer, ThemeProvider } from '@mui/material';
 import BaseSchemaList from '../../components/schema/BaseSchemaList';
-import SchemaPath from '../../components/schema/SchemaPath/SchemaPath';
 import { useAppDispatch, useAppSelector } from '../../app/store/hooks';
 import { IRootType } from './types';
 import ObjectView from '../../components/schema/ObjectView';
@@ -12,7 +11,7 @@ import ScalarView from '../../components/schema/ScalarView';
 import { schemaDrawerTheme, SxemaTitle } from './Schema.style';
 import InterfaceView from '../../components/schema/InterfaceView';
 import { selectSchemaStack, selectSchemaIsOpen, setIsOpen } from './schemaSlice';
-import SchemaTools from '../../components/schema/SchemaTools/SchemaTools';
+import SchemaHeader from '../../components/schema/SchemaHeader/SchemaHeader';
 
 const Schema: FC = () => {
   const { path, dataArray } = useAppSelector(selectSchemaStack);
@@ -46,8 +45,7 @@ const Schema: FC = () => {
   return (
     <ThemeProvider theme={schemaDrawerTheme}>
       <Drawer anchor="right" open={isOpen} onClose={handleClose}>
-        <SchemaTools />
-        <SchemaPath />
+        <SchemaHeader />
         <SxemaTitle variant="h5">{type?.name ? type?.name : 'General types'}</SxemaTitle>
         {!path.length ? <BaseSchemaList /> : <>{getCurrentView(type)}</>}
       </Drawer>
