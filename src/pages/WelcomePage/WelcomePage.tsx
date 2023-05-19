@@ -11,7 +11,7 @@ const WelcomePage = () => {
       <Container
         maxWidth="xl"
         sx={{
-          height: 100,
+          height: 200,
           textAlign: 'center',
         }}
       >
