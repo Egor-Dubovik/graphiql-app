@@ -3,18 +3,20 @@ import { Container } from '@mui/material';
 import Logo from '../../components/Logo';
 import NavBar from '../../components/NavBar/NavBar';
 import { useTransform, useScroll, useAnimation } from 'framer-motion';
-import { FinalHeader, FinalToolbar } from './Header.styles';
+import { FinalHeader, FinalToolbar, FinalTypography } from './Header.styles';
 
 const Header = (): JSX.Element => {
   const { scrollY } = useScroll();
-  const scrollYRange = [0, 200, 400];
-  const nextYRange = ['0px', '-20px', '-64px'];
+  const scrollYRange = [0, 200];
 
   const controls = useAnimation();
 
-  const cont = useTransform(scrollY, scrollYRange, nextYRange);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const toolHeight: any = useTransform(scrollY, scrollYRange, ['64px', '32px', '32px']);
+  const toolHeight: any = useTransform(scrollY, scrollYRange, ['64px', '32px']);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const toolBackColor: any = useTransform(scrollY, scrollYRange, ['#2196f3', '#e535ab']);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const toolOpacity: any = useTransform(scrollY, scrollYRange, [0, 1]);
 
   return (
     <FinalHeader
@@ -22,7 +24,7 @@ const Header = (): JSX.Element => {
       initial="visible"
       animate={controls}
       transition={{ duration: 1 }}
-      style={{ y: cont }}
+      style={{ backgroundColor: toolBackColor }}
     >
       <Container maxWidth="xl">
         <FinalToolbar
@@ -32,6 +34,7 @@ const Header = (): JSX.Element => {
           animate={controls}
         >
           <Logo />
+          <FinalTypography style={{ opacity: toolOpacity }}>Welcome</FinalTypography>
           <NavBar />
         </FinalToolbar>
       </Container>
