@@ -1,7 +1,7 @@
 import { MenuToggle } from '../NavToggle/NavToggle';
 import { motion, useCycle } from 'framer-motion';
 import React, { useEffect, useRef } from 'react';
-import { BurgerContainer, boxTheme } from './NavBurger.styles';
+import { BurgerContainer, BurgerMenu, boxTheme } from './NavBurger.styles';
 import { ThemeProvider } from '@mui/material';
 
 const sidebar = {
@@ -16,7 +16,7 @@ const sidebar = {
   closed: {
     clipPath: 'circle(30px at 40px 40px)',
     transition: {
-      delay: 0.5,
+      delay: 0.3,
       type: 'spring',
       stiffness: 400,
       damping: 40,
@@ -48,7 +48,7 @@ export const NavBurger = () => {
           custom={height}
           ref={containerRef}
         >
-          <motion.div className="background" variants={sidebar} />
+          <BurgerMenu variants={sidebar} />
           <MenuToggle toggle={() => toggleOpen()} />
         </motion.nav>
       </BurgerContainer>

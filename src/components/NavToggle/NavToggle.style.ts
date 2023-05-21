@@ -16,8 +16,9 @@ export const CustomButton = styled('button')({
   cursor: 'pointer',
   position: 'absolute',
   top: '11px',
-  right: '20px',
+  right: '30px',
   width: '50px',
   height: '50px',
   borderRadius: '50%',
+  zIndex: 100,
 });
