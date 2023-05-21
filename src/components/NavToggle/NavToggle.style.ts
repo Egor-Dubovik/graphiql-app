@@ -11,14 +11,19 @@ export const NavTogglePath = styled(MotionPath)({
 });
 
 export const CustomButton = styled('button')({
+  position: 'relative',
   outline: 'none',
   border: 'none',
   cursor: 'pointer',
-  position: 'absolute',
-  top: '11px',
-  right: '30px',
-  width: '50px',
-  height: '50px',
+  top: '30%',
+  //marginTop: '-500px',
+  marginRight: '0px',
+  right: '60px',
+  width: '32px',
+  height: '25px',
   borderRadius: '50%',
-  zIndex: 100,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  zIndex: 500,
 });

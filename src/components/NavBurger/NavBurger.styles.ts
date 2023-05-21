@@ -18,7 +18,11 @@ export const BurgerContainer = styled(MotionContainer)({
   display: 'none',
   [boxTheme.breakpoints.down(700)]: {
     display: 'flex',
+    width: '200px',
     height: '50px',
+    margin: 0,
+    marginRight: '-50px',
+    justifyContent: 'flex-end',
   },
 });
 
@@ -27,11 +31,10 @@ const MotionDiv = motion('div');
 export const BurgerMenu = styled(MotionDiv)({
   position: 'absolute',
   top: -15,
-  right: -200,
+  right: -100,
   bottom: 0,
-  width: '300px',
+  width: '200px',
   height: '500px',
-  background: '#2196f3',
+  background: '#1976d2',
   borderRadius: '10px',
-  zIndex: 20,
 });

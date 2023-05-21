@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 const Logo = (): JSX.Element => {
   return (
     <>
-      <Typography variant="h6" sx={{ flexGrow: 0.1 }}>
+      <Typography variant="h6" sx={{ width: '170px', textAlign: 'center' }}>
         GraphiQl
       </Typography>
     </>

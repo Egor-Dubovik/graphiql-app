@@ -1,6 +1,16 @@
-import { styled } from '@mui/material/styles';
+import { createTheme, styled } from '@mui/material/styles';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
+
+export const headerTheme = createTheme({
+  components: {
+    MuiContainer: {
+      styleOverrides: {
+        root: {},
+      },
+    },
+  },
+});
 
 const MotionHeader = motion(AppBar);
 export const FinalHeader = styled(MotionHeader)({});
@@ -12,4 +22,10 @@ export const FinalToolbar = styled(MotionToolBar)({
 });
 
 const MotionTypography = motion(Typography);
-export const FinalTypography = styled(MotionTypography)({});
+export const FinalTypography = styled(MotionTypography)({
+  width: '130px',
+  textAlign: 'right',
+  [headerTheme.breakpoints.down(700)]: {
+    width: '270px',
+  },
+});

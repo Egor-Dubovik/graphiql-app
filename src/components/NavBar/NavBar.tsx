@@ -1,28 +1,28 @@
 import React from 'react';
-import { Container, ListItem, ThemeProvider } from '@mui/material';
+import { Container, ThemeProvider } from '@mui/material';
 import { ROUTES } from '../../router/routes/routes.constant';
 import UserMenu from '../UserMenu/UserMenu';
-import { CustomList, CustomNavLink, boxTheme } from './NavBar.styles';
+import { CustomList, CustomListItem, CustomNav, CustomNavLink, boxTheme } from './NavBar.styles';
 
 const NavBar = (): JSX.Element => {
   return (
-    <nav>
+    <CustomNav>
       <ThemeProvider theme={boxTheme}>
-        <Container>
+        <Container sx={{ display: 'flex' }}>
           <CustomList>
-            <ListItem component="li">
+            <CustomListItem>
               <CustomNavLink to={ROUTES.MAIN}>Main</CustomNavLink>
-            </ListItem>
-            <ListItem component="li">
+            </CustomListItem>
+            <CustomListItem>
               <CustomNavLink to={ROUTES.WELCOME}>About</CustomNavLink>
-            </ListItem>
-            <ListItem component="li">
+            </CustomListItem>
+            <CustomListItem>
               <UserMenu />
-            </ListItem>
+            </CustomListItem>
           </CustomList>
         </Container>
       </ThemeProvider>
-    </nav>
+    </CustomNav>
   );
 };
 
