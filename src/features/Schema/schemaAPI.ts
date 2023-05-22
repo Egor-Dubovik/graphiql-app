@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { introspectionQuery } from '../../common/constant/introspectionQuery';
+import { getIntrospectionQuery } from 'graphql';
 import { IError, ITypeError } from '../../common/interfaces/rtkQueyError';
 import { ISchema } from './types';
 
@@ -7,10 +7,11 @@ export interface ISchemaData {
   __schema: ISchema;
 }
 
-interface ISchemaResponse {
+export interface ISchemaResponse {
   data: ISchemaData;
 }
 
+const introspectionQuery = getIntrospectionQuery();
 export const schemaApi = createApi({
   reducerPath: 'schemaApi',
   baseQuery: fetchBaseQuery(),
@@ -25,7 +26,10 @@ export const schemaApi = createApi({
           query: introspectionQuery,
         }),
       }),
-      transformResponse: (response: ISchemaResponse): ISchemaData => response.data,
+      transformResponse: (response: ISchemaResponse): ISchemaData => {
+        console.log(response);
+        return response.data;
+      },
       transformErrorResponse: (error) => {
         const err = error as IError | ITypeError;
 
