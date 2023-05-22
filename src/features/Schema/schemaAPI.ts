@@ -21,10 +21,7 @@ export const schemaApi = createApi({
           query: introspectionQuery,
         }),
       }),
-      transformResponse: (response: IResponseData): IntrospectionQuery => {
-        console.log(response.data);
-        return response.data;
-      },
+      transformResponse: (response: IResponseData): IntrospectionQuery => response.data,
       transformErrorResponse: (error) => {
         const err = error as IError | ITypeError;
 

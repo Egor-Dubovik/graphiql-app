@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Main, MainSection } from './MainPage.styles';
 import GraphqlTools from '../../components/graphql/GraphqlTools/GraphqlTools';
 import Editors from '../../modules/forms/Editors/Editors';
-import Schema from '../../features/Schema/Schema';
+import Loader from '../../components/Loader/Loader';
+const Schema = lazy(() => import('../../features/Schema/Schema'));
 
-const MainPage = () => {
+const MainPage = (): JSX.Element => {
   return (
     <Main>
-      <Schema />
+      <Suspense fallback={<Loader />}>
+        <Schema />
+      </Suspense>
       <MainSection>
         <GraphqlTools />
         <Editors />
