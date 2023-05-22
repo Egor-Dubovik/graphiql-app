@@ -1,5 +1,5 @@
 import { NavToggle } from '../NavToggle/NavToggle';
-import { motion, useCycle } from 'framer-motion';
+import { motion, useCycle, useScroll, useTransform } from 'framer-motion';
 import React, { useEffect, useRef } from 'react';
 import { BurgerContainer, BurgerMenu, boxTheme } from './NavBurger.styles';
 import { ThemeProvider } from '@mui/material';
@@ -25,21 +25,28 @@ const sidebar = {
   },
 };
 
-export const useDimensions = (ref: React.MutableRefObject<HTMLElement | null>) => {
-  const dimensions = useRef({ width: 0, height: 0 });
+export const useSizes = (ref: React.MutableRefObject<HTMLElement | null>) => {
+  const sizes = useRef({ width: 0, height: 0 });
 
   useEffect(() => {
-    dimensions.current.width = (ref.current as unknown as HTMLElement).offsetWidth;
-    dimensions.current.height = (ref.current as unknown as HTMLElement).offsetHeight;
+    sizes.current.width = (ref.current as unknown as HTMLElement).offsetWidth;
+    sizes.current.height = (ref.current as unknown as HTMLElement).offsetHeight;
   });
 
-  return dimensions.current;
+  return sizes.current;
 };
 
 export const NavBurger = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
-  const { height } = useDimensions(containerRef);
+  const { height } = useSizes(containerRef);
+
+  const { scrollY } = useScroll();
+  const scrollYRange = [0, 200];
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const burgerColor: any = useTransform(scrollY, scrollYRange, ['#1976d2', '#33bfff']);
+
   return (
     <ThemeProvider theme={boxTheme}>
       <BurgerContainer>
@@ -49,7 +56,7 @@ export const NavBurger = () => {
           custom={height}
           ref={containerRef}
         >
-          <BurgerMenu variants={sidebar} />
+          <BurgerMenu variants={sidebar} style={{ backgroundColor: burgerColor }} />
           <NavToggle toggle={() => toggleOpen()} />
           <NavBurgerMenu />
         </motion.nav>

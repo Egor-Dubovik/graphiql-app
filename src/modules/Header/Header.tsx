@@ -16,9 +16,17 @@ const Header = (): JSX.Element => {
   const toolHeight: any = useTransform(scrollY, scrollYRange, ['64px', '32px']);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const toolOpacity: any = useTransform(scrollY, scrollYRange, [0, 1]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const toolColor: any = useTransform(scrollY, scrollYRange, ['#1976d2', '#33bfff']);
 
   return (
-    <FinalHeader position="fixed" initial="visible" animate={controls} transition={{ duration: 1 }}>
+    <FinalHeader
+      position="fixed"
+      initial="visible"
+      animate={controls}
+      transition={{ duration: 1 }}
+      style={{ backgroundColor: toolColor }}
+    >
       <Container maxWidth="xl">
         <FinalToolbar
           sx={{ p: 0 }}
