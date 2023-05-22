@@ -28,4 +28,7 @@ export const FinalTypography = styled(MotionTypography)({
   [headerTheme.breakpoints.down(700)]: {
     width: '270px',
   },
+  [headerTheme.breakpoints.down(415)]: {
+    display: 'none',
+  },
 });

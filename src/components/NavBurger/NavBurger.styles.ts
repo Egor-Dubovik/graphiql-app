@@ -21,8 +21,11 @@ export const BurgerContainer = styled(MotionContainer)({
     width: '200px',
     height: '50px',
     margin: 0,
-    marginRight: '-50px',
+    marginRight: -50,
     justifyContent: 'flex-end',
+  },
+  [boxTheme.breakpoints.down(600)]: {
+    marginRight: -15,
   },
 });
 
