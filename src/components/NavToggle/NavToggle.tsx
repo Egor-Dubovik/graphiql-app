@@ -5,7 +5,7 @@ interface IToggle {
   toggle: () => void;
 }
 
-export const MenuToggle: React.FC<IToggle> = ({ toggle }) => (
+export const NavToggle: React.FC<IToggle> = ({ toggle }) => (
   <CustomButton onClick={toggle}>
     <svg width="23" height="23" viewBox="0 0 23 23">
       <NavTogglePath

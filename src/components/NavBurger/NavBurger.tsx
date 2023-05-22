@@ -1,8 +1,9 @@
-import { MenuToggle } from '../NavToggle/NavToggle';
+import { NavToggle } from '../NavToggle/NavToggle';
 import { motion, useCycle } from 'framer-motion';
 import React, { useEffect, useRef } from 'react';
 import { BurgerContainer, BurgerMenu, boxTheme } from './NavBurger.styles';
 import { ThemeProvider } from '@mui/material';
+import { NavBurgerMenu } from '../NavBurgerMenu/NavBurgerMenu';
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -49,7 +50,8 @@ export const NavBurger = () => {
           ref={containerRef}
         >
           <BurgerMenu variants={sidebar} />
-          <MenuToggle toggle={() => toggleOpen()} />
+          <NavToggle toggle={() => toggleOpen()} />
+          <NavBurgerMenu />
         </motion.nav>
       </BurgerContainer>
     </ThemeProvider>
