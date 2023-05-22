@@ -3,17 +3,19 @@ import { introspectionQuery } from '../../common/constant/introspectionQuery';
 import { IError, ITypeError } from '../../common/interfaces/rtkQueyError';
 import { ISchema } from './types';
 
+export interface ISchemaData {
+  __schema: ISchema;
+}
+
 interface ISchemaResponse {
-  data: {
-    __schema: ISchema;
-  };
+  data: ISchemaData;
 }
 
 export const schemaApi = createApi({
   reducerPath: 'schemaApi',
   baseQuery: fetchBaseQuery(),
   endpoints: (builder) => ({
-    getSchema: builder.mutation<ISchema, string>({
+    getSchema: builder.mutation<ISchemaData, string>({
       query: (url: string) => ({
         url,
         method: 'POST',
@@ -23,7 +25,7 @@ export const schemaApi = createApi({
           query: introspectionQuery,
         }),
       }),
-      transformResponse: (response: ISchemaResponse): ISchema => response.data.__schema,
+      transformResponse: (response: ISchemaResponse): ISchemaData => response.data,
       transformErrorResponse: (error) => {
         const err = error as IError | ITypeError;
 
