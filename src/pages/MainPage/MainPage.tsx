@@ -1,7 +1,6 @@
 import React, { Suspense, lazy } from 'react';
-import { Main, MainSection } from './MainPage.styles';
-import GraphqlTools from '../../components/graphql/GraphqlTools/GraphqlTools';
-import Editors from '../../modules/forms/Editors/Editors';
+import { Main } from './MainPage.styles';
+import MainGraphqlSection from '../../components/graphql/MainGraphqlSection/MainGraphqlSection';
 import Loader from '../../components/Loader/Loader';
 const Schema = lazy(() => import('../../features/Schema/Schema'));
 
@@ -10,11 +9,8 @@ const MainPage = (): JSX.Element => {
     <Main>
       <Suspense fallback={<Loader />}>
         <Schema />
+        <MainGraphqlSection />
       </Suspense>
-      <MainSection>
-        <GraphqlTools />
-        <Editors />
-      </MainSection>
     </Main>
   );
 };

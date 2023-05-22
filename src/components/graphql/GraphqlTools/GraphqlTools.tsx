@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { Box, Button, Container } from '@mui/material';
 import GraphqlUrlInput from '../GraphqlUrlInput/GraphqlUrlInput';
 import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
-import { sxContainer, sxSection } from './GraphqlTools.style';
+import { sxButton, sxContainer, sxSection } from './GraphqlTools.style';
 import { isEmptyObject } from '../../../utils/isEmptyObject';
 import {
   selectSchemaData,
@@ -34,7 +34,12 @@ const GraphqlTools: FC = () => {
     <Box component="section" sx={sxSection}>
       <Container sx={sxContainer} maxWidth="xl">
         <GraphqlUrlInput />
-        <Button onClick={handleSchemaOpen} disabled={!isSchemaReceived} variant="contained">
+        <Button
+          onClick={handleSchemaOpen}
+          disabled={!isSchemaReceived}
+          sx={sxButton}
+          variant="contained"
+        >
           schema
         </Button>
       </Container>

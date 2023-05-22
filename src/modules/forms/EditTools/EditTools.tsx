@@ -10,8 +10,8 @@ import {
 } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import QueryVariables from '../../../components/QueryVariables/QueryVariables';
-import QueryHeaders from '../../../components/QueryHeaders/QueryHeaders';
+import QueryVariables from '../../../components/graphql/QueryVariables/QueryVariables';
+import QueryHeaders from '../../../components/graphql/QueryHeaders/QueryHeaders';
 
 const EditorTools = () => {
   const [value, setValue] = React.useState('Variables');

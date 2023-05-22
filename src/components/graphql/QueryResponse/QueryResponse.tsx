@@ -1,5 +1,5 @@
 import React from 'react';
-import EditorGraphQL from '../../components/EditorGraphQL/EditorGraphQL';
+import EditorGraphQL from '../EditorGraphQL/EditorGraphQL';
 
 const QueryResponse = () => {
   return (

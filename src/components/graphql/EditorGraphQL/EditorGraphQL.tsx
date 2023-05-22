@@ -4,9 +4,9 @@ import CodeMirror from '@uiw/react-codemirror';
 import { EditorBox } from './EditorGraphQL.styles';
 import extensions from './extensions';
 import { buildClientSchema, GraphQLSchema } from 'graphql';
-import { useAppSelector } from '../../app/store/hooks';
-import { selectSchemaData } from '../../features/Schema/schemaSlice';
-import { isEmptyObject } from '../../utils/isEmptyObject';
+import { useAppSelector } from '../../../app/store/hooks';
+import { selectSchemaData } from '../../../features/Schema/schemaSlice';
+import { isEmptyObject } from '../../../utils/isEmptyObject';
 
 interface IEditorGraphQL {
   editable: boolean;
