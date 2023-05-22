@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { xcodeLight } from '@uiw/codemirror-theme-xcode';
 import CodeMirror from '@uiw/react-codemirror';
 import { EditorBox } from './EditorGraphQL.styles';
-import extensions from '../extensions';
+import extensions from './extensions';
 import { buildClientSchema, GraphQLSchema } from 'graphql';
 import { useAppSelector } from '../../app/store/hooks';
 import { selectSchemaData } from '../../features/Schema/schemaSlice';
