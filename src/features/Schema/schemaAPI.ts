@@ -1,14 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { getIntrospectionQuery } from 'graphql';
+import { getIntrospectionQuery, IntrospectionQuery } from 'graphql';
 import { IError, ITypeError } from '../../common/interfaces/rtkQueyError';
-import { ISchema } from './types';
 
-export interface ISchemaData {
-  __schema: ISchema;
-}
-
-export interface ISchemaResponse {
-  data: ISchemaData;
+export interface IResponseData {
+  data: IntrospectionQuery;
 }
 
 const introspectionQuery = getIntrospectionQuery();
@@ -16,7 +11,7 @@ export const schemaApi = createApi({
   reducerPath: 'schemaApi',
   baseQuery: fetchBaseQuery(),
   endpoints: (builder) => ({
-    getSchema: builder.mutation<ISchemaData, string>({
+    getSchema: builder.mutation<IntrospectionQuery, string>({
       query: (url: string) => ({
         url,
         method: 'POST',
@@ -26,8 +21,8 @@ export const schemaApi = createApi({
           query: introspectionQuery,
         }),
       }),
-      transformResponse: (response: ISchemaResponse): ISchemaData => {
-        console.log(response);
+      transformResponse: (response: IResponseData): IntrospectionQuery => {
+        console.log(response.data);
         return response.data;
       },
       transformErrorResponse: (error) => {
