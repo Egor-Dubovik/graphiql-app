@@ -13,6 +13,11 @@ export const DevCardList = () => {
           alignItems: 'center',
           height: '1790px',
         },
+        [divTheme.breakpoints.down(650)]: {
+          flexDirection: 'column',
+          alignItems: 'center',
+          height: '1400px',
+        },
       }}
     >
       {developers.map((dev) => {

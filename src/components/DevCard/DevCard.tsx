@@ -28,13 +28,28 @@ export const DevCard: React.FC<IDevCard> = ({ devImage, devName, devText, devMor
             width: '100%',
             height: '30%',
           },
+          [cardTheme.breakpoints.down(650)]: {
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          },
         }}
       >
         <ThemeProvider theme={cardMediaTheme}>
           <CardMedia
             sx={{
+              [cardMediaTheme.breakpoints.down(1150)]: {
+                height: '170px',
+              },
               [cardMediaTheme.breakpoints.down('md')]: {
                 height: '400px',
+              },
+              [cardMediaTheme.breakpoints.down(650)]: {
+                height: '300px',
+              },
+              [cardMediaTheme.breakpoints.down(450)]: {
+                height: '200px',
               },
             }}
             image={devImage}
