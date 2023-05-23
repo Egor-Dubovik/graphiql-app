@@ -3,7 +3,7 @@ import { Container } from '@mui/material';
 import Logo from '../../components/Logo';
 import NavBar from '../../components/NavBar/NavBar';
 import { useTransform, useScroll, useAnimation } from 'framer-motion';
-import { FinalHeader, FinalToolbar, FinalTypography } from './Header.styles';
+import { FinalHeader, FinalToolbar, FinalTypography, ThirdHeaderBox } from './Header.styles';
 import { NavBurger } from '../../components/NavBurger/NavBurger';
 
 const Header = (): JSX.Element => {
@@ -36,8 +36,10 @@ const Header = (): JSX.Element => {
         >
           <Logo />
           <FinalTypography style={{ opacity: toolOpacity }}>Welcome</FinalTypography>
-          <NavBar />
-          <NavBurger />
+          <ThirdHeaderBox>
+            <NavBar />
+            <NavBurger />
+          </ThirdHeaderBox>
         </FinalToolbar>
       </Container>
     </FinalHeader>

@@ -37,9 +37,10 @@ export const BurgerMenuUl = styled(MotionUl)({
 });
 
 export const NavContainer = styled('nav')({
+  position: 'absolute',
   top: '50px',
-  marginRight: '5px',
-  width: '70px',
+  right: '90px',
+  width: '80px',
   height: '400px',
   display: 'flex',
   flexDirection: 'column',

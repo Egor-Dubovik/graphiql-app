@@ -1,5 +1,5 @@
 import { NavToggle } from '../NavToggle/NavToggle';
-import { motion, useCycle, useScroll, useTransform } from 'framer-motion';
+import { useCycle, useScroll, useTransform } from 'framer-motion';
 import React, { useEffect, useRef } from 'react';
 import { BurgerContainer, BurgerMenu, boxTheme } from './NavBurger.styles';
 import { ThemeProvider } from '@mui/material';
@@ -15,7 +15,7 @@ const sidebar = {
     },
   }),
   closed: {
-    clipPath: 'circle(20px at 20px 20px)',
+    clipPath: 'circle(20px at 218px 28px)',
     transition: {
       delay: 0.3,
       type: 'spring',
@@ -46,20 +46,17 @@ export const NavBurger = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const burgerColor: any = useTransform(scrollY, scrollYRange, ['#1976d2', '#33bfff']);
-
   return (
     <ThemeProvider theme={boxTheme}>
-      <BurgerContainer>
-        <motion.nav
-          initial={false}
-          animate={isOpen ? 'open' : 'closed'}
-          custom={height}
-          ref={containerRef}
-        >
-          <BurgerMenu variants={sidebar} style={{ backgroundColor: burgerColor }} />
-          <NavToggle toggle={() => toggleOpen()} />
-          <NavBurgerMenu />
-        </motion.nav>
+      <BurgerContainer
+        initial={false}
+        animate={isOpen ? 'open' : 'closed'}
+        custom={height}
+        ref={containerRef}
+      >
+        <BurgerMenu variants={sidebar} style={{ backgroundColor: burgerColor }} />
+        <NavToggle toggle={() => toggleOpen()} />
+        <NavBurgerMenu />
       </BurgerContainer>
     </ThemeProvider>
   );

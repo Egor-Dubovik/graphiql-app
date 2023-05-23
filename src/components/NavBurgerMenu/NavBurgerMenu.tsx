@@ -1,7 +1,6 @@
 import React from 'react';
 import { BurgerMenuUl, CustomNavLink, FinalLi, NavContainer } from './NavBurgerMenu.styles';
 import { ROUTES } from '../../router/routes/routes.constant';
-import UserMenu from '../UserMenu/UserMenu';
 
 const variants = {
   open: {
@@ -32,9 +31,6 @@ const phases = {
 export const NavBurgerMenu = () => (
   <NavContainer>
     <BurgerMenuUl variants={variants}>
-      <FinalLi variants={phases} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-        <UserMenu />
-      </FinalLi>
       <FinalLi variants={phases} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
         <CustomNavLink to={ROUTES.MAIN}>Main</CustomNavLink>
       </FinalLi>

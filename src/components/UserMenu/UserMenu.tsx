@@ -28,7 +28,7 @@ const UserMenu: FC = () => {
 
   return (
     <Box sx={{ flexGrow: 0 }}>
-      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, color: '#fff' }}>
+      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, color: '#fff', zIndex: 100 }}>
         <AccountCircleIcon />
       </IconButton>
       <Menu
