@@ -1,7 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
+import { navBurgerReducer } from '../features/NavBurger/navBurgerSlice';
 
 const rootReducer = combineReducers({
-  // counter: counterReducer,
+  burger: navBurgerReducer,
 });
 
 export default rootReducer;

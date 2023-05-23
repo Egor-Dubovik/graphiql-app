@@ -45,4 +45,5 @@ export const NavContainer = styled('nav')({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
+  zIndex: 100,
 });

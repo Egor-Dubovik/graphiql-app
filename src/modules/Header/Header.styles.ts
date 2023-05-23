@@ -25,7 +25,6 @@ const MotionTypography = motion(Typography);
 export const FinalTypography = styled(MotionTypography)({
   width: '130px',
   textAlign: 'right',
-  zIndex: 100,
   [headerTheme.breakpoints.down(700)]: {
     textAlign: 'center',
   },

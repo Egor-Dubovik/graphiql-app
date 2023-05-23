@@ -4,7 +4,7 @@ import Logo from '../../components/Logo';
 import NavBar from '../../components/NavBar/NavBar';
 import { useTransform, useScroll, useAnimation } from 'framer-motion';
 import { FinalHeader, FinalToolbar, FinalTypography, ThirdHeaderBox } from './Header.styles';
-import { NavBurger } from '../../components/NavBurger/NavBurger';
+import { NavBurger } from '../../features/NavBurger/NavBurger';
 
 const Header = (): JSX.Element => {
   const { scrollY } = useScroll();

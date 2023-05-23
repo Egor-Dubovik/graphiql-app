@@ -2,7 +2,7 @@ import React from 'react';
 import { CustomButton, NavTogglePath } from './NavToggle.style';
 
 interface IToggle {
-  toggle: () => void;
+  toggle: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const NavToggle: React.FC<IToggle> = ({ toggle }) => (

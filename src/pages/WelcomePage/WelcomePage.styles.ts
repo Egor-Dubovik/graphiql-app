@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const CustomSection = styled('section')`
@@ -11,3 +12,5 @@ export const CustomSection = styled('section')`
 export const CustomH2 = styled('h2')`
   font-size: 50px;
 `;
+
+export const ShadowBox = styled(Box)({});

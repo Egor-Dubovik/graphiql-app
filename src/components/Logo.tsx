@@ -19,7 +19,6 @@ const Logo = (): JSX.Element => {
         sx={{
           width: '170px',
           textAlign: 'center',
-          zIndex: 100,
           [typoTheme.breakpoints.down(600)]: {
             textAlign: 'right',
             paddingRight: '20px',
