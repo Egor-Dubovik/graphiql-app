@@ -4,7 +4,7 @@ import { Container, Typography } from '@mui/material';
 import { CustomH2, CustomSection, ShadowBox } from './WelcomePage.styles';
 import { WelcomeInfo } from '../../components/WelcomeInfo/WelcomeInfo';
 import { WelcomePlayer } from '../../components/WelcomePlayer/WelcomePlayer';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '../../app/store/hooks';
 
 const WelcomePage = () => {
   const navBurgerOpen = useAppSelector((state) => state.burger.burger);

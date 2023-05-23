@@ -1,13 +1,17 @@
-import React from 'react';
-import { Container } from '@mui/material';
+import React, { Suspense, lazy } from 'react';
+import { Main } from './MainPage.styles';
+import MainGraphqlSection from '../../components/graphql/MainGraphqlSection/MainGraphqlSection';
+import Loader from '../../components/Loader/Loader';
+const Schema = lazy(() => import('../../features/Schema/Schema'));
 
-const MainPage = () => {
+const MainPage = (): JSX.Element => {
   return (
-    <main className="main">
-      <Container maxWidth="xl">
-        <section>MainPage</section>
-      </Container>
-    </main>
+    <Main>
+      <Suspense fallback={<Loader />}>
+        <Schema />
+        <MainGraphqlSection />
+      </Suspense>
+    </Main>
   );
 };
 

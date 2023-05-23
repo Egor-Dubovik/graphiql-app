@@ -26,7 +26,7 @@ const ResetForm: FC = () => {
 
   useEffect(() => {
     if (user) navigate(ROUTES.LOGIN);
-  }, [user]);
+  }, [user, navigate]);
 
   return (
     <Box className="reset-form" onSubmit={handleReset} component="form">
@@ -34,6 +34,7 @@ const ResetForm: FC = () => {
         error={!!errors.email}
         value={email}
         onChange={(event) => setEmail(event.target.value)}
+        sx={{ mb: 2 }}
         label="Email address"
         autoComplete="email"
         required
