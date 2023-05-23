@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import './QueryEditorStyles.css';
-import EditorGraphQL from '../../components/EditorGraphQL/EditorGraphQL';
+import EditorGraphQL from '../EditorGraphQL/EditorGraphQL';
 
 const QueryEditor = () => {
   return (

@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IntrospectionQuery } from 'graphql';
 import { RootState } from '../../app/store/store';
 import { isObject } from '../../utils/isObject';
-import { IData, ISchema, ISchemaStackObject } from './types';
+import { IData, ISchemaStackObject } from './types';
 
 export interface ISchemaSlice {
-  data: ISchema;
+  data: IntrospectionQuery;
   stack: ISchemaStackObject;
   currentOject?: any;
   isOpen: boolean;
@@ -13,7 +14,7 @@ export interface ISchemaSlice {
 }
 
 const initialState: ISchemaSlice = {
-  data: {} as ISchema,
+  data: {} as IntrospectionQuery,
   stack: {
     path: [] as string[],
     dataArray: [{ type: {} }] as IData[],

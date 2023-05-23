@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
-import QueryResponse from '../../../components/QueryResponse/QueryResponse';
-import EditorToolBar from '../../../components/EditorToolbar/EditorToolbar';
-import QueryEditor from '../../../components/QueryEditor/QueryEditor';
+import QueryResponse from '../../../components/graphql/QueryResponse/QueryResponse';
+import EditorToolBar from '../../../components/graphql/EditorToolbar/EditorToolbar';
+import QueryEditor from '../../../components/graphql/QueryEditor/QueryEditor';
 import EditorTools from '../EditTools/EditTools';
 import { CustomBox } from './Editors.styles';
 

@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+export interface ISchemaData {
+  __schema: ISchema;
+}
+
 export interface IData {
   type: IRootType;
   args?: IArg[];
@@ -13,7 +17,7 @@ export interface ISchemaStackObject {
 export interface ISchema {
   directives: any[];
   mutationType: { name: string } | null;
-  queryType: { name: string } | null;
+  queryType: { name: string };
   subscriptionType: any;
   types: IRootType[];
 }

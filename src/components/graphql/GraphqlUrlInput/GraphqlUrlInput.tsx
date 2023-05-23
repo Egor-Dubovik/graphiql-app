@@ -42,6 +42,7 @@ const GraphqlUrlInput: FC = () => {
       sx={{ minWidth: { xs: '260px', sm: '480px' } }}
       onChange={(event) => setUrl(event.target.value)}
       fullWidth
+      size="small"
       required
       label="schema url"
       autoFocus

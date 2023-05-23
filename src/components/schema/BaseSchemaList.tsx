@@ -7,29 +7,25 @@ import { useSchemaFieldHandler } from '../../hooks/useFieldHandler';
 const BaseSchemaList: FC = () => {
   const schemaData = useAppSelector(selectSchemaData);
   const handleChangeField = useSchemaFieldHandler();
+  const schema = schemaData.__schema;
 
   return (
     <List>
-      {schemaData.queryType?.name && (
-        <ListItemButton onClick={() => handleChangeField(schemaData.queryType?.name, schemaData)}>
-          <ListItemText primary={`${schemaData.queryType?.name}(...)`} secondary={'object'} />
+      {schema.queryType?.name && (
+        <ListItemButton onClick={() => handleChangeField(schema.queryType?.name, schemaData)}>
+          <ListItemText primary={`${schema.queryType?.name}(...)`} secondary={'object'} />
         </ListItemButton>
       )}
-      {schemaData.mutationType?.name && (
-        <ListItemButton
-          onClick={() => handleChangeField(schemaData.mutationType?.name, schemaData)}
-        >
-          <ListItemText primary={`${schemaData.mutationType?.name}(...)`} secondary={'object'} />
+      {schema.mutationType?.name && (
+        <ListItemButton onClick={() => handleChangeField(schema.mutationType?.name, schemaData)}>
+          <ListItemText primary={`${schema.mutationType?.name}(...)`} secondary={'object'} />
         </ListItemButton>
       )}
-      {schemaData.subscriptionType?.name && (
+      {schema.subscriptionType?.name && (
         <ListItemButton
-          onClick={() => handleChangeField(schemaData.subscriptionType?.name, schemaData)}
+          onClick={() => handleChangeField(schema.subscriptionType?.name, schemaData)}
         >
-          <ListItemText
-            primary={`${schemaData.subscriptionType?.name}(...)`}
-            secondary={'object'}
-          />
+          <ListItemText primary={`${schema.subscriptionType?.name}(...)`} secondary={'object'} />
         </ListItemButton>
       )}
     </List>
