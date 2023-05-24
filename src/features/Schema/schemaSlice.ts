@@ -8,9 +8,11 @@ import { IData, ISchemaStackObject } from './types';
 export interface ISchemaSlice {
   data: IntrospectionQuery;
   stack: ISchemaStackObject;
-  currentOject?: any;
+  // currentOject?: any;
   isOpen: boolean;
   isError: boolean;
+  userSchema: string;
+  response: null | Record<string, string>[];
 }
 
 const initialState: ISchemaSlice = {
@@ -21,6 +23,8 @@ const initialState: ISchemaSlice = {
   },
   isOpen: false,
   isError: false,
+  userSchema: '',
+  response: null,
 };
 
 export const schemaSlice = createSlice({
@@ -57,6 +61,12 @@ export const schemaSlice = createSlice({
     setIsOpen: (state, action: PayloadAction<boolean>) => {
       state.isOpen = action.payload;
     },
+    setUserSchema: (state, action: PayloadAction<string>) => {
+      state.userSchema = action.payload;
+    },
+    saveResponse: (state, action: PayloadAction<Record<string, string>[] | any>) => {
+      state.response = action.payload;
+    },
   },
 });
 
@@ -70,10 +80,14 @@ export const {
   popObjFromStack,
   setStackDataArray,
   setIsOpen,
+  setUserSchema,
+  saveResponse,
 } = schemaSlice.actions;
 
 export const selectSchemaError = (state: RootState) => state.schema.isError;
 export const selectSchemaData = (state: RootState) => state.schema.data;
 export const selectSchemaStack = (state: RootState) => state.schema.stack;
 export const selectSchemaIsOpen = (state: RootState) => state.schema.isOpen;
+export const selectUserSchema = (state: RootState) => state.schema.userSchema;
+export const selectResponse = (state: RootState) => state.schema.response;
 export default schemaSlice.reducer;
