@@ -4,9 +4,10 @@ import CodeMirror from '@uiw/react-codemirror';
 import { EditorBox } from './EditorGraphQL.styles';
 import extensions from './extensions';
 import { buildClientSchema, GraphQLSchema } from 'graphql';
-import { useAppSelector } from '../../../app/store/hooks';
-import { selectSchemaData } from '../../../features/Schema/schemaSlice';
+import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
+import { selectSchemaData, setUserSchema } from '../../../features/Schema/schemaSlice';
 import { isEmptyObject } from '../../../utils/isEmptyObject';
+import { EditorView } from '@codemirror/view';
 
 interface IEditorGraphQL {
   editable: boolean;
@@ -26,9 +27,10 @@ const EditorGraphQL = ({
 }: IEditorGraphQL) => {
   const schemaData = useAppSelector(selectSchemaData);
   const [schema, setSchema] = useState({} as GraphQLSchema);
+  const dispatch = useAppDispatch();
 
   const onChange = React.useCallback((value: string) => {
-    console.log('value:', value);
+    dispatch(setUserSchema(value));
   }, []);
 
   useEffect(() => {
@@ -53,7 +55,7 @@ const EditorGraphQL = ({
             foldGutter,
             syntaxHighlighting,
           }}
-          extensions={extensions(schema)}
+          extensions={[extensions(schema), EditorView.lineWrapping]}
           onChange={onChange}
         />
       )}

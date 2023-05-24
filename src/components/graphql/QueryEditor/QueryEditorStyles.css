@@ -3,9 +3,13 @@
     word-break: break-all;
     word-wrap: break-word;
   }
+
 .cm-editor.cm-focused {
     outline: none;
 }
 .cm-theme {
   flex-grow: 1;
+}
+.ͼ1 .cm-scroller {
+max-height: 65vh;
 }
