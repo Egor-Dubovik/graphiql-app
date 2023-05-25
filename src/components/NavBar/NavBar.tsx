@@ -1,24 +1,32 @@
 import React from 'react';
-import { List, ListItem } from '@mui/material';
-import { NavLink } from 'react-router-dom';
 import { ROUTES } from '../../router/routes/routes.constant';
 import UserMenu from '../UserMenu/UserMenu';
+import {
+  CustomContainer,
+  CustomList,
+  CustomListItem,
+  CustomListItemNext,
+  CustomNav,
+  CustomNavLink,
+} from './NavBar.styles';
 
 const NavBar = (): JSX.Element => {
   return (
-    <nav>
-      <List sx={{ display: 'flex' }}>
-        <ListItem component="li">
-          <NavLink to={ROUTES.MAIN}>Main</NavLink>
-        </ListItem>
-        <ListItem component="li">
-          <NavLink to={ROUTES.WELCOME}>About</NavLink>
-        </ListItem>
-        <ListItem component="li">
-          <UserMenu />
-        </ListItem>
-      </List>
-    </nav>
+    <CustomNav>
+      <CustomContainer>
+        <CustomList>
+          <CustomListItem>
+            <CustomNavLink to={ROUTES.MAIN}>Main</CustomNavLink>
+          </CustomListItem>
+          <CustomListItem>
+            <CustomNavLink to={ROUTES.WELCOME}>About</CustomNavLink>
+          </CustomListItem>
+          <CustomListItemNext>
+            <UserMenu />
+          </CustomListItemNext>
+        </CustomList>
+      </CustomContainer>
+    </CustomNav>
   );
 };
 

@@ -1,10 +1,30 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Typography, createTheme } from '@mui/material';
+
+export const typoTheme = createTheme({
+  components: {
+    MuiContainer: {
+      styleOverrides: {
+        root: {},
+      },
+    },
+  },
+});
 
 const Logo = (): JSX.Element => {
   return (
     <>
-      <Typography variant="h6" sx={{ flexGrow: 1 }}>
+      <Typography
+        variant="h6"
+        sx={{
+          width: '170px',
+          textAlign: 'center',
+          [typoTheme.breakpoints.down(600)]: {
+            textAlign: 'right',
+            paddingRight: '20px',
+          },
+        }}
+      >
         GraphiQl
       </Typography>
     </>

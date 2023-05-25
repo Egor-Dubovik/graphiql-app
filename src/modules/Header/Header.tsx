@@ -1,18 +1,48 @@
 import React from 'react';
-import { AppBar, Container, Toolbar } from '@mui/material';
+import { Container } from '@mui/material';
 import Logo from '../../components/Logo';
 import NavBar from '../../components/NavBar/NavBar';
+import { useTransform, useScroll, useAnimation } from 'framer-motion';
+import { FinalHeader, FinalToolbar, FinalTypography, ThirdHeaderBox } from './Header.styles';
+import { NavBurger } from '../../features/NavBurger/NavBurger';
 
 const Header = (): JSX.Element => {
+  const { scrollY } = useScroll();
+  const scrollYRange = [0, 200];
+
+  const controls = useAnimation();
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const toolHeight: any = useTransform(scrollY, scrollYRange, ['64px', '32px']);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const toolOpacity: any = useTransform(scrollY, scrollYRange, [0, 1]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const toolColor: any = useTransform(scrollY, scrollYRange, ['#1976d2', '#33bfff']);
+
   return (
-    <AppBar position="static">
+    <FinalHeader
+      position="fixed"
+      initial="visible"
+      animate={controls}
+      transition={{ duration: 1 }}
+      style={{ backgroundColor: toolColor }}
+    >
       <Container maxWidth="xl">
-        <Toolbar sx={{ p: 0 }}>
+        <FinalToolbar
+          sx={{ p: 0 }}
+          transition={{ duration: 1 }}
+          style={{ height: toolHeight, minHeight: toolHeight }}
+          animate={controls}
+        >
           <Logo />
-          <NavBar />
-        </Toolbar>
+          <FinalTypography style={{ opacity: toolOpacity }}>Welcome</FinalTypography>
+          <ThirdHeaderBox>
+            <NavBar />
+            <NavBurger />
+          </ThirdHeaderBox>
+        </FinalToolbar>
       </Container>
-    </AppBar>
+    </FinalHeader>
   );
 };
 

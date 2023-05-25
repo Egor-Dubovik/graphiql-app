@@ -22,6 +22,9 @@ export const MainBox = styled(Box)({
     justifyContent: 'space-around',
     alignItems: 'center',
   },
+  [boxTheme.breakpoints.down(380)]: {
+    height: '1300px',
+  },
 });
 
 export const MiddleBox = styled(Box)({
