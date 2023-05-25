@@ -1,7 +1,7 @@
 import React from 'react';
 import { DevCardList } from '../../components/DevCardList/DevCardList';
 import { Container, Typography } from '@mui/material';
-import { CustomH2, CustomSection, ShadowBox } from './WelcomePage.styles';
+import { CustomSection, ShadowBox } from './WelcomePage.styles';
 import { WelcomeInfo } from '../../components/WelcomeInfo/WelcomeInfo';
 import { WelcomePlayer } from '../../components/WelcomePlayer/WelcomePlayer';
 import { useAppSelector } from '../../app/store/hooks';
@@ -16,19 +16,9 @@ const WelcomePage = () => {
   return (
     <main className="main">
       <ShadowBox sx={{ position: 'relative' }}>
-        <Container
-          maxWidth="xl"
-          sx={{
-            height: 200,
-            textAlign: 'center',
-          }}
-        >
-          <CustomSection>
-            <Typography variant="h3">
-              <CustomH2>Welcome Page</CustomH2>
-            </Typography>
-          </CustomSection>
-        </Container>
+        <CustomSection>
+          <Typography variant="h2">Welcome page</Typography>
+        </CustomSection>
         <Container maxWidth="xl">
           <DevCardList />
         </Container>

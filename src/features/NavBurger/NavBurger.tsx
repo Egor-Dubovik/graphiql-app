@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { BurgerContainer, BurgerMenu, Shadowfield, boxTheme } from './NavBurger.styles';
 import { ThemeProvider } from '@mui/material';
 import { NavBurgerMenu } from '../../components/NavBurgerMenu/NavBurgerMenu';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/store/hooks';
 import { toggleBurger } from './navBurgerSlice';
 
 const sidebar = {
@@ -17,7 +17,7 @@ const sidebar = {
     },
   }),
   closed: {
-    clipPath: 'circle(20px at 218px 28px)',
+    clipPath: 'circle(0px at 218px 28px)',
     transition: {
       delay: 0.3,
       type: 'spring',
@@ -78,8 +78,7 @@ export const NavBurger = () => {
     updateDispatch(toggleBurger(!isOpen));
   };
 
-  const fieldUpdate = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.preventDefault();
+  const fieldUpdate = () => {
     toggleOpen((prevstate) => !prevstate);
     updateDispatch(toggleBurger(!isOpen));
   };
@@ -99,7 +98,7 @@ export const NavBurger = () => {
           onClick={fieldUpdate}
         />
         <NavToggle toggle={updateState} />
-        <NavBurgerMenu />
+        <NavBurgerMenu toggle={fieldUpdate} />
       </BurgerContainer>
     </ThemeProvider>
   );

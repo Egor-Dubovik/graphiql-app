@@ -2,6 +2,10 @@ import React from 'react';
 import { BurgerMenuUl, CustomNavLink, FinalLi, NavContainer } from './NavBurgerMenu.styles';
 import { ROUTES } from '../../router/routes/routes.constant';
 
+interface IToggle {
+  toggle: (event: React.MouseEvent<HTMLElement>) => void;
+}
+
 const variants = {
   open: {
     transition: { staggerChildren: 0.07, delayChildren: 0.2 },
@@ -28,14 +32,18 @@ const phases = {
   },
 };
 
-export const NavBurgerMenu = () => (
+export const NavBurgerMenu: React.FC<IToggle> = ({ toggle }) => (
   <NavContainer>
     <BurgerMenuUl variants={variants}>
       <FinalLi variants={phases} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-        <CustomNavLink to={ROUTES.MAIN}>Main</CustomNavLink>
+        <CustomNavLink to={ROUTES.MAIN} onClick={toggle}>
+          Main
+        </CustomNavLink>
       </FinalLi>
       <FinalLi variants={phases} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-        <CustomNavLink to={ROUTES.WELCOME}>About</CustomNavLink>
+        <CustomNavLink to={ROUTES.WELCOME} onClick={toggle}>
+          About
+        </CustomNavLink>
       </FinalLi>
     </BurgerMenuUl>
   </NavContainer>

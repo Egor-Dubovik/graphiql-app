@@ -7,6 +7,7 @@ export const MotionLi = motion('li');
 export const FinalLi = styled(MotionLi)({
   display: 'flex',
   justifyContent: 'center',
+  fontSize: 20,
 });
 
 export const CustomNavLink = styled(NavLink)({
@@ -29,12 +30,15 @@ export const CustomDiv = styled('div')({
 
 const MotionUl = motion('ul');
 
-export const BurgerMenuUl = styled(MotionUl)({
-  height: '300px',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-around',
-});
+export const BurgerMenuUl = styled(MotionUl)`
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+
+  li:not(:last-child) {
+    margin-bottom: 10px;
+  }
+`;
 
 export const NavContainer = styled('nav')({
   position: 'absolute',

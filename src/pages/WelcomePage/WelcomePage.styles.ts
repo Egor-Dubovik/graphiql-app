@@ -15,16 +15,16 @@ export const CustomSection = styled('section')({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
+  textAlign: 'center',
   width: '100%',
-  height: '100%',
-  [welcomeTheme.breakpoints.down(370)]: {
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+  height: '120px',
+  maxWidth: 'xl',
+  [welcomeTheme.breakpoints.down(900)]: {
+    height: '100px',
   },
-});
-
-export const CustomH2 = styled('h2')({
-  fontSize: '50px',
+  [welcomeTheme.breakpoints.down(392)]: {
+    height: '160px',
+  },
 });
 
 export const ShadowBox = styled(Box)({});

@@ -43,13 +43,17 @@ export const DevCard: React.FC<IDevCard> = ({ devImage, devName, devText, devMor
                 height: '170px',
               },
               [cardMediaTheme.breakpoints.down('md')]: {
-                height: '400px',
+                height: '450px',
               },
               [cardMediaTheme.breakpoints.down(650)]: {
                 height: '300px',
               },
               [cardMediaTheme.breakpoints.down(450)]: {
-                height: '200px',
+                width: '70%',
+              },
+              [cardMediaTheme.breakpoints.down(350)]: {
+                width: '60%',
+                height: '250px',
               },
             }}
             image={devImage}

@@ -31,13 +31,12 @@ const MotionDiv = motion(Box);
 
 export const BurgerMenu = styled(MotionDiv)({
   position: 'absolute',
-  top: -15,
+  top: 0,
   right: -24,
   bottom: 0,
   width: '320px',
-  height: '700px',
+  height: '100vh',
   background: '#1976d2',
-  borderRadius: '10px',
   zIndex: 20,
   [boxTheme.breakpoints.down(600)]: {
     right: -16,
@@ -46,14 +45,13 @@ export const BurgerMenu = styled(MotionDiv)({
 
 export const Shadowfield = styled(MotionDiv)({
   position: 'absolute',
-  top: -15,
+  top: 0,
   right: -24,
   bottom: 0,
   width: '100vw',
-  height: '700px',
+  height: '100vh',
   background: 'black',
   opacity: 0.5,
-  borderRadius: '10px',
   [boxTheme.breakpoints.down(600)]: {
     right: -16,
   },
