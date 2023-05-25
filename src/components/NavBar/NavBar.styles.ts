@@ -41,6 +41,7 @@ export const CustomContainer = styled(Container)({
 export const CustomNavLink = styled(NavLink)({
   color: '#fff',
   textDecoration: 'none',
+  fontFamily: 'sans-serif',
 });
 
 export const CustomList = styled(List)({

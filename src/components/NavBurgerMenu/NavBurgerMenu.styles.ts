@@ -7,7 +7,7 @@ export const MotionLi = motion('li');
 export const FinalLi = styled(MotionLi)({
   display: 'flex',
   justifyContent: 'center',
-  fontSize: 20,
+  fontSize: 28,
 });
 
 export const CustomNavLink = styled(NavLink)({
@@ -18,6 +18,7 @@ export const CustomNavLink = styled(NavLink)({
   color: '#fff',
   textDecoration: 'none',
   textAlign: 'center',
+  fontFamily: 'sans-serif',
 });
 
 export const CustomDiv = styled('div')({
@@ -36,7 +37,7 @@ export const BurgerMenuUl = styled(MotionUl)`
   flex-direction: column;
 
   li:not(:last-child) {
-    margin-bottom: 10px;
+    margin-bottom: 25px;
   }
 `;
 

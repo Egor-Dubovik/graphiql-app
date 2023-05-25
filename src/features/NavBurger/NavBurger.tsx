@@ -74,12 +74,12 @@ export const NavBurger = () => {
 
   const updateState = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    toggleOpen((prevstate) => !prevstate);
+    toggleOpen((prevstate: boolean) => !prevstate);
     updateDispatch(toggleBurger(!isOpen));
   };
 
   const fieldUpdate = () => {
-    toggleOpen((prevstate) => !prevstate);
+    toggleOpen((prevstate: boolean) => !prevstate);
     updateDispatch(toggleBurger(!isOpen));
   };
 
