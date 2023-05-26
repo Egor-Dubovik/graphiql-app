@@ -4,8 +4,8 @@ import CodeMirror from '@uiw/react-codemirror';
 import { EditorBox } from './EditorGraphQL.styles';
 import extensions from './extensions';
 import { buildClientSchema, GraphQLSchema } from 'graphql';
-import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
-import { selectSchemaData, setUserSchema } from '../../../features/Schema/schemaSlice';
+import { useAppSelector } from '../../../app/store/hooks';
+import { selectSchemaData } from '../../../features/Schema/schemaSlice';
 import { isEmptyObject } from '../../../utils/isEmptyObject';
 import { EditorView } from '@codemirror/view';
 
@@ -16,6 +16,7 @@ interface IEditorGraphQL {
   foldGutter: boolean;
   value: string;
   syntaxHighlighting: boolean;
+  onChange: (value: string) => void;
 }
 const EditorGraphQL = ({
   editable,
@@ -24,14 +25,10 @@ const EditorGraphQL = ({
   foldGutter,
   value,
   syntaxHighlighting,
+  onChange,
 }: IEditorGraphQL) => {
   const schemaData = useAppSelector(selectSchemaData);
   const [schema, setSchema] = useState({} as GraphQLSchema);
-  const dispatch = useAppDispatch();
-
-  const onChange = React.useCallback((value: string) => {
-    dispatch(setUserSchema(value));
-  }, []);
 
   useEffect(() => {
     if (!isEmptyObject(schemaData)) {

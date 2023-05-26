@@ -2,22 +2,52 @@ import React, { useEffect } from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { Box, Fab } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
-import { saveResponse, selectUserSchema } from '../../../features/Schema/schemaSlice';
+import {
+  saveResponse,
+  selectHeaders,
+  selectUserSchema,
+  selectVariables,
+} from '../../../features/Schema/schemaSlice';
 import { useGetUserSchemaMutation } from '../../../features/Schema/schemaAPI';
+import { IReqData } from '../../../features/Schema/types';
+
+const getOperationName = (userSchema: string) => {
+  const userSchemaArr = userSchema.split(' ');
+  return userSchemaArr[userSchemaArr.indexOf('query') + 1];
+};
 
 const EditorToolBar = () => {
   const userSchema = useAppSelector(selectUserSchema);
+  const variables = useAppSelector(selectVariables);
+  const headers = useAppSelector(selectHeaders);
   const dispatch = useAppDispatch();
 
   const [getUserSchema, { data, error, isError }] = useGetUserSchemaMutation();
+
+  const reqData: IReqData = {
+    operationName: variables ? null : getOperationName(userSchema),
+    query: userSchema,
+  };
+
+  if (variables) {
+    reqData.variables = variables;
+  }
+
   const sendSchemaRequest = () => {
-    getUserSchema(userSchema);
+    const actualHeaders = headers ? JSON.parse(headers) : {};
+
+    getUserSchema({ data: reqData, headers: actualHeaders });
   };
 
   useEffect(() => {
-    dispatch(saveResponse(data));
-    console.log('!!!!!!!!', data);
+    if (data) {
+      dispatch(saveResponse(data));
+    }
   }, [dispatch, data]);
+
+  useEffect(() => {
+    dispatch(saveResponse(error));
+  }, [dispatch, isError]);
 
   return (
     <Box sx={{ p: 2 }} bgcolor="white">
