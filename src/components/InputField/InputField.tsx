@@ -17,7 +17,7 @@ const InputField: FC<InputFieldProps> = ({ error, helperText, sx, ...props }) =>
           sx={{
             maxWidth: {
               xs: '268px',
-              sm: '500px',
+              sm: '470px',
             },
           }}
           error
