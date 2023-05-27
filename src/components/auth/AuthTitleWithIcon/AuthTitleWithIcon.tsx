@@ -11,22 +11,26 @@ const AuthTitleWithIcon: FC = () => {
   const [title, setTitle] = useState('');
   const { t } = useTranslation();
 
+  const signup = <>{t('title-signup')}</>;
+  const login = <>{t('title-login')}</>;
+  const reset = <>{t('title-reset')}</>;
+
   useEffect(() => {
     switch (pathname) {
       case ROUTES.REGISTRATION:
-        setTitle('Sign up');
+        setTitle(signup.props.children);
         break;
       case ROUTES.LOGIN:
-        setTitle('Login');
+        setTitle(login.props.children);
         break;
       case ROUTES.RESET:
-        setTitle('Reset');
+        setTitle(reset.props.children);
         break;
       default:
         document.title = 'Login';
         break;
     }
-  }, [pathname]);
+  }, [login.props.children, pathname, reset.props.children, signup.props.children]);
 
   return (
     <Box sx={sxAuthTitleWithIcon['auth__title-block']}>
