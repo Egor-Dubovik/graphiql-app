@@ -16,12 +16,22 @@ i18n
         translation: {
           'nav-main': 'Main',
           'nav-about': 'About',
+          greetings: 'Welcome!',
+          creation: 'Created by HolyCoders Team',
+          'title-signup': 'Sign up',
+          'title-login': 'Login',
+          'title-reset': 'Reset',
         },
       },
       ru: {
         translation: {
           'nav-main': 'Главная',
           'nav-about': 'О нас',
+          greetings: 'Привет!',
+          creation: 'Создано командой HolyCoders',
+          'title-signup': 'Регистрация',
+          'title-login': 'Вход',
+          'title-reset': 'Сброс',
         },
       },
     },

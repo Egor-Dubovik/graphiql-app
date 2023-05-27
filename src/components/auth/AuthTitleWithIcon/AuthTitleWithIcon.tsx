@@ -3,11 +3,13 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Box, Typography } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import { ROUTES } from '../../../router/routes/routes.constant';
+import { useTranslation } from 'react-i18next';
 import sxAuthTitleWithIcon from './AuthTitleWithIcon.style';
 
 const AuthTitleWithIcon: FC = () => {
   const { pathname } = useLocation();
   const [title, setTitle] = useState('');
+  const { t } = useTranslation();
 
   useEffect(() => {
     switch (pathname) {

@@ -10,14 +10,8 @@ export const LangSwitcher = () => {
 
   const onChangeLang = (e: React.ChangeEvent<HTMLInputElement>) => {
     let lang_code: string;
-    if (e.target.checked) {
-      lang_code = 'ru';
-    } else {
-      lang_code = 'en';
-    }
-
+    e.target.checked ? (lang_code = 'ru') : (lang_code = 'en');
     i18n.changeLanguage(lang_code);
-    console.log(e.target.checked);
   };
 
   return (

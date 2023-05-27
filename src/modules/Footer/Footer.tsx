@@ -1,5 +1,6 @@
 import { Container, ThemeProvider, Tooltip, Typography } from '@mui/material';
 import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   CenterFooterBox,
   GhImage,
@@ -10,6 +11,7 @@ import {
 } from './Footer.styles';
 
 const Footer: FC = () => {
+  const { t } = useTranslation();
   return (
     <footer className="footer">
       <ThemeProvider theme={footerTheme}>
@@ -58,7 +60,7 @@ const Footer: FC = () => {
                 },
               }}
             >
-              Created by HolyCoders Team <br /> 2023
+              {t('creation')} <br /> 2023
             </Typography>
           </CenterFooterBox>
           <RightFooterBox>

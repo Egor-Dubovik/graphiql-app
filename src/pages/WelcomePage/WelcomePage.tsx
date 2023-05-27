@@ -5,6 +5,7 @@ import { CustomSection, ShadowBox } from './WelcomePage.styles';
 import { WelcomeInfo } from '../../components/WelcomeInfo/WelcomeInfo';
 import { WelcomePlayer } from '../../components/WelcomePlayer/WelcomePlayer';
 import { useAppSelector } from '../../app/store/hooks';
+import { useTranslation } from 'react-i18next';
 
 const WelcomePage = () => {
   const navBurgerOpen = useAppSelector((state) => state.burger.burger);
@@ -13,11 +14,13 @@ const WelcomePage = () => {
     ? (document.body.style.overflowY = 'hidden')
     : (document.body.style.overflowY = 'scroll');
 
+  const { t } = useTranslation();
+
   return (
     <main className="main">
       <ShadowBox sx={{ position: 'relative' }}>
         <CustomSection>
-          <Typography variant="h2">Welcome page</Typography>
+          <Typography variant="h2">{t('greetings')}</Typography>
         </CustomSection>
         <Container maxWidth="xl">
           <DevCardList />

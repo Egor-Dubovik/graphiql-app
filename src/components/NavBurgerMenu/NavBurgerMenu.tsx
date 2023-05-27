@@ -1,6 +1,7 @@
 import React from 'react';
 import { BurgerMenuUl, CustomNavLink, FinalLi, NavContainer } from './NavBurgerMenu.styles';
 import { ROUTES } from '../../router/routes/routes.constant';
+import { useTranslation } from 'react-i18next';
 
 interface IToggle {
   toggle: (event: React.MouseEvent<HTMLElement>) => void;
@@ -32,19 +33,22 @@ const phases = {
   },
 };
 
-export const NavBurgerMenu: React.FC<IToggle> = ({ toggle }) => (
-  <NavContainer>
-    <BurgerMenuUl variants={variants}>
-      <FinalLi variants={phases} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-        <CustomNavLink to={ROUTES.MAIN} onClick={toggle}>
-          Main
-        </CustomNavLink>
-      </FinalLi>
-      <FinalLi variants={phases} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-        <CustomNavLink to={ROUTES.WELCOME} onClick={toggle}>
-          About
-        </CustomNavLink>
-      </FinalLi>
-    </BurgerMenuUl>
-  </NavContainer>
-);
+export const NavBurgerMenu: React.FC<IToggle> = ({ toggle }) => {
+  const { t } = useTranslation();
+  return (
+    <NavContainer>
+      <BurgerMenuUl variants={variants}>
+        <FinalLi variants={phases} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+          <CustomNavLink to={ROUTES.MAIN} onClick={toggle}>
+            {t('nav-main')}
+          </CustomNavLink>
+        </FinalLi>
+        <FinalLi variants={phases} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+          <CustomNavLink to={ROUTES.WELCOME} onClick={toggle}>
+            {t('nav-about')}
+          </CustomNavLink>
+        </FinalLi>
+      </BurgerMenuUl>
+    </NavContainer>
+  );
+};
