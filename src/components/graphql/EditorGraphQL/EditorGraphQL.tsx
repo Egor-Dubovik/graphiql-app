@@ -7,6 +7,7 @@ import { buildClientSchema, GraphQLSchema } from 'graphql';
 import { useAppSelector } from '../../../app/store/hooks';
 import { selectSchemaData } from '../../../features/Schema/schemaSlice';
 import { isEmptyObject } from '../../../utils/isEmptyObject';
+import { EditorView } from '@codemirror/view';
 
 interface IEditorGraphQL {
   editable: boolean;
@@ -15,6 +16,7 @@ interface IEditorGraphQL {
   foldGutter: boolean;
   value: string;
   syntaxHighlighting: boolean;
+  onChange: (value: string) => void;
 }
 const EditorGraphQL = ({
   editable,
@@ -23,13 +25,10 @@ const EditorGraphQL = ({
   foldGutter,
   value,
   syntaxHighlighting,
+  onChange,
 }: IEditorGraphQL) => {
   const schemaData = useAppSelector(selectSchemaData);
   const [schema, setSchema] = useState({} as GraphQLSchema);
-
-  const onChange = React.useCallback((value: string) => {
-    console.log('value:', value);
-  }, []);
 
   useEffect(() => {
     if (!isEmptyObject(schemaData)) {
@@ -53,7 +52,7 @@ const EditorGraphQL = ({
             foldGutter,
             syntaxHighlighting,
           }}
-          extensions={extensions(schema)}
+          extensions={[extensions(schema), EditorView.lineWrapping]}
           onChange={onChange}
         />
       )}

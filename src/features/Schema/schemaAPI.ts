@@ -1,10 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { getIntrospectionQuery, IntrospectionQuery } from 'graphql';
 import { IError, ITypeError } from '../../common/interfaces/rtkQueyError';
+import { BASE_GRAPHQL_URL } from '../../common/constant/api';
+import { IReqData } from '../Schema/types';
 
 export interface IResponseData {
   data: IntrospectionQuery;
 }
+
+type Test = Record<string, string>;
 
 const introspectionQuery = getIntrospectionQuery();
 export const schemaApi = createApi({
@@ -37,7 +41,21 @@ export const schemaApi = createApi({
         return 'Unknown error occurred';
       },
     }),
+    getUserSchema: builder.mutation<IntrospectionQuery, { data: IReqData; headers: Test }>({
+      query: ({ data, headers }) => ({
+        url: BASE_GRAPHQL_URL,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...headers },
+        body: JSON.stringify(data),
+      }),
+      transformResponse: (response: IResponseData): IntrospectionQuery => response.data,
+      transformErrorResponse: (error) => {
+        const err = error as IError | ITypeError;
+
+        return err;
+      },
+    }),
   }),
 });
 
-export const { useGetSchemaMutation } = schemaApi;
+export const { useGetSchemaMutation, useGetUserSchemaMutation } = schemaApi;

@@ -84,3 +84,9 @@ export interface IType {
   kind: KindType;
   ofType: IOfType;
 }
+
+export interface IReqData {
+  operationName: string | null;
+  query: string;
+  variables?: string;
+}

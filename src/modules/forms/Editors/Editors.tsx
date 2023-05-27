@@ -10,7 +10,7 @@ const Editors = () => {
   return (
     <CustomBox>
       <Box
-        width="55%"
+        width="45%"
         borderRadius="10px"
         bgcolor="#fff"
         sx={{ display: 'flex', flexDirection: 'column', p: 2, position: 'relative' }}

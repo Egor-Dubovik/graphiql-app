@@ -8,9 +8,12 @@ import { IData, ISchemaStackObject } from './types';
 export interface ISchemaSlice {
   data: IntrospectionQuery;
   stack: ISchemaStackObject;
-  currentOject?: any;
   isOpen: boolean;
   isError: boolean;
+  userSchema: string;
+  response: null | string;
+  variables: null | string;
+  headers: null | string;
 }
 
 const initialState: ISchemaSlice = {
@@ -21,6 +24,10 @@ const initialState: ISchemaSlice = {
   },
   isOpen: false,
   isError: false,
+  userSchema: '',
+  response: null,
+  variables: null,
+  headers: null,
 };
 
 export const schemaSlice = createSlice({
@@ -57,6 +64,18 @@ export const schemaSlice = createSlice({
     setIsOpen: (state, action: PayloadAction<boolean>) => {
       state.isOpen = action.payload;
     },
+    setUserSchema: (state, action: PayloadAction<string>) => {
+      state.userSchema = action.payload;
+    },
+    saveResponse: (state, action: PayloadAction<string>) => {
+      state.response = action.payload;
+    },
+    saveVariables: (state, action: PayloadAction<string>) => {
+      state.variables = action.payload;
+    },
+    saveHeaders: (state, action: PayloadAction<string>) => {
+      state.headers = action.payload;
+    },
   },
 });
 
@@ -70,10 +89,18 @@ export const {
   popObjFromStack,
   setStackDataArray,
   setIsOpen,
+  setUserSchema,
+  saveResponse,
+  saveVariables,
+  saveHeaders,
 } = schemaSlice.actions;
 
 export const selectSchemaError = (state: RootState) => state.schema.isError;
 export const selectSchemaData = (state: RootState) => state.schema.data;
 export const selectSchemaStack = (state: RootState) => state.schema.stack;
 export const selectSchemaIsOpen = (state: RootState) => state.schema.isOpen;
+export const selectUserSchema = (state: RootState) => state.schema.userSchema;
+export const selectResponse = (state: RootState) => state.schema.response;
+export const selectVariables = (state: RootState) => state.schema.variables;
+export const selectHeaders = (state: RootState) => state.schema.headers;
 export default schemaSlice.reducer;
