@@ -10,7 +10,12 @@ export const validateEmail = (email: string): boolean => {
 };
 
 export const validatePassword = (password: string): boolean => {
-  return password.length >= 6;
+  const hasMinimumLength = password.length >= 8;
+  const hasLetter = /[a-zA-Z]/.test(password);
+  const hasDigit = /\d/.test(password);
+  const hasSpecialCharacter = /[!@#$%^&*]/.test(password);
+
+  return hasMinimumLength && hasLetter && hasDigit && hasSpecialCharacter;
 };
 
 export const checkFields = (
@@ -24,7 +29,8 @@ export const checkFields = (
     errors.email = 'Incorrect email';
   }
   if (password && !validatePassword(password)) {
-    errors.password = 'Password must contain at least 6 characters';
+    errors.password =
+      'Password must contain minimum 8 symbols, at least one letter, one digit, one special characte';
   }
   if (fullName && !fullName.trim().includes(' ')) {
     errors.fullName = 'Please enter your full name through space (John Doe)';

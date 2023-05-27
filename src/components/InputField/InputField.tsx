@@ -12,7 +12,19 @@ const InputField: FC<InputFieldProps> = ({ error, helperText, sx, ...props }) =>
   return (
     <Box sx={sx}>
       <TextField {...props} error={error} fullWidth />
-      {helperText && <FormHelperText error>{helperText}</FormHelperText>}
+      {helperText && (
+        <FormHelperText
+          sx={{
+            maxWidth: {
+              xs: '268px',
+              sm: '500px',
+            },
+          }}
+          error
+        >
+          {helperText}
+        </FormHelperText>
+      )}
     </Box>
   );
 };
