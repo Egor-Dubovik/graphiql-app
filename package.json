@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --open",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
+    "build": "vite build",
+    "preview": "vite preview --open",
     "clean": "rd /s /q dist",
     "fix": "eslint . --fix",
     "prettier": "prettier src/**/*.ts --write",
