@@ -19,7 +19,6 @@ const LoginForm: FC = () => {
 
   useEffect(() => {
     if (user) navigate(ROUTES.MAIN);
-    console.log(user);
   }, [user]);
 
   useEffect(() => {

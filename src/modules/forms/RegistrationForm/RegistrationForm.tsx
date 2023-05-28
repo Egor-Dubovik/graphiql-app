@@ -31,7 +31,6 @@ const RegistrationForm = () => {
 
   useEffect(() => {
     if (user) navigate(ROUTES.MAIN);
-    console.log(user);
   }, [user, navigate]);
 
   return (
