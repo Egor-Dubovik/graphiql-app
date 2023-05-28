@@ -1,0 +1,19 @@
+@import '../styles/nullstyle.scss';
+
+#root {
+  min-height: 100vh;
+}
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+main {
+  position: relative;
+  flex: 1 1 auto;
+  margin-top: 64px;
+}

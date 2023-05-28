@@ -1,0 +1,71 @@
+import React, { FC } from 'react';
+import { Box, IconButton, Menu, MenuItem, MenuList } from '@mui/material';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { auth } from '../../firebase/config';
+import { ROUTES } from '../../router/routes/routes.constant';
+import { logout } from '../../firebase/logIn';
+import { useTranslation } from 'react-i18next';
+
+const UserMenu: FC = () => {
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  const handleLogout = async () => {
+    handleCloseUserMenu();
+    const serverErrMessage = await logout();
+    navigate(ROUTES.LOGIN);
+  };
+
+  return (
+    <Box sx={{ flexGrow: 0 }}>
+      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, color: '#fff', zIndex: 100 }}>
+        <AccountCircleIcon />
+      </IconButton>
+      <Menu
+        sx={{ mt: '45px' }}
+        id="menu-appbar"
+        anchorEl={anchorElUser}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        keepMounted
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        open={Boolean(anchorElUser)}
+        onClose={handleCloseUserMenu}
+      >
+        {user ? (
+          <MenuList>
+            <MenuItem onClick={handleLogout}>{t('exit')}</MenuItem>
+          </MenuList>
+        ) : (
+          <MenuList>
+            <MenuItem onClick={handleCloseUserMenu}>
+              <NavLink to={ROUTES.LOGIN}>{t('title-signin')}</NavLink>
+            </MenuItem>
+            <MenuItem onClick={handleCloseUserMenu}>
+              <NavLink to={ROUTES.REGISTRATION}>{t('title-signup')}</NavLink>
+            </MenuItem>
+          </MenuList>
+        )}
+      </Menu>
+    </Box>
+  );
+};
+
+export default UserMenu;
