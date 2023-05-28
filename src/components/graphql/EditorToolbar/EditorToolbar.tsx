@@ -46,7 +46,9 @@ const EditorToolBar = () => {
   }, [dispatch, data]);
 
   useEffect(() => {
-    dispatch(saveResponse(error));
+    if (error) {
+      dispatch(saveResponse(error));
+    }
   }, [dispatch, isError]);
 
   return (
