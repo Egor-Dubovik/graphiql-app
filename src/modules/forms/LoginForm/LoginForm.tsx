@@ -8,6 +8,7 @@ import { logInWithEmailAndPassword } from '../../../firebase/logIn';
 import { auth } from '../../../firebase/config';
 import { checkFields, IAuthFormErrors } from '../../../helpers/validation';
 import InputField from '../../../components/InputField/InputField';
+import { useTranslation } from 'react-i18next';
 
 const LoginForm: FC = () => {
   const [email, setEmail] = useState('');
@@ -16,6 +17,7 @@ const LoginForm: FC = () => {
   const [serverError, setServerError] = useState<string | undefined>();
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (user) navigate(ROUTES.MAIN);
@@ -47,7 +49,7 @@ const LoginForm: FC = () => {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           sx={{ mb: 2 }}
-          label="Email address"
+          label={t('form-email')}
           autoComplete="email"
           required
           autoFocus
@@ -59,7 +61,7 @@ const LoginForm: FC = () => {
           onChange={(event) => setPassword(event.target.value)}
           sx={{ mb: 2 }}
           fullWidth
-          label="Password"
+          label={t('form-password')}
           type="password"
           required
           helperText={errors.password}
@@ -67,9 +69,10 @@ const LoginForm: FC = () => {
         <AuthButtons setError={setServerError} />
         <Box>
           <Typography>
-            Don&apos;t have an account? <NavLink to={ROUTES.REGISTRATION}>Register</NavLink> now.
+            {t('not-account')} <NavLink to={ROUTES.REGISTRATION}>{t('register')}</NavLink>{' '}
+            {t('now')}
           </Typography>
-          <NavLink to={ROUTES.RESET}>Forgot password</NavLink>
+          <NavLink to={ROUTES.RESET}>{t('forgot')}</NavLink>
         </Box>
       </Box>
     </>

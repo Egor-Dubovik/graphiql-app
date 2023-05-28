@@ -22,8 +22,11 @@ export const MainBox = styled(Box)({
     justifyContent: 'space-around',
     alignItems: 'center',
   },
-  [boxTheme.breakpoints.down(380)]: {
-    height: '1300px',
+  [boxTheme.breakpoints.down(400)]: {
+    height: '1400px',
+  },
+  [boxTheme.breakpoints.down(350)]: {
+    height: '1500px',
   },
 });
 

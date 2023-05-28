@@ -17,12 +17,8 @@ const Logo = (): JSX.Element => {
       <Typography
         variant="h6"
         sx={{
-          width: '170px',
+          width: '120px',
           textAlign: 'center',
-          [typoTheme.breakpoints.down(600)]: {
-            textAlign: 'right',
-            paddingRight: '20px',
-          },
         }}
       >
         GraphiQl

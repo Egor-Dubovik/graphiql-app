@@ -5,12 +5,14 @@ import { useGetSchemaMutation } from '../../../features/Schema/schemaAPI';
 import { setData, setIsError } from '../../../features/Schema/schemaSlice';
 import InputField from '../../InputField/InputField';
 import { isObject } from '../../../utils/isObject';
+import { useTranslation } from 'react-i18next';
 
 const GraphqlUrlInput: FC = () => {
   const [url, setUrl] = useState(BASE_GRAPHQL_URL);
   const [debouncedurl, setDebouncedUrl] = useState(BASE_GRAPHQL_URL);
   const [getSchema, { data, error, isError }] = useGetSchemaMutation();
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -44,7 +46,7 @@ const GraphqlUrlInput: FC = () => {
       fullWidth
       size="small"
       required
-      label="schema url"
+      label={t('schema-url')}
       autoFocus
       helperText={isObject(error) ? '' : (error as string)}
     />

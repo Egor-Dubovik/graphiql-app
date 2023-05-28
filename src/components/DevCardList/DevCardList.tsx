@@ -1,9 +1,20 @@
 import React from 'react';
 import { DevCard } from '../DevCard/DevCard';
-import { developers } from '../../common/data/developers';
+import { developersEN, developersRU } from '../../common/data/developers';
 import { divTheme, CustomDiv } from './DevCardList.styles';
+import { useTranslation } from 'react-i18next';
 
 export const DevCardList = () => {
+  const { t } = useTranslation();
+
+  let developers;
+
+  if ((<>{t('greetings')}</>).props.children === 'Welcome!') {
+    developers = developersEN;
+  } else {
+    developers = developersRU;
+  }
+
   return (
     <CustomDiv
       theme={divTheme}

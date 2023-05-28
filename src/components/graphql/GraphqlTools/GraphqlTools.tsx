@@ -4,6 +4,7 @@ import GraphqlUrlInput from '../GraphqlUrlInput/GraphqlUrlInput';
 import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
 import { sxButton, sxContainer, sxSection } from './GraphqlTools.style';
 import { isEmptyObject } from '../../../utils/isEmptyObject';
+import { useTranslation } from 'react-i18next';
 import {
   selectSchemaData,
   selectSchemaError,
@@ -15,6 +16,7 @@ const GraphqlTools: FC = () => {
   const schemaData = useAppSelector(selectSchemaData);
   const isSchemaError = useAppSelector(selectSchemaError);
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const handleSchemaOpen = async () => {
     dispatch(setIsOpen(true));
@@ -40,7 +42,7 @@ const GraphqlTools: FC = () => {
           sx={sxButton}
           variant="contained"
         >
-          schema
+          {t('schema')}
         </Button>
       </Container>
     </Box>

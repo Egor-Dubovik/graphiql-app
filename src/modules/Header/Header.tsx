@@ -5,6 +5,8 @@ import NavBar from '../../components/NavBar/NavBar';
 import { useTransform, useScroll, useAnimation } from 'framer-motion';
 import { FinalHeader, FinalToolbar, FinalTypography, ThirdHeaderBox } from './Header.styles';
 import { NavBurger } from '../../features/NavBurger/NavBurger';
+import { useTranslation } from 'react-i18next';
+import { LangSwitcher } from '../../components/LangSwitcher/LangSwitcher';
 
 const Header = (): JSX.Element => {
   const { scrollY } = useScroll();
@@ -18,6 +20,8 @@ const Header = (): JSX.Element => {
   const toolOpacity: any = useTransform(scrollY, scrollYRange, [0, 1]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const toolColor: any = useTransform(scrollY, scrollYRange, ['#1976d2', '#33bfff']);
+
+  const { t } = useTranslation();
 
   return (
     <FinalHeader
@@ -35,8 +39,9 @@ const Header = (): JSX.Element => {
           animate={controls}
         >
           <Logo />
-          <FinalTypography style={{ opacity: toolOpacity }}>Welcome</FinalTypography>
+          <FinalTypography style={{ opacity: toolOpacity }}>{t('greetings')}</FinalTypography>
           <ThirdHeaderBox>
+            <LangSwitcher />
             <NavBar />
             <NavBurger />
           </ThirdHeaderBox>

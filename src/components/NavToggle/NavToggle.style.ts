@@ -16,7 +16,6 @@ export const CustomButton = styled('button')({
   border: 'none',
   cursor: 'pointer',
   top: '15px',
-  right: '20px',
   width: '32px',
   height: '25px',
   borderRadius: '50%',

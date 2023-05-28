@@ -8,12 +8,14 @@ import { auth } from '../../../firebase/config';
 import { checkFields, IAuthFormErrors } from '../../../helpers/validation';
 import { LoadingButton } from '@mui/lab';
 import InputField from '../../../components/InputField/InputField';
+import { useTranslation } from 'react-i18next';
 
 const ResetForm: FC = () => {
   const [email, setEmail] = useState('');
   const [errors, setErrors] = useState({} as IAuthFormErrors);
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleReset = (event: FormEvent) => {
     event.preventDefault();
@@ -35,7 +37,7 @@ const ResetForm: FC = () => {
         value={email}
         onChange={(event) => setEmail(event.target.value)}
         sx={{ mb: 2 }}
-        label="Email address"
+        label={t('form-email')}
         autoComplete="email"
         required
         autoFocus
@@ -48,10 +50,10 @@ const ResetForm: FC = () => {
         fullWidth
         sx={{ mb: '15px' }}
       >
-        Reset
+        {t('title-reset')}
       </LoadingButton>
       <Typography>
-        Already have an account? <NavLink to={ROUTES.LOGIN}>Login</NavLink> now.
+        {t('account')} <NavLink to={ROUTES.LOGIN}>{t('entry')}</NavLink> {t('now')}
       </Typography>
     </Box>
   );

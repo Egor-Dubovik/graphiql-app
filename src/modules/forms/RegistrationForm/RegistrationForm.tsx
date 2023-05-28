@@ -8,6 +8,7 @@ import { auth } from '../../../firebase/config';
 import AuthButtons from '../../../components/auth/AuthButtons/AuthButtons';
 import { checkFields, IAuthFormErrors } from '../../../helpers/validation';
 import InputField from '../../../components/InputField/InputField';
+import { useTranslation } from 'react-i18next';
 
 const RegistrationForm = () => {
   const [fullName, setFullName] = useState('');
@@ -17,6 +18,7 @@ const RegistrationForm = () => {
   const [serverError, setServerError] = useState<string | undefined>();
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleRegistration = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
@@ -47,7 +49,7 @@ const RegistrationForm = () => {
         sx={{ mb: 2 }}
         fullWidth
         required
-        label="Full name"
+        label={t('form-name')}
         autoFocus
         helperText={errors.fullName}
       />
@@ -56,7 +58,7 @@ const RegistrationForm = () => {
         value={email}
         onChange={(event) => setEmail(event.target.value)}
         sx={{ mb: 2 }}
-        label="Email address"
+        label={t('form-email')}
         autoComplete="email"
         required
         helperText={errors.email}
@@ -67,14 +69,14 @@ const RegistrationForm = () => {
         onChange={(event) => setPassword(event.target.value)}
         sx={{ mb: 2 }}
         fullWidth
-        label="Password"
+        label={t('form-password')}
         type="password"
         required
         helperText={errors.password}
       />
       <AuthButtons setError={setServerError} />
       <Typography>
-        Already have an account? <NavLink to={ROUTES.LOGIN}>Login</NavLink> now.
+        {t('account')} <NavLink to={ROUTES.LOGIN}>{t('entry')}</NavLink> {t('now')}
       </Typography>
     </Box>
   );
