@@ -7,7 +7,6 @@ import { graphql } from 'cm6-graphql';
 import { GraphQLSchema } from 'graphql';
 
 export const extensions = (schema: GraphQLSchema) => {
-  console.log(schema);
   return [
     bracketMatching(),
     closeBrackets(),

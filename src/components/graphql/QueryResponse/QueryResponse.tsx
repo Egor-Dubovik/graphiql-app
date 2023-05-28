@@ -16,7 +16,7 @@ const QueryResponse = () => {
 
   return (
     <EditorGraphQL
-      value={response || ''}
+      value={userSchema ? response : ''}
       height={'auto'}
       lineNumbers={false}
       editable={false}

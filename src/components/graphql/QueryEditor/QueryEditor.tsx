@@ -2,11 +2,12 @@ import React from 'react';
 import { Box } from '@mui/material';
 import './QueryEditorStyles.css';
 import EditorGraphQL from '../EditorGraphQL/EditorGraphQL';
-import { setUserSchema } from '../../../features/Schema/schemaSlice';
-import { useAppDispatch } from '../../../app/store/hooks';
+import { selectUserSchema, setUserSchema } from '../../../features/Schema/schemaSlice';
+import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
 
 const QueryEditor = () => {
   const dispatch = useAppDispatch();
+  const userSchema = useAppSelector(selectUserSchema);
 
   const onChange = (value: string) => {
     dispatch(setUserSchema(value));
@@ -16,7 +17,7 @@ const QueryEditor = () => {
     <Box textAlign="left" letterSpacing={2} sx={{ width: 1 }}>
       <EditorGraphQL
         height={'auto'}
-        value={''}
+        value={userSchema || ''}
         lineNumbers={true}
         editable={true}
         foldGutter={true}

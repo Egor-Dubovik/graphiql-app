@@ -5,6 +5,7 @@ import EditorToolBar from '../../../components/graphql/EditorToolbar/EditorToolb
 import QueryEditor from '../../../components/graphql/QueryEditor/QueryEditor';
 import EditorTools from '../EditTools/EditTools';
 import { CustomBox } from './Editors.styles';
+import './EditorsStyles.css';
 
 const Editors = () => {
   return (

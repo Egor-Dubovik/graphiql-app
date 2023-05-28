@@ -9,8 +9,10 @@ export const CustomBox = styled('div')`
   height: 100%;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
   margin: 0 auto;
   padding: 10px;
+  flex: 3 1 0%;
   gap: 10px;
 `;

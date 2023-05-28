@@ -21,7 +21,7 @@ const EditorTools = () => {
   };
 
   return (
-    <Container sx={{ position: 'absolute', bottom: '0', p: '0' }}>
+    <Container sx={{ position: 'absolute', bottom: '0', p: '0', width: '90%' }}>
       <Accordion sx={{ boxShadow: 'none', width: '100%' }}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={'GrayText'}>Show more</Typography>

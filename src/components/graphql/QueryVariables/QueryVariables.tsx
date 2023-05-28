@@ -1,9 +1,11 @@
 import React from 'react';
 import EditorGraphQL from '../EditorGraphQL/EditorGraphQL';
-import { saveVariables } from '../../../features/Schema/schemaSlice';
-import { useAppDispatch } from '../../../app/store/hooks';
+import { saveVariables, selectVariables } from '../../../features/Schema/schemaSlice';
+import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
 
 const QueryVariables = () => {
+  const variables = useAppSelector(selectVariables);
+
   const dispatch = useAppDispatch();
 
   const onChange = (value: string) => {
@@ -12,7 +14,7 @@ const QueryVariables = () => {
 
   return (
     <EditorGraphQL
-      value={''}
+      value={variables || ''}
       height={'120px'}
       lineNumbers={true}
       editable={true}
