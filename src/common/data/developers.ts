@@ -13,7 +13,7 @@ export const developersEN = [
     devImage: 'https://avatars.githubusercontent.com/u/60963701?v=4',
     devText: 'Beautiful frontend developer',
     devMore:
-      'Created main page with GraphQL editor, based on code mirror library, including query and response sections and variables / headers part.',
+      'Created main page with GraphQL editor, based on code mirror library, including query and response sections and variables / headers part. Used Redux for editor`s state storage and handled mistakes, received from the API.',
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ export const developersRU = [
     devImage: 'https://avatars.githubusercontent.com/u/60963701?v=4',
     devText: 'Прекрасный фронтенд разработчик',
     devMore:
-      'Создала главную страницу с редактором GraphQL с помощью библиотеки code mirror, включая разделы запросов и ответов, а также раздел variables / headers.',
+      'Создала главную страницу с редактором GraphQL с помощью библиотеки code mirror, включая разделы запросов и ответов, а также раздел variables / headers. Использовала Redux для сохранения состояний редактора и обработала ошибки, полученные от API.',
   },
   {
     id: 3,
