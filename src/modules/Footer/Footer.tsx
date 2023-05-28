@@ -26,7 +26,7 @@ const Footer: FC = () => {
           }}
         >
           <LeftFooterBox>
-            <Tooltip title="E.Dubovik github">
+            <Tooltip title={t('egor-tooltip')}>
               <a href="https://github.com/Egor-Dubovik">
                 <GhImage
                   src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
@@ -34,7 +34,7 @@ const Footer: FC = () => {
                 ></GhImage>
               </a>
             </Tooltip>
-            <Tooltip title="O.Grishanova github">
+            <Tooltip title={t('olga-tooltip')}>
               <a href="https://github.com/grishanova-oa">
                 <GhImage
                   src="https://www.svgrepo.com/show/365441/github-logo-thin.svg"
@@ -42,7 +42,7 @@ const Footer: FC = () => {
                 ></GhImage>
               </a>
             </Tooltip>
-            <Tooltip title="A.Prygunov github">
+            <Tooltip title={t('artem-tooltip')}>
               <a href="https://github.com/harry177">
                 <GhImage
                   src="https://cdn.cdnlogo.com/logos/g/55/github.svg"
@@ -64,7 +64,7 @@ const Footer: FC = () => {
             </Typography>
           </CenterFooterBox>
           <RightFooterBox>
-            <Tooltip title="RSS web site">
+            <Tooltip title={t('school-tooltip')}>
               <InnerRSSBox>
                 <a href="https://rs.school/">
                   <img src="https://rs.school/images/rs_school.svg" alt="rss logo"></img>

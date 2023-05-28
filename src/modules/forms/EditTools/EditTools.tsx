@@ -12,9 +12,11 @@ import { TabContext, TabList, TabPanel } from '@mui/lab';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import QueryVariables from '../../../components/graphql/QueryVariables/QueryVariables';
 import QueryHeaders from '../../../components/graphql/QueryHeaders/QueryHeaders';
+import { useTranslation } from 'react-i18next';
 
 const EditorTools = () => {
   const [value, setValue] = React.useState('Variables');
+  const { t } = useTranslation();
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -24,7 +26,7 @@ const EditorTools = () => {
     <Container sx={{ position: 'absolute', bottom: '0', p: '0' }}>
       <Accordion sx={{ boxShadow: 'none', width: '100%' }}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography color={'GrayText'}>Show more</Typography>
+          <Typography color={'GrayText'}>{t('show')}</Typography>
         </AccordionSummary>
         <AccordionDetails sx={{ p: '0' }}>
           <Box sx={{ width: '100%' }}>

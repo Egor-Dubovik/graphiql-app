@@ -6,11 +6,13 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { auth } from '../../firebase/config';
 import { ROUTES } from '../../router/routes/routes.constant';
 import { logout } from '../../firebase/logIn';
+import { useTranslation } from 'react-i18next';
 
 const UserMenu: FC = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -49,15 +51,15 @@ const UserMenu: FC = () => {
       >
         {user ? (
           <MenuList>
-            <MenuItem onClick={handleLogout}>Log out</MenuItem>
+            <MenuItem onClick={handleLogout}>{t('exit')}</MenuItem>
           </MenuList>
         ) : (
           <MenuList>
             <MenuItem onClick={handleCloseUserMenu}>
-              <NavLink to={ROUTES.LOGIN}>login</NavLink>
+              <NavLink to={ROUTES.LOGIN}>{t('title-signin')}</NavLink>
             </MenuItem>
             <MenuItem onClick={handleCloseUserMenu}>
-              <NavLink to={ROUTES.REGISTRATION}>sigup</NavLink>
+              <NavLink to={ROUTES.REGISTRATION}>{t('title-signup')}</NavLink>
             </MenuItem>
           </MenuList>
         )}

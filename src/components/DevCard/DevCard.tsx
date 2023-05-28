@@ -4,9 +4,11 @@ import { IDevCard } from '../../common/interfaces/iDevCard';
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { cardTheme, cardMediaTheme } from './DevCard.styles';
+import { useTranslation } from 'react-i18next';
 
 export const DevCard: React.FC<IDevCard> = ({ devImage, devName, devText, devMore }) => {
   const [anchor, setAnchor] = React.useState<HTMLButtonElement | null>(null);
+  const { t } = useTranslation();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchor(event.currentTarget);
@@ -69,9 +71,8 @@ export const DevCard: React.FC<IDevCard> = ({ devImage, devName, devText, devMor
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Share</Button>
           <Button size="small" aria-describedby={id} onClick={handleClick}>
-            Read more
+            {t('read')}
           </Button>
           <DevCardPopover
             id={id}
