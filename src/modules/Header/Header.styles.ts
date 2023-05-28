@@ -23,27 +23,24 @@ export const FinalToolbar = styled(MotionToolBar)({
 
 const MotionTypography = motion(Typography);
 export const FinalTypography = styled(MotionTypography)({
-  width: '130px',
+  width: '220px',
   textAlign: 'right',
-  [headerTheme.breakpoints.down(700)]: {
-    textAlign: 'center',
+  [headerTheme.breakpoints.down(800)]: {
+    width: '160px',
   },
-  [headerTheme.breakpoints.down(700)]: {
-    width: '80px',
-  },
-  [headerTheme.breakpoints.down(470)]: {
+  [headerTheme.breakpoints.down(550)]: {
     display: 'none',
   },
 });
 
 export const ThirdHeaderBox = styled(Box)({
   display: 'flex',
+  width: '290px',
   [headerTheme.breakpoints.down(700)]: {
-    width: '190px',
+    width: '210px',
     justifyContent: 'space-around',
   },
   [headerTheme.breakpoints.down(600)]: {
-    width: '210px',
-    justifyContent: 'center',
+    marginRight: '-25px',
   },
 });

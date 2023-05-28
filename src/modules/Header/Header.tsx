@@ -5,8 +5,8 @@ import NavBar from '../../components/NavBar/NavBar';
 import { useTransform, useScroll, useAnimation } from 'framer-motion';
 import { FinalHeader, FinalToolbar, FinalTypography, ThirdHeaderBox } from './Header.styles';
 import { NavBurger } from '../../features/NavBurger/NavBurger';
-import { LangSwitcher } from '../../components/LangSwitcher/LangSwitcher';
 import { useTranslation } from 'react-i18next';
+import { LangSwitcher } from '../../components/LangSwitcher/LangSwitcher';
 
 const Header = (): JSX.Element => {
   const { scrollY } = useScroll();
@@ -40,8 +40,8 @@ const Header = (): JSX.Element => {
         >
           <Logo />
           <FinalTypography style={{ opacity: toolOpacity }}>{t('greetings')}</FinalTypography>
-          <LangSwitcher />
           <ThirdHeaderBox>
+            <LangSwitcher />
             <NavBar />
             <NavBurger />
           </ThirdHeaderBox>

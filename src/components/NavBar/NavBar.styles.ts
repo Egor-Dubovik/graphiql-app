@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { createTheme, styled } from '@mui/material/styles';
-import { Container, List, ListItem } from '@mui/material';
+import { Box, List, ListItem } from '@mui/material';
 
 export const boxTheme = createTheme({
   components: {
@@ -14,7 +14,7 @@ export const boxTheme = createTheme({
 
 export const CustomNav = styled('nav')({
   display: 'flex',
-  width: '230px',
+  width: '70%',
   [boxTheme.breakpoints.down(700)]: {
     width: '50px',
     height: '50px',
@@ -26,8 +26,9 @@ export const CustomNav = styled('nav')({
   },
 });
 
-export const CustomContainer = styled(Container)({
+export const CustomBox = styled(Box)({
   display: 'flex',
+  justifyContent: 'space-between',
   [boxTheme.breakpoints.down(700)]: {
     width: '50px',
     padding: 0,
@@ -46,16 +47,25 @@ export const CustomNavLink = styled(NavLink)({
 
 export const CustomList = styled(List)({
   display: 'flex',
+  justifyContent: 'space-around',
   width: '100%',
 });
 
 export const CustomListItem = styled(ListItem)({
-  width: '33%',
+  width: '32%',
+  textAlign: 'center',
+  paddingLeft: 7,
+  paddingRight: 7,
   [boxTheme.breakpoints.down(700)]: {
     display: 'none',
   },
 });
 
 export const CustomListItemNext = styled(ListItem)({
-  width: '33%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'left',
+  width: '22%',
+  paddingLeft: 7,
+  paddingRight: 7,
 });

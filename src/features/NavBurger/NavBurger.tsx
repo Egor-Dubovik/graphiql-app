@@ -91,12 +91,12 @@ export const NavBurger = () => {
         custom={height}
         ref={containerRef}
       >
-        <Shadowfield variants={shadowbar} onClick={fieldUpdate} />
         <BurgerMenu
           variants={sidebar}
           style={{ backgroundColor: burgerColor }}
           onClick={fieldUpdate}
         />
+        <Shadowfield variants={shadowbar} onClick={fieldUpdate} />
         <NavToggle toggle={updateState} />
         <NavBurgerMenu toggle={fieldUpdate} />
       </BurgerContainer>

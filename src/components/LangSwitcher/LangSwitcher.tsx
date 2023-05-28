@@ -2,6 +2,7 @@ import React from 'react';
 import Switch from '@mui/material/Switch';
 import { Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { SwitchBox } from './LangSwitcher.styles';
 
 export const LangSwitcher = () => {
   const label = { inputProps: { 'aria-label': 'en' } };
@@ -15,10 +16,10 @@ export const LangSwitcher = () => {
   };
 
   return (
-    <>
-      <Typography>En</Typography>
-      <Switch {...label} color="default" onChange={onChangeLang} />
-      <Typography>Ru</Typography>
-    </>
+    <SwitchBox>
+      <Typography variant="body2">En</Typography>
+      <Switch {...label} color="default" size="small" onChange={onChangeLang} />
+      <Typography variant="body2">Ru</Typography>
+    </SwitchBox>
   );
 };
