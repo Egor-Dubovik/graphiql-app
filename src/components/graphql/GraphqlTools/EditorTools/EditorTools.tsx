@@ -50,12 +50,12 @@ const EditorTools: FC = () => {
           </IconButton>
         </span>
       </Tooltip>
-      <Tooltip title={'выровнять'}>
+      <Tooltip title={t('buttonAlign')}>
         <IconButton sx={sxButton} onClick={handleFormatGraphQLCode}>
           <AlignHorizontalLeftIcon />
         </IconButton>
       </Tooltip>
-      <Tooltip title={'стереть'}>
+      <Tooltip title={t('buttonErase')}>
         <IconButton sx={sxButton} onClick={() => dispatch(setUserSchema(''))}>
           <BackspaceIcon />
         </IconButton>

@@ -98,7 +98,7 @@ export const NavBurger = () => {
         />
         <Shadowfield variants={shadowbar} onClick={fieldUpdate} />
         <NavToggle toggle={updateState} />
-        <NavBurgerMenu toggle={fieldUpdate} />
+        <NavBurgerMenu toggle={fieldUpdate} isOpen={isOpen} />
       </BurgerContainer>
     </ThemeProvider>
   );

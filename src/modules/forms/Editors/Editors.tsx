@@ -16,7 +16,7 @@ const Editors = () => {
         bgcolor="#fff"
         sx={{ display: 'flex', flexDirection: 'column', p: 2, position: 'relative' }}
       >
-        <Grid width="100%" sx={{ display: 'flex' }}>
+        <Grid width="100%" sx={{ display: 'flex', overflow: 'auto' }}>
           <QueryEditor />
           <EditorToolBar />
         </Grid>

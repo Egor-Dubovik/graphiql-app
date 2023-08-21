@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 interface IToggle {
   toggle: (event: React.MouseEvent<HTMLElement>) => void;
+  isOpen: boolean;
 }
 
 const variants = {
@@ -33,10 +34,10 @@ const phases = {
   },
 };
 
-export const NavBurgerMenu: React.FC<IToggle> = ({ toggle }) => {
+export const NavBurgerMenu: React.FC<IToggle> = ({ toggle, isOpen }) => {
   const { t } = useTranslation();
   return (
-    <NavContainer>
+    <NavContainer sx={{ visibility: `${isOpen ? 'visible' : 'hidden'}` }}>
       <BurgerMenuUl variants={variants}>
         <FinalLi variants={phases} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
           <CustomNavLink to={ROUTES.MAIN} onClick={toggle}>
