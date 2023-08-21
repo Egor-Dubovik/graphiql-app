@@ -1,3 +1,7 @@
-export const sxContainer = { display: 'flex', alignItems: 'center', gap: 2 };
-export const sxButton = { padding: '10px', border: '1px solid #d3d3d3' };
+export const sxContainer = {
+  display: 'flex',
+  flexDirection: { xs: 'column-reverse', sm: 'initial' },
+  alignItems: { sm: 'center' },
+  gap: 2,
+};
 export const sxSection = { padding: '20px 0' };

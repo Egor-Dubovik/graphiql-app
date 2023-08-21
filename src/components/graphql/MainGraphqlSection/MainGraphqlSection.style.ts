@@ -10,4 +10,7 @@ export const MainSection = styled('div')`
   @media (max-width: 1400px) {
     width: 90%;
   }
+  @media (max-width: 600px) {
+    padding: 0 0 15px;
+  }
 `;

@@ -6,8 +6,7 @@ export const schemaDrawerTheme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          minWidth: '300px',
-          maxWidth: '300px',
+          width: '300px',
         },
       },
     },

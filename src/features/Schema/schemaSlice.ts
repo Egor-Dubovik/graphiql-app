@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { SCHEMA } from '../../common/constant/graphqlEditor';
 import { IntrospectionQuery } from 'graphql';
 import { RootState } from '../../app/store/store';
 import { isObject } from '../../utils/isObject';
@@ -24,7 +25,7 @@ const initialState: ISchemaSlice = {
   },
   isOpen: false,
   isError: false,
-  userSchema: '',
+  userSchema: SCHEMA.INIT_VALUE,
   response: null,
   variables: null,
   headers: null,
