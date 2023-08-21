@@ -22,12 +22,10 @@ export const DevCardList = () => {
         [divTheme.breakpoints.down('md')]: {
           flexDirection: 'column',
           alignItems: 'center',
-          height: '1790px',
         },
         [divTheme.breakpoints.down(650)]: {
           flexDirection: 'column',
           alignItems: 'center',
-          height: '1400px',
         },
       }}
     >

@@ -11,45 +11,34 @@ import {
 import { useGetUserSchemaMutation } from '../../../features/Schema/schemaAPI';
 import { IReqData } from '../../../features/Schema/types';
 
-const getOperationName = (userSchema: string) => {
-  const userSchemaArr = userSchema.split(' ');
-  return userSchemaArr[userSchemaArr.indexOf('query') + 1];
-};
-
 const EditorToolBar = () => {
   const userSchema = useAppSelector(selectUserSchema);
   const variables = useAppSelector(selectVariables);
   const headers = useAppSelector(selectHeaders);
   const dispatch = useAppDispatch();
-
   const [getUserSchema, { data, error, isError }] = useGetUserSchemaMutation();
 
-  const reqData: IReqData = {
-    operationName: variables ? null : getOperationName(userSchema),
-    query: userSchema,
+  const getReqData = (): IReqData => {
+    const reqData: IReqData = {
+      operationName: null,
+      query: userSchema,
+    };
+    if (variables) reqData.variables = variables;
+    return reqData;
   };
-
-  if (variables) {
-    reqData.variables = variables;
-  }
 
   const sendSchemaRequest = () => {
     const actualHeaders = headers ? JSON.parse(headers) : {};
-    reqData.operationName = null;
-
+    const reqData = getReqData();
     getUserSchema({ data: reqData, headers: actualHeaders });
   };
 
   useEffect(() => {
-    if (data) {
-      dispatch(saveResponse(data));
-    }
+    if (data) dispatch(saveResponse(data));
   }, [dispatch, data]);
 
   useEffect(() => {
-    if (error) {
-      dispatch(saveResponse(error));
-    }
+    if (error) dispatch(saveResponse(error));
   }, [dispatch, isError]);
 
   return (

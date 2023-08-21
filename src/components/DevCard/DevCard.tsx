@@ -39,28 +39,7 @@ export const DevCard: React.FC<IDevCard> = ({ devImage, devName, devText, devMor
         }}
       >
         <ThemeProvider theme={cardMediaTheme}>
-          <CardMedia
-            sx={{
-              [cardMediaTheme.breakpoints.down(1150)]: {
-                height: '170px',
-              },
-              [cardMediaTheme.breakpoints.down('md')]: {
-                height: '450px',
-              },
-              [cardMediaTheme.breakpoints.down(650)]: {
-                height: '300px',
-              },
-              [cardMediaTheme.breakpoints.down(450)]: {
-                width: '70%',
-              },
-              [cardMediaTheme.breakpoints.down(350)]: {
-                width: '60%',
-                height: '250px',
-              },
-            }}
-            image={devImage}
-            title={devName.toLowerCase()}
-          />
+          <CardMedia image={devImage} title={devName.toLowerCase()} />
         </ThemeProvider>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: 'center' }}>

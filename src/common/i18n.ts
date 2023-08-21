@@ -47,7 +47,7 @@ i18n
           schema: 'schema',
           'schema-url': 'schema url',
           buttonAlign: 'align',
-          buttonErase: 'erase',
+          buttonErase: 'clean',
           show: 'Show more',
         },
       },

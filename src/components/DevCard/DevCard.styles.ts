@@ -6,6 +6,7 @@ export const cardTheme = createTheme({
       styleOverrides: {
         root: {
           width: '25vw',
+          padding: '20px 0 5px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -20,11 +21,23 @@ export const cardMediaTheme = createTheme({
     MuiCardMedia: {
       styleOverrides: {
         root: {
-          height: '250px',
-          width: '50%',
+          width: '60%',
+          paddingBottom: '70%',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          '@media (max-width: 1118px)': {
+            paddingBottom: '90%',
+            width: '70%',
+          },
+          '@media (max-width: 899px)': {
+            width: '50%',
+            paddingBottom: '60%',
+          },
+          '@media (max-width: 480px)': {
+            width: '80%',
+            paddingBottom: '90%',
+          },
         },
       },
     },
