@@ -6,5 +6,8 @@ export const MainSection = styled('div')`
   justify-content: center;
   width: 80%;
   margin: 0 auto;
-  padding: 10px;
+  padding: 15px 0;
+  @media (max-width: 1400px) {
+    width: 90%;
+  }
 `;

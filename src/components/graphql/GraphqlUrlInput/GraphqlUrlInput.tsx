@@ -41,7 +41,7 @@ const GraphqlUrlInput: FC = () => {
     <InputField
       error={isError}
       value={url}
-      sx={{ minWidth: { xs: '260px', sm: '480px' } }}
+      sx={{ flex: { xs: '1 1 90%', md: '0 1 40%' } }}
       onChange={(event) => setUrl(event.target.value)}
       fullWidth
       size="small"

@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Box, Button, Container } from '@mui/material';
+import { Box, IconButton, Tooltip } from '@mui/material';
 import GraphqlUrlInput from '../GraphqlUrlInput/GraphqlUrlInput';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
 import { sxButton, sxContainer, sxSection } from './GraphqlTools.style';
 import { isEmptyObject } from '../../../utils/isEmptyObject';
@@ -18,33 +19,28 @@ const GraphqlTools: FC = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const handleSchemaOpen = async () => {
-    dispatch(setIsOpen(true));
-  };
-
   useEffect(() => {
     if (isSchemaError) {
       setSchemaReceived(false);
       return;
     }
-    if (!isEmptyObject(schemaData)) {
-      setSchemaReceived(true);
-    }
+    if (!isEmptyObject(schemaData)) setSchemaReceived(true);
   }, [schemaData, isSchemaError]);
 
   return (
     <Box component="section" sx={sxSection}>
-      <Container sx={sxContainer} maxWidth="xl">
+      <Box sx={sxContainer}>
         <GraphqlUrlInput />
-        <Button
-          onClick={handleSchemaOpen}
-          disabled={!isSchemaReceived}
-          sx={sxButton}
-          variant="contained"
-        >
-          {t('schema')}
-        </Button>
-      </Container>
+        <Tooltip title={t('schema')}>
+          <IconButton
+            sx={sxButton}
+            onClick={() => dispatch(setIsOpen(true))}
+            disabled={!isSchemaReceived}
+          >
+            <LibraryBooksIcon />
+          </IconButton>
+        </Tooltip>
+      </Box>
     </Box>
   );
 };

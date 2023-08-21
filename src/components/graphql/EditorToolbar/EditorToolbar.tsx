@@ -35,6 +35,7 @@ const EditorToolBar = () => {
 
   const sendSchemaRequest = () => {
     const actualHeaders = headers ? JSON.parse(headers) : {};
+    reqData.operationName = null;
 
     getUserSchema({ data: reqData, headers: actualHeaders });
   };
