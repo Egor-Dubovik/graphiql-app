@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DevCardPopover } from '../DevCardPopover/DevCardPopover';
 import { IDevCard } from '../../common/interfaces/iDevCard';
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, Skeleton, Typography } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
-import { cardTheme, cardMediaTheme } from './DevCard.styles';
+import { cardTheme, sxImage, sxImageBox } from './DevCard.styles';
 import { useTranslation } from 'react-i18next';
 
 export const DevCard: React.FC<IDevCard> = ({ devImage, devName, devText, devMore }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [anchor, setAnchor] = React.useState<HTMLButtonElement | null>(null);
   const { t } = useTranslation();
 
@@ -38,9 +39,16 @@ export const DevCard: React.FC<IDevCard> = ({ devImage, devName, devText, devMor
           },
         }}
       >
-        <ThemeProvider theme={cardMediaTheme}>
-          <CardMedia image={devImage} title={devName.toLowerCase()} />
-        </ThemeProvider>
+        <Box sx={{ ...sxImageBox, paddingBottom: `${isLoading ? '0' : '70%'}` }}>
+          <Box
+            component="img"
+            sx={sxImage}
+            onLoad={() => setIsLoading(false)}
+            src={devImage}
+            alt="developer image"
+          />
+        </Box>
+        {isLoading && <Skeleton variant="rectangular" sx={sxImageBox} />}
         <CardContent>
           <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: 'center' }}>
             {devName}
