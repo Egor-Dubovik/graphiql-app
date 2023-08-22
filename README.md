@@ -1,7 +1,6 @@
 #  GraphiQL
 
 **GraphiQL** is a playground/IDE for graphQL requests.
-PLEASE, READ TASK DESCRIPTION CAREFULLY UP TO THE END BEFORE STARTING THE TASK
 
 ### Technology stack
 React, React router dom, Redux, RTK Query, TypeScript, Firebase, MUI, Framer motion, Codemirror, Graphql, I18next, HTML, CSS, Vite
