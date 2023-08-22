@@ -9,6 +9,8 @@ React, React router dom, Redux, RTK Query, TypeScript, Firebase, MUI, Framer mot
 ### Links
 - [Deployment](https://graphql-editor.onrender.com)
 
+![Image preview](https://github.com/Egor-Dubovik/graphiql-app/blob/develop/graphql-ide-screen.jpg)
+
 ### Sign In / Sign Up
 - For the authentication you should use Firebase with email option
 - Client-side validation  implemented (email and password strength - minimum 8 symbols, at least one letter, one digit, one special character)
@@ -19,7 +21,7 @@ React, React router dom, Redux, RTK Query, TypeScript, Firebase, MUI, Framer mot
 - Editor
 - Variables section
 - Headers section
-- Documentation section, should be visible only when app will receive a successfull response with the schema definition from the api
+- Documentation section, is visible only when app will receive a successfull response with the schema definition from the api
 - Response section
 
 ### Welcome page
@@ -30,4 +32,3 @@ React, React router dom, Redux, RTK Query, TypeScript, Firebase, MUI, Framer mot
 - clone repo
 - npm run i (install)
 - npm run prepare
-- create amazing app
